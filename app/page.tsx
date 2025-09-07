@@ -59,23 +59,23 @@ export default function Portfolio() {
         </section>
 
         {/* Experience Section */}
-        <section className="max-w-4xl mx-auto px-6 py-16 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-12">Experience</h2>
-          <div className="space-y-12">
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-8 sm:mb-12">Experience</h2>
+          <div className="space-y-8 sm:space-y-12">
             {/* Google */}
-            <div className="flex items-start gap-6">
-              <div className="flex-1">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+              <div className="flex-1 order-2 sm:order-1">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Google</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Google</h3>
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
                   Senior Frontend Engineer • April 2022 - Present
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
                   Working on Google Cloud Platform's web console, building engineering web tools, optimizing performance
                   and user experience.
                 </p>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <Badge
                     variant="secondary"
                     className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
@@ -96,25 +96,25 @@ export default function Portfolio() {
                   </Badge>
                 </div>
               </div>
-              <div className="flex items-center justify-center">
-                <img src="/google-logo.png" alt="Google" className="w-16 h-16" />
+              <div className="hidden md:flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
+                <img src="/google-logo.png" alt="Google" className="w-12 h-12 sm:w-16 sm:h-16" />
               </div>
             </div>
 
             {/* Microsoft */}
-            <div className="flex items-start gap-6">
-              <div className="flex-1">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+              <div className="flex-1 order-2 sm:order-1">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Microsoft</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Microsoft</h3>
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
                   Software Engineer • August 2020 - May 2022
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
                   Developed and maintained Azure web applications, engineering web tools, optimizing performance and
                   user experience.
                 </p>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <Badge
                     variant="secondary"
                     className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
@@ -135,24 +135,24 @@ export default function Portfolio() {
                   </Badge>
                 </div>
               </div>
-              <div className="flex items-center justify-center">
-                <img src="/microsoft-logo.png" alt="Microsoft" className="w-16 h-16" />
+              <div className="hidden md:flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
+                <img src="/microsoft-logo.png" alt="Microsoft" className="w-12 h-12 sm:w-16 sm:h-16" />
               </div>
             </div>
 
             {/* Airbnb */}
-            <div className="flex items-start gap-6">
-              <div className="flex-1">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+              <div className="flex-1 order-2 sm:order-1">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Airbnb</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Airbnb</h3>
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
                   Frontend Developer • January 2019 - July 2020
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
                   Implemented user-facing web development of Airbnb's booking platform.
                 </p>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <Badge
                     variant="secondary"
                     className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
@@ -173,24 +173,24 @@ export default function Portfolio() {
                   </Badge>
                 </div>
               </div>
-              <div className="flex items-center justify-center">
-                <img src="/airbnb-logo-inspired-abstract.png" alt="Airbnb" className="w-16 h-16" />
+              <div className="hidden md:flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
+                <img src="/airbnb-logo-inspired-abstract.png" alt="Airbnb" className="w-12 h-12 sm:w-16 sm:h-16" />
               </div>
             </div>
 
             {/* Shopify */}
-            <div className="flex items-start gap-6">
-              <div className="flex-1">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+              <div className="flex-1 order-2 sm:order-1">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Shopify</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Shopify</h3>
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
                   Frontend Web Developer • March 2018 - December 2018
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
                   Developed and maintained Shopify themes for enterprise clients with advanced technical requirements.
                 </p>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <Badge
                     variant="secondary"
                     className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
@@ -211,24 +211,24 @@ export default function Portfolio() {
                   </Badge>
                 </div>
               </div>
-              <div className="flex items-center justify-center">
-                <img src="/shopify-logo.png" alt="Shopify" className="w-16 h-16" />
+              <div className="hidden md:flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
+                <img src="/shopify-logo.png" alt="Shopify" className="w-12 h-12 sm:w-16 sm:h-16" />
               </div>
             </div>
 
             {/* Adobe */}
-            <div className="flex items-start gap-6">
-              <div className="flex-1">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+              <div className="flex-1 order-2 sm:order-1">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Adobe</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Adobe</h3>
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
                   Frontend Product Consultant • September 2016 - November 2018
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
                   Consulted on the design and development of Adobe's Creative Cloud web applications.
                 </p>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <Badge
                     variant="secondary"
                     className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
@@ -249,8 +249,8 @@ export default function Portfolio() {
                   </Badge>
                 </div>
               </div>
-              <div className="flex items-center justify-center">
-                <img src="/adobe-logo.png" alt="Adobe" className="w-16 h-16" />
+              <div className="hidden md:flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
+                <img src="/adobe-logo.png" alt="Adobe" className="w-12 h-12 sm:w-16 sm:h-16" />
               </div>
             </div>
           </div>
@@ -286,6 +286,11 @@ export default function Portfolio() {
               <a href="#" className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
+            </div>
+            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-[#2a2a2a]">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                Built by Elijah Farrell
+              </p>
             </div>
           </div>
         </footer>

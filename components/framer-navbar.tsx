@@ -306,12 +306,16 @@ export const MobileNavMenu = ({
   );
 };
 
-export const NavbarLogo = () => {
+export const NavbarLogo = ({ onCloseMobileMenu }: { onCloseMobileMenu?: () => void }) => {
   const [isClicked, setIsClicked] = React.useState(false);
   
   const scrollToTop = () => {
     setIsClicked(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Close mobile menu if it's open
+    if (onCloseMobileMenu) {
+      onCloseMobileMenu();
+    }
     // Reset click state after animation
     setTimeout(() => setIsClicked(false), 300);
   };

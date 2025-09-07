@@ -68,7 +68,7 @@ export function PortfolioNavbar() {
       <MobileNav>
         <div className="flex items-center justify-between w-full relative z-[100]">
           <div className="ml-4 relative z-[100]">
-            <NavbarLogo />
+            <NavbarLogo onCloseMobileMenu={() => setMobileMenuOpen(false)} />
           </div>
           <div className="flex items-center gap-1 mr-4 relative z-[100]">
             <DarkModeToggle />

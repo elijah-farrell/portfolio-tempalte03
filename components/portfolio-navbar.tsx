@@ -50,10 +50,10 @@ export function PortfolioNavbar() {
       {/* Desktop Navbar */}
       <NavBody>
         <div className="flex items-center justify-between w-full">
-          <div className="ml-0 md:ml-4 lg:ml-6">
+          <div className="ml-0">
             <NavbarLogo />
           </div>
-          <div className="flex items-center gap-1 mr-0 md:mr-4 lg:mr-6">
+          <div className="flex items-center gap-1 mr-0">
             <DarkModeToggle />
             <NavItems 
               items={navItems}
@@ -65,16 +65,18 @@ export function PortfolioNavbar() {
 
       {/* Mobile Navbar */}
       <MobileNav>
-        <MobileNavHeader>
-          <NavbarLogo />
-          <div className="flex items-center gap-4">
+        <div className="flex items-center justify-between w-full">
+          <div className="ml-4">
+            <NavbarLogo />
+          </div>
+          <div className="flex items-center gap-1 mr-4">
             <DarkModeToggle />
             <MobileNavToggle 
               isOpen={mobileMenuOpen}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             />
           </div>
-        </MobileNavHeader>
+        </div>
         
         <MobileNavMenu 
           isOpen={mobileMenuOpen}
@@ -88,7 +90,7 @@ export function PortfolioNavbar() {
                 setMobileMenuOpen(false);
                 scrollToSection(item.link.replace('#', ''));
               }}
-              className="text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500 transition-colors duration-150"
+              className="block w-full text-left px-6 py-3 text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500 hover:bg-gray-50 dark:hover:bg-neutral-800 transition-colors duration-150 rounded-lg"
             >
               {item.name}
             </a>

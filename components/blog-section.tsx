@@ -21,7 +21,7 @@ export function BlogSection() {
                 Design
               </Badge>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
               Building Scalable Design Systems
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
@@ -38,7 +38,7 @@ export function BlogSection() {
                   <span>8 min read</span>
                 </div>
               </div>
-              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors" />
             </div>
           </CardContent>
         </Card>
@@ -51,7 +51,7 @@ export function BlogSection() {
                 Development
               </Badge>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
               React Performance Optimization Techniques
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
@@ -68,7 +68,7 @@ export function BlogSection() {
                   <span>12 min read</span>
                 </div>
               </div>
-              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors" />
             </div>
           </CardContent>
         </Card>
@@ -81,7 +81,7 @@ export function BlogSection() {
                 Career
               </Badge>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
               Transitioning from Frontend to Full-Stack
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
@@ -98,7 +98,7 @@ export function BlogSection() {
                   <span>6 min read</span>
                 </div>
               </div>
-              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors" />
             </div>
           </CardContent>
         </Card>
@@ -111,7 +111,7 @@ export function BlogSection() {
                 Tools
               </Badge>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
               My Development Workflow Setup
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
@@ -128,7 +128,7 @@ export function BlogSection() {
                   <span>10 min read</span>
                 </div>
               </div>
-              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors" />
             </div>
           </CardContent>
         </Card>

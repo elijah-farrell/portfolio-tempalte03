@@ -113,33 +113,45 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 
 export const NavItems = ({ items, className, onItemClick, scrollToSection }: NavItemsProps) => {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <motion.div
+    <div
       className={cn(
-        "flex flex-row items-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800",
+        "flex flex-row items-center text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 relative h-10",
         className,
       )}
     >
       {items.map((item, idx) => (
-        <div key={`nav-item-${idx}`} className={`relative ${item.name === 'Home' ? 'ml-3' : ''}`}>
+        <div 
+          key={`nav-item-${idx}`} 
+          className="relative flex justify-center items-center h-full"
+          onMouseEnter={() => setHoveredIndex(idx)}
+          onMouseLeave={() => setHoveredIndex(null)}
+        >
+          {/* Hover background for this item */}
+          <div
+            className={`absolute inset-0 bg-gray-100 dark:bg-neutral-800 rounded-lg transition-opacity duration-200 ${
+              hoveredIndex === idx ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
           {item.isDropdown ? (
             <div className="relative">
               <div className="flex items-center">
-                <a 
-                  href={item.link}
-                  className={`relative px-4 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg ${
-                    item.isActive 
-                      ? 'text-emerald-500 dark:text-emerald-400 font-semibold hover:bg-gray-100 dark:hover:bg-neutral-800' 
-                      : 'text-neutral-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800'
-                  }`}
-                >
+                  <a 
+                    href={item.link}
+                    className={`relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg ${
+                      item.isActive 
+                        ? 'text-emerald-500 dark:text-emerald-400 font-semibold' 
+                        : 'text-neutral-600 dark:text-neutral-300'
+                    }`}
+                  >
                   {item.icon && <span className="relative z-20 mr-2">{item.icon}</span>}
                   <span className="relative z-20">{item.name}</span>
                 </a>
                 <button 
                   onClick={() => setOpenDropdown(openDropdown === idx ? null : idx)}
-                  className="px-2 py-2 transition-all duration-200 ease-in-out rounded-md hover:bg-gray-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500"
+                  className="px-2 py-2 transition-all duration-200 ease-in-out rounded-md text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500"
                 >
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
                     openDropdown === idx ? 'rotate-180' : ''
@@ -178,10 +190,10 @@ export const NavItems = ({ items, className, onItemClick, scrollToSection }: Nav
           ) : (
             <a
               onClick={onItemClick}
-              className={`relative px-4 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg ${
+              className={`relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg ${
                 item.isActive 
                   ? 'text-emerald-500 dark:text-emerald-400 font-semibold' 
-                  : 'text-neutral-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800'
+                  : 'text-neutral-600 dark:text-neutral-300'
               }`}
               href={item.link}
             >
@@ -191,7 +203,7 @@ export const NavItems = ({ items, className, onItemClick, scrollToSection }: Nav
           )}
         </div>
       ))}
-    </motion.div>
+    </div>
   );
 };
 
@@ -266,18 +278,25 @@ export const MobileNavMenu = ({
 };
 
 export const NavbarLogo = () => {
+  const [isClicked, setIsClicked] = React.useState(false);
+  
   const scrollToTop = () => {
+    setIsClicked(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Reset click state after animation
+    setTimeout(() => setIsClicked(false), 300);
   };
 
   return (
     <div className="flex items-center">
       <button 
         onClick={scrollToTop}
-        className="relative hover:opacity-80 transition-opacity cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500/20 rounded px-1 py-1 group"
+        className="relative hover:opacity-80 transition-opacity cursor-pointer focus:outline-none rounded px-1 py-1 group"
         aria-label="Scroll to top"
       >
-        <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-gray-200 dark:border-[#2a2a2a] hover:border-gray-400 dark:hover:border-gray-500 transition-colors duration-200">
+        <div className={`relative w-11 h-11 rounded-full overflow-hidden transition-all duration-200 ${
+          isClicked ? 'border-0' : 'border-2 border-gray-200 dark:border-[#2a2a2a] hover:border-gray-400 dark:hover:border-gray-500'
+        }`}>
           <img 
             src="/pfp.jpg" 
             alt="Profile" 
@@ -285,7 +304,9 @@ export const NavbarLogo = () => {
             style={{ imageRendering: 'auto' }}
           />
           {/* Home Icon Overlay */}
-          <div className="absolute inset-0 rounded-full bg-white/50 dark:bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className={`absolute inset-0 rounded-full bg-white/50 dark:bg-black/50 flex items-center justify-center transition-opacity duration-200 ${
+            isClicked ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+          }`}>
             <Home className="w-5 h-5 text-black dark:text-white" />
           </div>
         </div>
@@ -304,7 +325,7 @@ export const MobileNavToggle = ({
   return (
     <button
       onClick={onClick}
-      className="p-2 rounded-lg bg-gray-100 dark:bg-neutral-800 hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors"
+      className="p-2 rounded-lg transition-colors"
     >
       <div className="w-5 h-5 flex flex-col justify-center items-center">
         <span className={`block w-4 h-0.5 bg-neutral-600 dark:bg-neutral-300 transition-all duration-300 ${

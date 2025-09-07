@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { DarkModeToggle } from "@/components/dark-mode-toggle"
 import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TestimonialsDemo } from "@/components/testimonials-demo"
+import { BlogSection } from "@/components/blog-section"
 import { ExternalLink, Mail, Github, Linkedin, Twitter } from "lucide-react"
 
 export default function Portfolio() {
@@ -290,6 +291,9 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+
+        {/* Blog Section */}
+        <BlogSection />
 
         {/* Testimonials Section */}
         <section className="max-w-4xl mx-auto px-6 py-8 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">

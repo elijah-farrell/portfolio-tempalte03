@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -6,25 +8,53 @@ import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TestimonialsDemo } from "@/components/testimonials-demo"
 import { BlogSection } from "@/components/blog-section"
 import { ExternalLink, Mail, Github, Linkedin, Twitter } from "lucide-react"
+import { useState, useEffect } from "react"
 
 export default function Portfolio() {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isScrollingDown, setIsScrollingDown] = useState(false)
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      const scrollingDown = scrollTop > lastScrollY
+      
+      setIsScrollingDown(scrollingDown)
+      setIsScrolled(scrollTop > 50)
+      
+      lastScrollY = scrollTop
+    }
+
+    // Check initial scroll position
+    const scrollTop = window.scrollY
+    setIsScrolled(scrollTop > 50)
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0A0A0A] transition-colors border-none">
       <div className="border-gray-200 dark:border-[#2a2a2a] min-h-screen max-w-5xl mx-auto bg-white dark:bg-[#171717] shadow-sm border-r-[30px] border-l-[30px] relative">
         <DiagonalStripes />
+        
         {/* Header */}
-        <header className="border-b border-gray-100 dark:border-[#2a2a2a] bg-white/80 dark:bg-[#171717]/80 backdrop-blur-sm">
-          <div className="max-w-4xl mx-auto px-6 py-4">
+        <header className={`border-b border-gray-100 dark:border-[#2a2a2a] bg-white/80 dark:bg-[#171717]/80 backdrop-blur-sm transition-opacity duration-300 ${
+          isScrolled ? 'opacity-0' : 'opacity-100'
+        }`}>
+          <div className="max-w-4xl mx-auto px-2 py-4">
             <nav className="flex items-center justify-between">
               <div className="w-11 h-11 rounded-full overflow-hidden">
                 <img 
                   src="/pfp.jpg" 
                   alt="Profile" 
                   className="w-full h-full object-cover object-center"
-                  style={{ imageRendering: 'high-quality' }}
+                  style={{ imageRendering: 'auto' }}
                 />
               </div>
-              <div className="flex items-center gap-8">
+              <div className="flex items-center gap-4">
                 <DarkModeToggle />
                 <a
                   href="#about"
@@ -55,8 +85,63 @@ export default function Portfolio() {
           </div>
         </header>
 
+        {/* Fixed Navbar */}
+        {isScrolled && (
+          <div className={`fixed top-0 left-0 right-0 z-40 ${
+            isScrolled 
+              ? 'translate-y-0 opacity-100 transition-all duration-300 ease-out' 
+              : isScrollingDown 
+                ? '-translate-y-full opacity-0 transition-all duration-300 ease-out'
+                : 'translate-y-0 opacity-0 transition-opacity duration-150 ease-out'
+          }`}>
+          <div className="max-w-4xl mx-auto px-6 py-4">
+            <nav className="rounded-full border border-gray-200 dark:border-[#2a2a2a] bg-white/95 dark:bg-[#171717]/95 backdrop-blur-md shadow-lg px-8 py-4">
+              <div className="flex items-center justify-between">
+                <div className="w-11 h-11 rounded-full overflow-hidden">
+                  <img 
+                    src="/pfp.jpg" 
+                    alt="Profile" 
+                    className="w-full h-full object-cover object-center"
+                    style={{ imageRendering: 'auto' }}
+                  />
+                </div>
+                <div className="flex items-center gap-4">
+                  <DarkModeToggle />
+                  <a
+                    href="#about"
+                    className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                  >
+                    About
+                  </a>
+                  <a
+                    href="#projects"
+                    className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                  >
+                    Projects
+                  </a>
+                  <a
+                    href="#blog"
+                    className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                  >
+                    Blog
+                  </a>
+                  <a
+                    href="#contact"
+                    className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                  >
+                    Contact
+                  </a>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+        )}
+
         {/* Hero Section */}
-        <section className="max-w-4xl mx-auto px-6 py-12 bg-white dark:bg-[#171717]">
+        <section className={`max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] transition-all duration-500 ease-out ${
+          isScrolled ? 'pt-24 pb-12' : 'py-12'
+        }`}>
           <div className="max-w-2xl">
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">John Doe Smith</h1>
             <p className="text-xl text-gray-500 dark:text-gray-300 mb-6 leading-relaxed">

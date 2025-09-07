@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import React, { useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { ChevronDown, Home } from "lucide-react";
 import { DarkModeToggle } from "@/components/dark-mode-toggle";
 
@@ -226,7 +227,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         damping: 50,
       }}
       className={cn(
-        "relative z-50 flex w-full flex-row items-center px-8 py-2 md:hidden",
+        "relative z-[100] flex w-full flex-row items-center px-8 py-2 md:hidden",
         visible ? "bg-white/80 dark:bg-[#171717]/80 rounded-none" : "bg-transparent",
         className,
       )}
@@ -262,15 +263,43 @@ export const MobileNavMenu = ({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ 
+            height: 0,
+            opacity: 0
+          }}
+          animate={{ 
+            height: "100vh",
+            opacity: 1
+          }}
+          exit={{ 
+            height: 0,
+            opacity: 0
+          }}
+          transition={{
+            duration: 0.4,
+            ease: [0.25, 0.46, 0.45, 0.94],
+            height: { duration: 0.4 },
+            opacity: { duration: 0.3 }
+          }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-6 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
+            "absolute inset-x-0 top-0 z-40 flex w-full flex-col bg-white/80 dark:bg-[#171717]/80 backdrop-blur-sm",
             className,
           )}
         >
-          {children}
+          {/* Links section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.2,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+            className="flex flex-col items-center justify-center gap-8 flex-1 pt-20"
+          >
+            {children}
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

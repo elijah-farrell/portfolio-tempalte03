@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { 
   Navbar, 
   NavBody, 
@@ -65,11 +66,11 @@ export function PortfolioNavbar() {
 
       {/* Mobile Navbar */}
       <MobileNav>
-        <div className="flex items-center justify-between w-full">
-          <div className="ml-4">
+        <div className="flex items-center justify-between w-full relative z-[100]">
+          <div className="ml-4 relative z-[100]">
             <NavbarLogo />
           </div>
-          <div className="flex items-center gap-1 mr-4">
+          <div className="flex items-center gap-1 mr-4 relative z-[100]">
             <DarkModeToggle />
             <MobileNavToggle 
               isOpen={mobileMenuOpen}
@@ -83,17 +84,25 @@ export function PortfolioNavbar() {
           onClose={() => setMobileMenuOpen(false)}
         >
           {navItems.map((item, idx) => (
-            <a
+            <motion.a
               key={idx}
               href={item.link}
               onClick={() => {
                 setMobileMenuOpen(false);
                 scrollToSection(item.link.replace('#', ''));
               }}
-              className="block w-full text-left px-6 py-3 text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500 hover:bg-gray-50 dark:hover:bg-neutral-800 transition-colors duration-150 rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{
+                duration: 0.4,
+                delay: 0.3 + (idx * 0.1),
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+              className="text-2xl font-medium text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500 transition-colors duration-200"
             >
               {item.name}
-            </a>
+            </motion.a>
           ))}
         </MobileNavMenu>
       </MobileNav>

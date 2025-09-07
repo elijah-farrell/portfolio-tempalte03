@@ -14,8 +14,16 @@ export default function Portfolio() {
         <header className="border-b border-gray-100 dark:border-[#2a2a2a] bg-white/80 dark:bg-[#171717]/80 backdrop-blur-sm">
           <div className="max-w-4xl mx-auto px-6 py-4">
             <nav className="flex items-center justify-between">
-              <div className="w-8 h-8 bg-blue-600 dark:bg-[#2a2a2a] rounded-full"></div>
+              <div className="w-11 h-11 rounded-full overflow-hidden">
+                <img 
+                  src="/pfp.jpg" 
+                  alt="Profile" 
+                  className="w-full h-full object-cover object-center"
+                  style={{ imageRendering: 'high-quality' }}
+                />
+              </div>
               <div className="flex items-center gap-8">
+                <DarkModeToggle />
                 <a
                   href="#about"
                   className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
@@ -40,7 +48,6 @@ export default function Portfolio() {
                 >
                   Contact
                 </a>
-                <DarkModeToggle />
               </div>
             </nav>
           </div>

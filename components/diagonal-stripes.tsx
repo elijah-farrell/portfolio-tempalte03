@@ -73,7 +73,7 @@ export function DiagonalStripes() {
           borderRightColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
           boxShadow: currentTheme === 'dark' 
             ? 'inset 1px 0 0 rgba(42, 42, 42, 0.3), inset -1px 0 0 rgba(42, 42, 42, 0.3)'
-            : 'inset 1px 0 0 rgba(245, 245, 245, 0.3), inset -1px 0 0 rgba(245, 245, 245, 0.3)',
+            : 'inset 1px 0 0 rgba(229, 231, 235, 0.3), inset -1px 0 0 rgba(229, 231, 235, 0.3)',
           backgroundImage: currentTheme === 'dark' 
             ? 'linear-gradient(45deg, #2a2a2a 7.14%, #171717 7.14%, #171717 50%, #2a2a2a 50%, #2a2a2a 57.14%, #171717 57.14%, #171717 100%)'
             : 'linear-gradient(45deg, #f5f5f5 7.14%, #ffffff 7.14%, #ffffff 50%, #f5f5f5 50%, #f5f5f5 57.14%, #ffffff 57.14%, #ffffff 100%)',
@@ -98,7 +98,7 @@ export function DiagonalStripes() {
           borderRightColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
           boxShadow: currentTheme === 'dark' 
             ? 'inset 1px 0 0 rgba(42, 42, 42, 0.3), inset -1px 0 0 rgba(42, 42, 42, 0.3)'
-            : 'inset 1px 0 0 rgba(245, 245, 245, 0.3), inset -1px 0 0 rgba(245, 245, 245, 0.3)',
+            : 'inset 1px 0 0 rgba(229, 231, 235, 0.3), inset -1px 0 0 rgba(229, 231, 235, 0.3)',
           backgroundImage: currentTheme === 'dark' 
             ? 'linear-gradient(45deg, #2a2a2a 7.14%, #171717 7.14%, #171717 50%, #2a2a2a 50%, #2a2a2a 57.14%, #171717 57.14%, #171717 100%)'
             : 'linear-gradient(45deg, #f5f5f5 7.14%, #ffffff 7.14%, #ffffff 50%, #f5f5f5 50%, #f5f5f5 57.14%, #ffffff 57.14%, #ffffff 100%)',

@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { DarkModeToggle } from "@/components/dark-mode-toggle"
 import { DiagonalStripes } from "@/components/diagonal-stripes"
+import { TestimonialsDemo } from "@/components/testimonials-demo"
 import { ExternalLink, Mail, Github, Linkedin, Twitter } from "lucide-react"
 
 export default function Portfolio() {
@@ -94,6 +95,7 @@ export default function Portfolio() {
 
         {/* Experience Section */}
         <section className="max-w-4xl mx-auto px-6 py-16 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-12">Experience</h2>
           <div className="space-y-12">
             {/* Google */}
             <div className="flex items-start gap-6">
@@ -290,55 +292,9 @@ export default function Portfolio() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="max-w-4xl mx-auto px-6 py-16 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-none bg-[#F8FAFB] dark:bg-[#0A0A0A]">
-              <CardContent className="p-0">
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                  "John is so good with his work, so professional and very thorough. I would recommend him to anyone
-                  looking for a developer."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gray-100 dark:bg-[#2a2a2a] rounded-full"></div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">Jane Smith</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">CEO, TechCorp</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-none bg-[#F8FAFB] dark:bg-[#0A0A0A]">
-              <CardContent className="p-0">
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                  "Working with John was a game changer for our startup. His attention to detail and technical expertise
-                  are unmatched."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gray-100 dark:bg-[#2a2a2a] rounded-full"></div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">Mike Johnson</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">CTO, StartupXYZ</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-none bg-[#F8FAFB] dark:bg-[#0A0A0A]">
-              <CardContent className="p-0">
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                  "John delivered our project ahead of schedule and exceeded all expectations. Highly recommend!"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gray-100 dark:bg-[#2a2a2a] rounded-full"></div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">Sarah Wilson</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Product Manager</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+        <section className="max-w-4xl mx-auto px-6 py-8 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">People love my work</h2>
+          <TestimonialsDemo />
         </section>
 
         {/* Footer */}

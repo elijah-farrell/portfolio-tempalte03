@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { 
   Navbar, 
   NavBody, 
@@ -15,11 +17,12 @@ import { DarkModeToggle } from "@/components/dark-mode-toggle";
 
 export function PortfolioNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   const navItems = [
     {
       name: "About",
-      link: "#about",
+      link: "/about",
       isActive: false,
     },
     {
@@ -39,10 +42,16 @@ export function PortfolioNavbar() {
     },
   ];
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (link: string) => {
+    if (link.startsWith('/')) {
+      // Internal page navigation using Next.js router
+      router.push(link);
+    } else if (link.startsWith('#')) {
+      // Scroll to section
+      const element = document.getElementById(link.replace('#', ''));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -58,7 +67,7 @@ export function PortfolioNavbar() {
             <DarkModeToggle />
             <NavItems 
               items={navItems}
-              scrollToSection={scrollToSection}
+              scrollToSection={handleNavigation}
             />
           </div>
         </div>
@@ -84,13 +93,8 @@ export function PortfolioNavbar() {
           onClose={() => setMobileMenuOpen(false)}
         >
           {navItems.map((item, idx) => (
-            <motion.a
+            <motion.div
               key={idx}
-              href={item.link}
-              onClick={() => {
-                setMobileMenuOpen(false);
-                scrollToSection(item.link.replace('#', ''));
-              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
@@ -99,10 +103,27 @@ export function PortfolioNavbar() {
                 delay: 0.3 + (idx * 0.1),
                 ease: [0.25, 0.46, 0.45, 0.94]
               }}
-              className="text-2xl font-medium text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500 transition-colors duration-200"
             >
-              {item.name}
-            </motion.a>
+              {item.link.startsWith('/') ? (
+                <Link
+                  href={item.link}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-2xl font-medium text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500 transition-colors duration-200"
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    handleNavigation(item.link);
+                  }}
+                  className="text-2xl font-medium text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500 transition-colors duration-200"
+                >
+                  {item.name}
+                </button>
+              )}
+            </motion.div>
           ))}
         </MobileNavMenu>
       </MobileNav>

@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import React, { useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useRouter } from "next/navigation";
 import { ChevronDown, Home } from "lucide-react";
 import { DarkModeToggle } from "@/components/dark-mode-toggle";
 
@@ -308,26 +309,28 @@ export const MobileNavMenu = ({
 
 export const NavbarLogo = ({ onCloseMobileMenu }: { onCloseMobileMenu?: () => void }) => {
   const [isClicked, setIsClicked] = React.useState(false);
+  const router = useRouter();
   
-  const scrollToTop = () => {
+  const goToHome = () => {
     setIsClicked(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Navigate to home page using Next.js router
+    router.push('/');
     // Close mobile menu if it's open
     if (onCloseMobileMenu) {
       onCloseMobileMenu();
     }
     // Reset click state after animation
-    setTimeout(() => setIsClicked(false), 300);
+    setTimeout(() => setIsClicked(false), 150);
   };
 
   return (
     <div className="flex items-center">
       <button 
-        onClick={scrollToTop}
+        onClick={goToHome}
         className="relative hover:opacity-80 transition-opacity cursor-pointer focus:outline-none rounded px-1 py-1 group"
-        aria-label="Scroll to top"
+        aria-label="Go to home page"
       >
-        <div className={`relative w-11 h-11 rounded-full overflow-hidden transition-all duration-200 ${
+        <div className={`relative w-11 h-11 rounded-full overflow-hidden transition-all duration-100 ${
           isClicked ? 'border-0' : 'border-2 border-gray-200 dark:border-[#2a2a2a] hover:border-gray-400 dark:hover:border-gray-500'
         }`}>
           <img 
@@ -337,7 +340,7 @@ export const NavbarLogo = ({ onCloseMobileMenu }: { onCloseMobileMenu?: () => vo
             style={{ imageRendering: 'auto' }}
           />
           {/* Home Icon Overlay */}
-          <div className={`absolute inset-0 rounded-full bg-white/50 dark:bg-black/50 flex items-center justify-center transition-opacity duration-200 ${
+          <div className={`absolute inset-0 rounded-full bg-white/50 dark:bg-black/50 flex items-center justify-center transition-opacity duration-100 ${
             isClicked ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
           }`}>
             <Home className="w-5 h-5 text-black dark:text-white" />

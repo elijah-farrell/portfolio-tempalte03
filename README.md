@@ -2,7 +2,7 @@
 
 A modern, responsive portfolio website built with Next.js and shadcn/ui components.
 
-![Site Preview](./public/placeholder.jpg)
+[![Site Preview](./public/thumbnail.png)](https://ef-portfolio03.vercel.app/)
 
 ## Features
 

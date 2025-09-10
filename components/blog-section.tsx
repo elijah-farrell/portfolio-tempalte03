@@ -23,7 +23,7 @@ export function BlogSection() {
               <div className="flex items-center gap-4 text-xs text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
-                  <span>Dec 15, 2023</span>
+                  <span>Sep 3, 2025</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Clock className="w-3 h-3" />
@@ -48,7 +48,7 @@ export function BlogSection() {
               <div className="flex items-center gap-4 text-xs text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
-                  <span>Dec 8, 2023</span>
+                  <span>Aug 28, 2025</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Clock className="w-3 h-3" />
@@ -73,7 +73,7 @@ export function BlogSection() {
               <div className="flex items-center gap-4 text-xs text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
-                  <span>Nov 28, 2023</span>
+                  <span>Aug 15, 2025</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Clock className="w-3 h-3" />
@@ -98,7 +98,7 @@ export function BlogSection() {
               <div className="flex items-center gap-4 text-xs text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
-                  <span>Nov 20, 2023</span>
+                  <span>Aug 5, 2025</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Clock className="w-3 h-3" />

@@ -31,9 +31,9 @@ export default function Portfolio() {
             </p>
           </div>
 
-          {/* Project Cards - Full Width */}
-          <div className="max-w-6xl gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
-            <HeroCard className="col-span-1 h-[400px] group cursor-pointer relative overflow-hidden">
+          {/* Project Cards - 3 Columns on Desktop, 1 on Mobile */}
+          <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-3 mb-8">
+            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
                 <h4 className="text-white font-semibold text-xl">Modern Dashboard</h4>
@@ -48,7 +48,7 @@ export default function Portfolio() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
             </HeroCard>
             
-            <HeroCard className="col-span-1 h-[400px] group cursor-pointer relative overflow-hidden">
+            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
                 <h4 className="text-white font-semibold text-xl">iOS Interface</h4>
@@ -63,7 +63,7 @@ export default function Portfolio() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
             </HeroCard>
             
-            <HeroCard className="col-span-1 h-[400px] group cursor-pointer relative overflow-hidden">
+            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web App</p>
                 <h4 className="text-white font-semibold text-xl">Clean Design</h4>
@@ -108,7 +108,7 @@ export default function Portfolio() {
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Google</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
-                  Senior Frontend Engineer • April 2022 - Present
+                  Senior Frontend Engineer • March 2024 - Present
                 </p>
                 <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
                   Working on Google Cloud Platform's web console, building engineering web tools, optimizing performance
@@ -147,7 +147,7 @@ export default function Portfolio() {
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Microsoft</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
-                  Software Engineer • August 2020 - May 2022
+                  Software Engineer • June 2022 - February 2024
                 </p>
                 <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
                   Developed and maintained Azure web applications, engineering web tools, optimizing performance and
@@ -186,7 +186,7 @@ export default function Portfolio() {
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Airbnb</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
-                  Frontend Developer • January 2019 - July 2020
+                  Frontend Developer • January 2021 - May 2022
                 </p>
                 <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
                   Implemented user-facing web development of Airbnb's booking platform.
@@ -224,7 +224,7 @@ export default function Portfolio() {
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Shopify</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
-                  Frontend Web Developer • March 2018 - December 2018
+                  Frontend Web Developer • March 2020 - December 2020
                 </p>
                 <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
                   Developed and maintained Shopify themes for enterprise clients with advanced technical requirements.
@@ -262,7 +262,7 @@ export default function Portfolio() {
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Adobe</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
-                  Frontend Product Consultant • September 2016 - November 2018
+                  Frontend Product Consultant • September 2019 - November 2020
                 </p>
                 <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
                   Consulted on the design and development of Adobe's Creative Cloud web applications.

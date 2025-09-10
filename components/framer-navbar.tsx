@@ -88,9 +88,9 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(10px)" : "none",
+        backdropFilter: visible ? "blur(2px)" : "none",
         boxShadow: visible
-          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
+          ? "0 1px 2px rgba(0, 0, 0, 0.05)"
           : "none",
         width: "100%",
         paddingTop: visible ? "15px" : "10px",
@@ -103,8 +103,8 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         damping: 50,
       }}
       className={cn(
-        "relative z-50 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center px-6 py-2 bg-white/80 dark:bg-[#171717]/80 rounded-full",
-        visible && "bg-white/80 dark:bg-[#171717]/80",
+        "relative z-50 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center px-6 py-2 rounded-full",
+        visible ? "bg-white/95 dark:bg-[#171717]/95" : "bg-transparent",
         className,
       )}
     >
@@ -213,9 +213,9 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(10px)" : "none",
+        backdropFilter: visible ? "blur(2px)" : "none",
         boxShadow: visible
-          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
+          ? "0 1px 2px rgba(0, 0, 0, 0.05)"
           : "none",
         width: "100%",
         paddingTop: visible ? "15px" : "10px",
@@ -229,7 +229,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       }}
       className={cn(
         "relative z-[100] flex w-full flex-row items-center px-8 py-2 md:hidden",
-        visible ? "bg-white/80 dark:bg-[#171717]/80 rounded-none" : "bg-transparent",
+        visible ? "bg-white/95 dark:bg-[#171717]/95 rounded-none" : "bg-transparent",
         className,
       )}
     >
@@ -283,7 +283,7 @@ export const MobileNavMenu = ({
             opacity: { duration: 0.3 }
           }}
           className={cn(
-            "absolute inset-x-0 top-0 z-40 flex w-full flex-col bg-white/80 dark:bg-[#171717]/80 backdrop-blur-sm",
+            "absolute inset-x-0 top-0 z-40 flex w-full flex-col bg-white/95 dark:bg-[#171717]/95 backdrop-blur-sm",
             className,
           )}
         >

@@ -31,7 +31,7 @@ export function PortfolioNavbar() {
     },
     {
       name: "Blog",
-      link: "#blog", 
+      link: "/blog", 
       isActive: false,
     },
     {

@@ -36,7 +36,7 @@ export function PortfolioNavbar() {
     },
     {
       name: "Contact",
-      link: "#contact",
+      link: "/contact",
       isActive: false,
     },
   ];

@@ -144,3 +144,53 @@
     overflow-x: hidden;
   }
 }
+
+/* Blog Box Styling - Matches theme system with gradient background */
+.blog-box {
+  background: linear-gradient(145deg, var(--card), var(--secondary));
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.blog-box::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(0,0,0,0.1), transparent);
+  top: -100%;
+  left: -100%;
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.blog-box:hover::before {
+  top: 100%;
+  left: 100%;
+  opacity: 1;
+}
+
+/* Light mode specific shimmer effect */
+:root .blog-box::before {
+  background: linear-gradient(45deg, transparent, rgba(0,0,0,0.15), transparent);
+}
+
+.blog-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border-color: var(--ring);
+}
+
+/* Dark mode adjustments for blog boxes */
+.dark .blog-box::before {
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+}
+
+.dark .blog-box:hover {
+  box-shadow: 0 10px 25px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}

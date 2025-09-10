@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "John Doe Smith - Portfolio",
+  title: "Minimal Portfolio Website Template",
   description: "Product designer and frontend engineer portfolio",
   generator: "v0.app",
 }
@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/minimal.png" type="image/png" />
         <style>{`
 html {
   font-family: ${GeistSans.style.fontFamily};
@@ -28,7 +29,7 @@ html {
         `}</style>
       </head>
       <body suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
       </body>

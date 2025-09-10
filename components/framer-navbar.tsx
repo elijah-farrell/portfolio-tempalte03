@@ -116,37 +116,75 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 export const NavItems = ({ items, className, onItemClick, scrollToSection }: NavItemsProps) => {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [backgroundStyle, setBackgroundStyle] = useState({
+    width: 0,
+    left: 0,
+    opacity: 0,
+  });
+  const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+
+  const updateBackgroundPosition = (index: number) => {
+    const linkElement = linkRefs.current[index];
+    if (linkElement) {
+      const containerRect = linkElement.closest('.nav-container')?.getBoundingClientRect();
+      const linkRect = linkElement.getBoundingClientRect();
+      
+      if (containerRect) {
+        setBackgroundStyle({
+          width: linkRect.width,
+          left: linkRect.left - containerRect.left,
+          opacity: 1,
+        });
+      }
+    }
+  };
+
+  const handleMouseEnter = (index: number) => {
+    setHoveredIndex(index);
+    updateBackgroundPosition(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+    setBackgroundStyle(prev => ({ ...prev, opacity: 0 }));
+  };
 
   return (
     <div
       className={cn(
-        "flex flex-row items-center text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 relative h-10",
+        "flex flex-row items-center text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 relative h-10 nav-container",
         className,
       )}
     >
+      {/* Morphing hover background */}
+      <div
+        className="absolute bg-gray-100 dark:bg-neutral-800 rounded-lg transition-all duration-300 ease-out"
+        style={{
+          width: `${backgroundStyle.width}px`,
+          left: `${backgroundStyle.left}px`,
+          opacity: backgroundStyle.opacity,
+          height: '100%',
+          top: 0,
+        }}
+      />
       {items.map((item, idx) => (
         <div 
           key={`nav-item-${idx}`} 
-          className="relative flex justify-center items-center h-full"
-          onMouseEnter={() => setHoveredIndex(idx)}
-          onMouseLeave={() => setHoveredIndex(null)}
+          className="relative flex justify-center items-center h-full flex-1"
         >
-          {/* Hover background for this item */}
-          <div
-            className={`absolute inset-0 bg-gray-100 dark:bg-neutral-800 rounded-lg transition-opacity duration-200 ${
-              hoveredIndex === idx ? 'opacity-100' : 'opacity-0'
-            }`}
-          />
           {item.isDropdown ? (
             <div className="relative">
               <div className="flex items-center">
                   <a 
+                    ref={(el) => (linkRefs.current[idx] = el)}
                     href={item.link}
-                    className={`relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg ${
+                    className={`relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg z-10 ${
                       item.isActive 
                         ? 'text-emerald-500 dark:text-emerald-400 font-semibold' 
                         : 'text-neutral-600 dark:text-neutral-300'
                     }`}
+                    onMouseEnter={() => handleMouseEnter(idx)}
+                    onMouseLeave={handleMouseLeave}
                   >
                   {item.icon && <span className="relative z-20 mr-2">{item.icon}</span>}
                   <span className="relative z-20">{item.name}</span>
@@ -191,13 +229,16 @@ export const NavItems = ({ items, className, onItemClick, scrollToSection }: Nav
             </div>
           ) : (
             <a
+              ref={(el) => (linkRefs.current[idx] = el)}
               onClick={onItemClick}
-              className={`relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg ${
+              className={`relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg z-10 ${
                 item.isActive 
                   ? 'text-emerald-500 dark:text-emerald-400 font-semibold' 
                   : 'text-neutral-600 dark:text-neutral-300'
               }`}
               href={item.link}
+              onMouseEnter={() => handleMouseEnter(idx)}
+              onMouseLeave={handleMouseLeave}
             >
               {item.icon && <span className="relative z-20 mr-2">{item.icon}</span>}
               <span className="relative z-20">{item.name}</span>

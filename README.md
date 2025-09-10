@@ -1,4 +1,4 @@
-# Minimal Portfolio
+# Minimal Portfolio Template
 
 A modern, responsive portfolio website built with Next.js and shadcn/ui components.
 
@@ -24,7 +24,7 @@ A modern, responsive portfolio website built with Next.js and shadcn/ui componen
 
 1. Clone the repository
 ```bash
-git clone https://github.com/elijah-farrell/portfolio-tempalte03.git
+git clone https://github.com/elijah-farrell/Minimal-Portfolio.git
 ```
 
 2. Install dependencies

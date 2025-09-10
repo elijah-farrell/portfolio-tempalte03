@@ -8,12 +8,14 @@ import { TestimonialsDemo } from "@/components/testimonials-demo"
 import { BlogSection } from "@/components/blog-section"
 import { ExternalLink, Mail, Github, Linkedin, Twitter } from "lucide-react"
 import { PortfolioNavbar } from "@/components/portfolio-navbar"
+import { Card as HeroCard, CardHeader, CardFooter, Button as HeroButton } from "@heroui/react"
+import Image from "next/image"
 
 export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0A0A0A] transition-colors border-none">
-      <div className="border-gray-200 dark:border-[#2a2a2a] min-h-screen max-w-5xl mx-auto bg-white dark:bg-[#171717] shadow-sm border-r-[15px] border-l-[15px] md:border-r-[30px] md:border-l-[30px] relative">
+      <div className="border-gray-200 dark:border-[#2a2a2a] min-h-screen max-w-5xl mx-auto bg-white dark:bg-[#171717] shadow-sm border-r-[15px] border-l-[15px] md:border-r-[30px] md:border-l-[30px] relative" style={{ position: 'relative' }}>
         <DiagonalStripes />
         
         {/* Framer Motion Navbar */}
@@ -27,20 +29,57 @@ export default function Portfolio() {
               I'm a product designer and frontend engineer focused on creating beautiful, functional experiences that
               solve real problems for people.
             </p>
+          </div>
 
-            {/* Project Thumbnails */}
-            <div className="grid grid-cols-3 gap-3 mb-8">
-              <div className="aspect-video bg-black rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800">
-                <img src="/dark-modern-dashboard.png" alt="Project 1" className="w-full h-full object-cover" />
-              </div>
-              <div className="aspect-video bg-orange-100 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800">
-                <img src="/orange-mobile-app-interface.png" alt="Project 2" className="w-full h-full object-cover" />
-              </div>
-              <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800">
-                <img src="/clean-web-application-design.png" alt="Project 3" className="w-full h-full object-cover" />
-              </div>
-            </div>
+          {/* Project Cards - Full Width */}
+          <div className="max-w-6xl gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
+            <HeroCard className="col-span-1 h-[400px] group cursor-pointer relative overflow-hidden">
+              <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
+                <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
+                <h4 className="text-white font-semibold text-xl">Modern Dashboard</h4>
+                <p className="text-white/70 text-sm">Clean, intuitive interface design</p>
+              </CardHeader>
+              <Image
+                alt="Modern dashboard design"
+                fill
+                className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
+                src="/dark-modern-dashboard.png"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+            </HeroCard>
+            
+            <HeroCard className="col-span-1 h-[400px] group cursor-pointer relative overflow-hidden">
+              <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
+                <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
+                <h4 className="text-white font-semibold text-xl">iOS Interface</h4>
+                <p className="text-white/70 text-sm">Sleek mobile experience</p>
+              </CardHeader>
+              <Image
+                alt="Mobile app interface"
+                fill
+                className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
+                src="/orange-mobile-app-interface.png"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+            </HeroCard>
+            
+            <HeroCard className="col-span-1 h-[400px] group cursor-pointer relative overflow-hidden">
+              <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
+                <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web App</p>
+                <h4 className="text-white font-semibold text-xl">Clean Design</h4>
+                <p className="text-white/70 text-sm">Modern web application</p>
+              </CardHeader>
+              <Image
+                alt="Clean web application"
+                fill
+                className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
+                src="/clean-web-application-design.png"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+            </HeroCard>
+          </div>
 
+          <div className="max-w-2xl">
             <div className="flex items-center gap-4">
               <Button variant="outline" size="sm" className="border-gray-200 dark:border-[#2a2a2a] bg-transparent">
                 <Mail className="w-4 h-4 mr-2" />

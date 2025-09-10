@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { 
   Navbar, 
   NavBody, 
@@ -15,16 +16,17 @@ import { DarkModeToggle } from "@/components/dark-mode-toggle";
 
 export function PortfolioNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   const navItems = [
     {
       name: "About",
-      link: "#about",
+      link: "/",
       isActive: false,
     },
     {
       name: "Projects", 
-      link: "#projects",
+      link: "/projects",
       isActive: false,
     },
     {
@@ -39,10 +41,16 @@ export function PortfolioNavbar() {
     },
   ];
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavClick = (link: string) => {
+    if (link.startsWith('/')) {
+      // Use Next.js router for smooth client-side navigation
+      router.push(link);
+    } else {
+      const sectionId = link.replace('#', '');
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -58,7 +66,7 @@ export function PortfolioNavbar() {
             <DarkModeToggle />
             <NavItems 
               items={navItems}
-              scrollToSection={scrollToSection}
+              scrollToSection={handleNavClick}
             />
           </div>
         </div>
@@ -89,7 +97,7 @@ export function PortfolioNavbar() {
               href={item.link}
               onClick={() => {
                 setMobileMenuOpen(false);
-                scrollToSection(item.link.replace('#', ''));
+                handleNavClick(item.link);
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

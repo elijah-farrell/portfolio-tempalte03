@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import React, { useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useRouter } from "next/navigation";
 import { ChevronDown, Home } from "lucide-react";
 import { DarkModeToggle } from "@/components/dark-mode-toggle";
 
@@ -88,9 +89,9 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(2px)" : "none",
+        backdropFilter: visible ? "blur(8px)" : "none",
         boxShadow: visible
-          ? "0 1px 2px rgba(0, 0, 0, 0.05)"
+          ? "0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)"
           : "none",
         width: "100%",
         paddingTop: visible ? "15px" : "10px",
@@ -104,7 +105,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       }}
       className={cn(
         "relative z-50 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center px-6 py-2 rounded-full",
-        visible ? "bg-white/95 dark:bg-[#171717]/95" : "bg-transparent",
+        visible ? "bg-white/90 dark:bg-[#171717]/90 border border-white/20 dark:border-gray-800/20" : "bg-transparent",
         className,
       )}
     >
@@ -254,9 +255,9 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(2px)" : "none",
+        backdropFilter: visible ? "blur(8px)" : "none",
         boxShadow: visible
-          ? "0 1px 2px rgba(0, 0, 0, 0.05)"
+          ? "0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)"
           : "none",
         width: "100%",
         paddingTop: visible ? "15px" : "10px",
@@ -270,7 +271,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       }}
       className={cn(
         "relative z-[100] flex w-full flex-row items-center px-8 py-2 md:hidden",
-        visible ? "bg-white/95 dark:bg-[#171717]/95 rounded-none" : "bg-transparent",
+        visible ? "bg-white/90 dark:bg-[#171717]/90 border-b border-white/20 dark:border-gray-800/20" : "bg-transparent",
         className,
       )}
     >
@@ -350,10 +351,11 @@ export const MobileNavMenu = ({
 
 export const NavbarLogo = ({ onCloseMobileMenu }: { onCloseMobileMenu?: () => void }) => {
   const [isClicked, setIsClicked] = React.useState(false);
+  const router = useRouter();
   
-  const scrollToTop = () => {
+  const goToHome = () => {
     setIsClicked(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    router.push('/');
     // Close mobile menu if it's open
     if (onCloseMobileMenu) {
       onCloseMobileMenu();
@@ -365,9 +367,9 @@ export const NavbarLogo = ({ onCloseMobileMenu }: { onCloseMobileMenu?: () => vo
   return (
     <div className="flex items-center">
       <button 
-        onClick={scrollToTop}
+        onClick={goToHome}
         className="relative hover:opacity-80 transition-opacity cursor-pointer focus:outline-none rounded px-1 py-1 group"
-        aria-label="Scroll to top"
+        aria-label="Go to home page"
       >
         <div className={`relative w-11 h-11 rounded-full overflow-hidden transition-all duration-200 ${
           isClicked ? 'border-0' : 'border-2 border-gray-200 dark:border-[#2a2a2a] hover:border-gray-400 dark:hover:border-gray-500'

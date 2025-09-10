@@ -37,7 +37,6 @@ export default function Portfolio() {
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
                 <h4 className="text-white font-semibold text-xl">Modern Dashboard</h4>
-                <p className="text-white/70 text-sm">Clean, intuitive interface design</p>
               </CardHeader>
               <Image
                 alt="Modern dashboard design"
@@ -52,7 +51,6 @@ export default function Portfolio() {
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
                 <h4 className="text-white font-semibold text-xl">iOS Interface</h4>
-                <p className="text-white/70 text-sm">Sleek mobile experience</p>
               </CardHeader>
               <Image
                 alt="Mobile app interface"
@@ -65,9 +63,8 @@ export default function Portfolio() {
             
             <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
-                <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web App</p>
-                <h4 className="text-white font-semibold text-xl">Clean Design</h4>
-                <p className="text-white/70 text-sm">Modern web application</p>
+                <p className="text-tiny text-white/80 uppercase font-bold tracking-wider drop-shadow-lg">Web App</p>
+                <h4 className="text-white font-semibold text-xl drop-shadow-lg">Clean Design</h4>
               </CardHeader>
               <Image
                 alt="Clean web application"
@@ -75,7 +72,7 @@ export default function Portfolio() {
                 className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
                 src="/clean-web-application-design.png"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-5" />
             </HeroCard>
           </div>
 
@@ -304,18 +301,27 @@ export default function Portfolio() {
           <TestimonialsDemo />
         </section>
 
-        {/* Footer */}
-        <footer className="max-w-4xl mx-auto px-6 py-16 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <div className="text-center">
+        {/* Contact Section */}
+        <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+          <div className="max-w-2xl mx-auto text-center">
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
               Want to work together on your next project? Whether you need a consultation or want to say hi, I'd love to
               hear from you.
             </p>
-            <Button className="mb-8 bg-gray-100 dark:bg-[#2a2a2a] text-black dark:text-white hover:bg-gray-200 dark:hover:bg-[#1a1a1a]">
+            <Button variant="outline" size="sm" className="border-gray-200 dark:border-[#2a2a2a] bg-transparent">
               <Mail className="w-4 h-4 mr-2" />
               Send Inquiry
             </Button>
-            <div className="flex items-center justify-center gap-4">
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="max-w-4xl mx-auto px-6 py-8 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+          <div className="flex items-center justify-between">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              Built by Elijah Farrell
+            </p>
+            <div className="flex items-center gap-4">
               <a href="#" className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
                 <Github className="w-5 h-5" />
               </a>
@@ -325,11 +331,6 @@ export default function Portfolio() {
               <a href="#" className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
-            </div>
-            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-[#2a2a2a]">
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                Built by Elijah Farrell
-              </p>
             </div>
           </div>
         </footer>

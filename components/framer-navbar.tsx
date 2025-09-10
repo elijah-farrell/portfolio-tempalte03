@@ -70,7 +70,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      className={cn("fixed inset-x-0 z-40 w-full px-0 md:px-4", className)}
+      className={cn("fixed inset-x-0 z-50 w-full px-0 md:px-4 bg-transparent", className)}
       style={{ position: 'fixed' }}
     >
       {React.Children.map(children, (child) =>
@@ -91,7 +91,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       animate={{
         backdropFilter: visible ? "blur(8px)" : "none",
         boxShadow: visible
-          ? "0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)"
+          ? "0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)"
           : "none",
         width: "100%",
         paddingTop: visible ? "15px" : "10px",
@@ -104,7 +104,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         damping: 50,
       }}
       className={cn(
-        "relative z-50 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center px-6 py-2 rounded-full",
+        "relative z-10 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center px-6 py-2 rounded-full",
         visible ? "bg-white/90 dark:bg-[#171717]/90 border border-white/20 dark:border-gray-800/20" : "bg-transparent",
         className,
       )}
@@ -208,7 +208,7 @@ export const NavItems = ({ items, className, onItemClick, scrollToSection }: Nav
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-neutral-950 rounded-lg shadow-lg border border-gray-200 dark:border-neutral-700 py-2 z-[9999]"
+                    className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-neutral-950 rounded-lg border border-gray-200 dark:border-neutral-700 py-2 z-[9999]"
                   >
                     {item.sections?.map((section, sectionIdx) => (
                       <button
@@ -257,7 +257,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       animate={{
         backdropFilter: visible ? "blur(8px)" : "none",
         boxShadow: visible
-          ? "0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)"
+          ? "0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)"
           : "none",
         width: "100%",
         paddingTop: visible ? "15px" : "10px",
@@ -270,7 +270,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         damping: 50,
       }}
       className={cn(
-        "relative z-[100] flex w-full flex-row items-center px-8 py-2 md:hidden",
+        "relative z-10 flex w-full flex-row items-center px-8 py-2 md:hidden",
         visible ? "bg-white/90 dark:bg-[#171717]/90 border-b border-white/20 dark:border-gray-800/20" : "bg-transparent",
         className,
       )}
@@ -325,7 +325,7 @@ export const MobileNavMenu = ({
             opacity: { duration: 0.3 }
           }}
           className={cn(
-            "absolute inset-x-0 top-0 z-40 flex w-full flex-col bg-white/95 dark:bg-[#171717]/95 backdrop-blur-sm",
+            "absolute inset-x-0 top-0 z-20 flex w-full flex-col bg-white/95 dark:bg-[#171717]/95 backdrop-blur-sm",
             className,
           )}
         >
@@ -339,7 +339,7 @@ export const MobileNavMenu = ({
               delay: 0.2,
               ease: [0.25, 0.46, 0.45, 0.94]
             }}
-            className="flex flex-col items-center justify-center gap-8 flex-1 pt-20"
+            className="flex flex-col items-center justify-center gap-8 flex-1 pt-20 pb-8"
           >
             {children}
           </motion.div>

@@ -296,9 +296,13 @@ export default function Portfolio() {
         <BlogSection />
 
         {/* Testimonials Section */}
-        <section className="max-w-4xl mx-auto px-6 py-8 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">People love my work</h2>
-          <TestimonialsDemo />
+        <section className="py-8 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">People love my work</h2>
+          </div>
+          <div className="w-full">
+            <TestimonialsDemo />
+          </div>
         </section>
 
         {/* Contact Section */}

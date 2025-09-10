@@ -5,15 +5,25 @@ import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
 export function TestimonialsDemo() {
   return (
-    <div className="h-[20rem] rounded-md flex flex-col antialiased bg-white dark:bg-[#171717] items-center justify-center relative overflow-hidden">
-      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white dark:from-[#171717] to-transparent z-30 pointer-events-none"></div>
-      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-[#171717] to-transparent z-30 pointer-events-none"></div>
-      <InfiniteMovingCards
-        items={testimonials}
-        direction="right"
-        speed="slow"
-        className="[--animation-duration:400s]"
-      />
+    <div className="h-[20rem] flex flex-col antialiased bg-white dark:bg-[#171717] items-center justify-center relative w-full">
+      <div className="absolute inset-y-0 left-0 w-32 z-[9999] pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-r from-white dark:from-[#171717] via-white/95 dark:via-[#171717]/95 to-transparent"></div>
+        <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white dark:from-[#171717] to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white dark:from-[#171717] to-transparent"></div>
+      </div>
+      <div className="absolute inset-y-0 right-0 w-32 z-[9999] pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-l from-white dark:from-[#171717] via-white/95 dark:via-[#171717]/95 to-transparent"></div>
+        <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white dark:from-[#171717] to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white dark:from-[#171717] to-transparent"></div>
+      </div>
+      <div className="max-w-4xl mx-auto px-6 w-full overflow-hidden">
+        <InfiniteMovingCards
+          items={testimonials}
+          direction="right"
+          speed="slow"
+          className="[--animation-duration:400s]"
+        />
+      </div>
     </div>
   );
 }

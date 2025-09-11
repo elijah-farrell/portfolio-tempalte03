@@ -15,7 +15,9 @@ export default function BlogPage() {
       description: "How I approach creating design systems that grow with your product and team. Lessons learned from building systems at Google and Microsoft.",
       date: "Sep 3, 2025",
       readTime: "8 min read",
-      slug: "building-scalable-design-systems"
+      slug: "building-scalable-design-systems",
+      image: "https://images.pexels.com/photos/1181345/pexels-photo-1181345.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1",
+      alt: "Scalable design systems"
     },
     {
       id: 2,
@@ -23,7 +25,9 @@ export default function BlogPage() {
       description: "Deep dive into React optimization strategies I've used in production. From memoization to code splitting and everything in between.",
       date: "Aug 28, 2025",
       readTime: "12 min read",
-      slug: "react-performance-optimization-techniques"
+      slug: "react-performance-optimization-techniques",
+      image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1",
+      alt: "React performance optimization"
     },
     {
       id: 3,
@@ -31,7 +35,9 @@ export default function BlogPage() {
       description: "My journey from focusing solely on frontend development to becoming a full-stack engineer. Tips and resources that helped along the way.",
       date: "Aug 15, 2025",
       readTime: "6 min read",
-      slug: "transitioning-from-frontend-to-fullstack"
+      slug: "transitioning-from-frontend-to-fullstack",
+      image: "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1",
+      alt: "Frontend to fullstack development"
     },
     {
       id: 4,
@@ -39,7 +45,9 @@ export default function BlogPage() {
       description: "A detailed look at the tools, extensions, and configurations that make up my daily development workflow in 2023.",
       date: "Aug 5, 2025",
       readTime: "10 min read",
-      slug: "my-development-workflow-setup"
+      slug: "my-development-workflow-setup",
+      image: "https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1",
+      alt: "Development workflow setup"
     },
     {
       id: 5,
@@ -47,7 +55,9 @@ export default function BlogPage() {
       description: "Exploring emerging technologies and trends that will shape the next decade of web development. From AI integration to WebAssembly and beyond.",
       date: "Jul 22, 2025",
       readTime: "15 min read",
-      slug: "future-of-web-development"
+      slug: "future-of-web-development",
+      image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1",
+      alt: "Future of web development technology"
     },
     {
       id: 6,
@@ -55,7 +65,9 @@ export default function BlogPage() {
       description: "A comprehensive guide to creating inclusive designs that work for everyone. Best practices, tools, and real-world examples from my experience.",
       date: "Jul 8, 2025",
       readTime: "11 min read",
-      slug: "building-accessible-user-interfaces"
+      slug: "building-accessible-user-interfaces",
+      image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1",
+      alt: "Accessible user interface design"
     }
   ]
 
@@ -114,12 +126,12 @@ export default function BlogPage() {
                   </div>
                   
                   {/* Visual Element */}
-                  <div className="hidden md:block w-24 h-24 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#2a2a2a] dark:to-[#3a3a3a] rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                    <div className="w-12 h-12 bg-gradient-to-br from-gray-300 to-gray-400 dark:from-[#4a4a4a] dark:to-[#5a5a5a] rounded-lg flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                    </div>
+                  <div className="hidden md:block w-24 h-24 rounded-lg overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                    <img 
+                      src={post.image} 
+                      alt={post.alt}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
                 </article>

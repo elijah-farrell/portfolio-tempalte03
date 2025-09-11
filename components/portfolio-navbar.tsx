@@ -21,7 +21,7 @@ export function PortfolioNavbar() {
   const navItems = [
     {
       name: "About",
-      link: "/",
+      link: "/about",
       isActive: false,
     },
     {

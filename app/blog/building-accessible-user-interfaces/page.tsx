@@ -33,18 +33,16 @@ export default function BlogPost() {
               </div>
             </div>
           </div>
+          
         </section>
 
         {/* Hero Image */}
         <section className="max-w-4xl mx-auto px-6 mb-12">
-          <div className="w-full h-64 md:h-80 bg-gradient-to-br from-teal-100 to-teal-200 dark:from-[#1a3a3a] dark:to-[#2a4a4a] rounded-lg flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-teal-300 to-teal-400 dark:from-[#3a5a5a] dark:to-[#4a6a6a] rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-2xl">♿</span>
-              </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Accessibility</p>
-            </div>
-          </div>
+          <img 
+            src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+            alt="Accessible user interface design" 
+            className="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg"
+          />
         </section>
 
         {/* Article Content */}

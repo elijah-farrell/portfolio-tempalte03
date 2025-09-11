@@ -33,18 +33,16 @@ export default function BlogPost() {
               </div>
             </div>
           </div>
+          
         </section>
 
         {/* Hero Image */}
         <section className="max-w-4xl mx-auto px-6 mb-12">
-          <div className="w-full h-64 md:h-80 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-[#1a2a3a] dark:to-[#2a3a4a] rounded-lg flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-300 to-blue-400 dark:from-[#3a4a5a] dark:to-[#4a5a6a] rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-2xl">⚡</span>
-              </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">React Performance</p>
-            </div>
-          </div>
+          <img 
+            src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+            alt="React performance optimization" 
+            className="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg"
+          />
         </section>
 
         {/* Article Content */}

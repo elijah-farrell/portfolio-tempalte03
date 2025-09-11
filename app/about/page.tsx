@@ -335,19 +335,19 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 whitespace-nowrap">
                     Agile/Scrum
                   </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 whitespace-nowrap">
                     Cross-functional Teams
                   </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 whitespace-nowrap">
                     Mentoring
                   </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 whitespace-nowrap">
                     Technical Leadership
                   </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 whitespace-nowrap">
                     Product Strategy
                   </Badge>
                 </div>

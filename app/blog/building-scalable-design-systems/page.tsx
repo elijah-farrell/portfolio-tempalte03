@@ -33,18 +33,16 @@ export default function BlogPost() {
               </div>
             </div>
           </div>
+          
         </section>
 
         {/* Hero Image */}
         <section className="max-w-4xl mx-auto px-6 mb-12">
-          <div className="w-full h-64 md:h-80 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#2a2a2a] dark:to-[#3a3a3a] rounded-lg flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-gray-300 to-gray-400 dark:from-[#4a4a4a] dark:to-[#5a5a5a] rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-2xl">DS</span>
-              </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Design Systems</p>
-            </div>
-          </div>
+          <img 
+            src="https://images.pexels.com/photos/1181345/pexels-photo-1181345.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+            alt="Scalable design systems" 
+            className="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg"
+          />
         </section>
 
         {/* Article Content */}

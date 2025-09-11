@@ -42,7 +42,7 @@ export default function Portfolio() {
                 alt="Modern dashboard design"
                 fill
                 className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
-                src="/dark-modern-dashboard.png"
+                src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
             </HeroCard>
@@ -56,23 +56,23 @@ export default function Portfolio() {
                 alt="Mobile app interface"
                 fill
                 className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
-                src="/orange-mobile-app-interface.png"
+                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
             </HeroCard>
             
             <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
-                <p className="text-tiny text-white/80 uppercase font-bold tracking-wider drop-shadow-lg">Web App</p>
-                <h4 className="text-white font-semibold text-xl drop-shadow-lg">Clean Design</h4>
+                <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
+                <h4 className="text-white font-semibold text-xl">Portfolio Site</h4>
               </CardHeader>
               <Image
-                alt="Clean web application"
+                alt="Portfolio website"
                 fill
                 className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
-                src="/clean-web-application-design.png"
+                src="/portfolio.png"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-5" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
             </HeroCard>
           </div>
 
@@ -104,10 +104,10 @@ export default function Portfolio() {
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Google</h3>
                 </div>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <p className="text-xs sm:text-sm text-black dark:text-white mb-2">
                   Senior Frontend Engineer • March 2024 - Present
                 </p>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
                   Working on Google Cloud Platform's web console, building engineering web tools, optimizing performance
                   and user experience.
                 </p>
@@ -133,7 +133,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="hidden md:flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
-                <img src="/google-logo.png" alt="Google" className="w-12 h-12 sm:w-16 sm:h-16" />
+                <img src="/google-g-2015.svg" alt="Google" className="w-12 h-12 sm:w-16 sm:h-16" />
               </div>
             </div>
 
@@ -143,10 +143,10 @@ export default function Portfolio() {
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Microsoft</h3>
                 </div>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <p className="text-xs sm:text-sm text-black dark:text-white mb-2">
                   Software Engineer • June 2022 - February 2024
                 </p>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
                   Developed and maintained Azure web applications, engineering web tools, optimizing performance and
                   user experience.
                 </p>
@@ -172,7 +172,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="hidden md:flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
-                <img src="/microsoft-logo.png" alt="Microsoft" className="w-12 h-12 sm:w-16 sm:h-16" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" className="w-12 h-12 sm:w-16 sm:h-16" />
               </div>
             </div>
 
@@ -182,10 +182,10 @@ export default function Portfolio() {
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Airbnb</h3>
                 </div>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <p className="text-xs sm:text-sm text-black dark:text-white mb-2">
                   Frontend Developer • January 2021 - May 2022
                 </p>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
                   Implemented user-facing web development of Airbnb's booking platform.
                 </p>
                 <div className="flex flex-wrap items-center gap-2">
@@ -210,7 +210,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="hidden md:flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
-                <img src="/airbnb-logo-inspired-abstract.png" alt="Airbnb" className="w-12 h-12 sm:w-16 sm:h-16" />
+                <img src="/airbnb-1.svg" alt="Airbnb" className="w-12 h-12 sm:w-16 sm:h-16" />
               </div>
             </div>
 
@@ -220,10 +220,10 @@ export default function Portfolio() {
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Shopify</h3>
                 </div>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <p className="text-xs sm:text-sm text-black dark:text-white mb-2">
                   Frontend Web Developer • March 2020 - December 2020
                 </p>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
                   Developed and maintained Shopify themes for enterprise clients with advanced technical requirements.
                 </p>
                 <div className="flex flex-wrap items-center gap-2">
@@ -247,8 +247,8 @@ export default function Portfolio() {
                   </Badge>
                 </div>
               </div>
-              <div className="hidden md:flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
-                <img src="/shopify-logo.png" alt="Shopify" className="w-12 h-12 sm:w-16 sm:h-16" />
+              <div className="flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
+                <img src="/shopify.svg" alt="Shopify" className="w-12 h-12 sm:w-16 sm:h-16" />
               </div>
             </div>
 
@@ -258,10 +258,10 @@ export default function Portfolio() {
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Adobe</h3>
                 </div>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <p className="text-xs sm:text-sm text-black dark:text-white mb-2">
                   Frontend Product Consultant • September 2019 - November 2020
                 </p>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
                   Consulted on the design and development of Adobe's Creative Cloud web applications.
                 </p>
                 <div className="flex flex-wrap items-center gap-2">
@@ -285,8 +285,8 @@ export default function Portfolio() {
                   </Badge>
                 </div>
               </div>
-              <div className="hidden md:flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
-                <img src="/adobe-logo.png" alt="Adobe" className="w-12 h-12 sm:w-16 sm:h-16" />
+              <div className="flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
+                <img src="/adobe-pure.svg" alt="Adobe" className="w-12 h-12 sm:w-16 sm:h-16" />
               </div>
             </div>
           </div>

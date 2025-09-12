@@ -186,6 +186,20 @@
       --sidebar-ring: oklch(0.439 0 0);
     }
   }
+  
+  /* Ultimate fallback for when JavaScript is disabled or theme detection completely fails */
+  @media (prefers-color-scheme: light) {
+    :root:not(.light):not(.dark) {
+      /* Light theme fallback - only applies if system prefers light */
+    }
+  }
+  
+  /* Force dark mode as ultimate fallback when everything else fails */
+  @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
+    :root:not(.light):not(.dark) {
+      color-scheme: dark;
+    }
+  }
 }
 
 /* Blog Box Styling - Matches theme system with gradient background */

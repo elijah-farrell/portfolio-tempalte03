@@ -1,9 +1,10 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, memo, useCallback, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { ChevronDown, Home } from "lucide-react";
 import { DarkModeToggle } from "@/components/dark-mode-toggle";
 
@@ -84,6 +85,8 @@ export const Navbar = React.memo(({ children, className }: NavbarProps) => {
   );
 });
 
+Navbar.displayName = 'Navbar';
+
 export const NavBody = React.memo(({ children, className, visible }: NavBodyProps) => {
   return (
     <motion.div
@@ -98,7 +101,7 @@ export const NavBody = React.memo(({ children, className, visible }: NavBodyProp
         ease: "easeOut",
       }}
       className={cn(
-        "relative z-10 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center px-6 py-3 rounded-full",
+        "relative z-10 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center justify-between px-6 py-3 rounded-full",
         visible ? "bg-white/90 dark:bg-[#171717]/90 border border-white/20 dark:border-gray-800/20" : "bg-transparent",
         className,
       )}
@@ -108,12 +111,17 @@ export const NavBody = React.memo(({ children, className, visible }: NavBodyProp
   );
 });
 
+NavBody.displayName = 'NavBody';
+
 export const NavItems = React.memo(({ items, className, onItemClick, scrollToSection }: NavItemsProps) => {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Memoize expensive calculations
+  const itemWidth = useMemo(() => `calc(100% / ${items.length})`, [items.length]);
 
   const handleMouseEnter = (index: number) => {
     if (!mounted) return;
@@ -232,7 +240,7 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
       <div 
         className="absolute bg-gray-100 dark:bg-neutral-800 rounded-lg transition-all h-full top-0" 
         style={{
-          width: 'calc(100% / 4)',
+          width: itemWidth,
           left: '0%',
           transform: `translateX(${hoveredIndex !== null ? hoveredIndex * 100 : 0}%)`,
           opacity: hoveredIndex !== null ? 1 : 0,
@@ -254,14 +262,14 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
           {item.isDropdown ? (
             <div className="relative">
               <div className="flex items-center">
-                  <a 
+                  <Link 
                     href={item.link}
                     className="relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg z-10 text-neutral-600 dark:text-neutral-300"
                     onMouseEnter={() => handleMouseEnter(idx)}
                   >
                   {item.icon && <span className="relative z-20 mr-2">{item.icon}</span>}
                   <span className="relative z-20">{item.name}</span>
-                </a>
+                </Link>
                 <button 
                   onClick={() => setOpenDropdown(openDropdown === idx ? null : idx)}
                   className="px-2 py-2 transition-all duration-200 ease-in-out rounded-md text-neutral-600 dark:text-neutral-300"
@@ -302,21 +310,22 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
               </AnimatePresence>
             </div>
           ) : (
-            <a
-              onClick={onItemClick}
-              className="relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg z-10 text-neutral-600 dark:text-neutral-300"
+            <Link
               href={item.link}
+              className="relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg z-10 text-neutral-600 dark:text-neutral-300"
               onMouseEnter={() => handleMouseEnter(idx)}
             >
               {item.icon && <span className="relative z-20 mr-2">{item.icon}</span>}
               <span className="relative z-20">{item.name}</span>
-            </a>
+            </Link>
           )}
         </div>
       ))}
     </div>
   );
 });
+
+NavItems.displayName = 'NavItems';
 
 export const MobileNav = React.memo(({ children, className, visible }: MobileNavProps) => {
   return (
@@ -341,6 +350,8 @@ export const MobileNav = React.memo(({ children, className, visible }: MobileNav
     </motion.div>
   );
 });
+
+MobileNav.displayName = 'MobileNav';
 
 export const MobileNavHeader = ({
   children,
@@ -411,26 +422,25 @@ export const MobileNavMenu = ({
   );
 };
 
-export const NavbarLogo = ({ onCloseMobileMenu }: { onCloseMobileMenu?: () => void }) => {
+export const NavbarLogo = memo(({ onCloseMobileMenu }: { onCloseMobileMenu?: () => void }) => {
   const [isClicked, setIsClicked] = React.useState(false);
-  const router = useRouter();
   
-  const goToHome = () => {
+  const handleClick = useCallback(() => {
     setIsClicked(true);
-    router.push('/');
     // Close mobile menu if it's open
     if (onCloseMobileMenu) {
       onCloseMobileMenu();
     }
     // Reset click state after animation
     setTimeout(() => setIsClicked(false), 300);
-  };
+  }, [onCloseMobileMenu]);
 
   return (
-    <div className="flex items-center">
-      <button 
-        onClick={goToHome}
-        className="relative hover:opacity-80 transition-opacity cursor-pointer focus:outline-none rounded px-1 py-1 group"
+    <div className="flex items-center justify-center">
+      <Link 
+        href="/"
+        onClick={handleClick}
+        className="relative hover:opacity-80 transition-opacity cursor-pointer focus:outline-none rounded px-1 py-1 group flex items-center justify-center"
         aria-label="Go to home page"
       >
         <div className={`relative w-11 h-11 rounded-full overflow-hidden transition-all duration-200 ${
@@ -440,7 +450,12 @@ export const NavbarLogo = ({ onCloseMobileMenu }: { onCloseMobileMenu?: () => vo
             src="/pfp.jpg" 
             alt="Profile" 
             className="w-full h-full object-cover object-center"
-            style={{ imageRendering: 'auto' }}
+            style={{ 
+              imageRendering: 'auto',
+              objectPosition: 'center center'
+            }}
+            loading="eager"
+            fetchPriority="high"
           />
           {/* Home Icon Overlay */}
           <div className={`absolute inset-0 rounded-full bg-white/50 dark:bg-black/50 flex items-center justify-center transition-opacity duration-200 ${
@@ -449,12 +464,14 @@ export const NavbarLogo = ({ onCloseMobileMenu }: { onCloseMobileMenu?: () => vo
             <Home className="w-5 h-5 text-black dark:text-white" />
           </div>
         </div>
-      </button>
+      </Link>
     </div>
   );
-};
+});
 
-export const MobileNavToggle = ({
+NavbarLogo.displayName = 'NavbarLogo';
+
+export const MobileNavToggle = memo(({
   isOpen,
   onClick,
 }: {
@@ -465,6 +482,7 @@ export const MobileNavToggle = ({
     <button
       onClick={onClick}
       className="p-2 rounded-lg transition-colors"
+      aria-label={isOpen ? "Close menu" : "Open menu"}
     >
       <div className="w-5 h-5 flex flex-col justify-center items-center">
         <span className={`block w-4 h-0.5 bg-neutral-600 dark:bg-neutral-300 transition-all duration-300 ${
@@ -479,4 +497,6 @@ export const MobileNavToggle = ({
       </div>
     </button>
   );
-};
+});
+
+MobileNavToggle.displayName = 'MobileNavToggle';

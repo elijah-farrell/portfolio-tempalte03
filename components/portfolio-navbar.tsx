@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, memo, useCallback } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { 
   Navbar, 
   NavBody, 
@@ -30,11 +31,11 @@ const PortfolioNavbar = memo(() => {
     <Navbar>
       {/* Desktop Navbar */}
       <NavBody>
-        <div className="flex items-center justify-between w-full">
-          <div className="ml-0">
+        <div className="flex items-center w-full">
+          <div className="flex items-center">
             <NavbarLogo />
           </div>
-          <div className="flex items-center gap-1 mr-0">
+          <div className="flex items-center gap-1 ml-auto">
             <DarkModeToggle />
             <NavItems 
               items={navItems}
@@ -64,17 +65,16 @@ const PortfolioNavbar = memo(() => {
           onClose={handleMobileMenuClose}
         >
           {navItems.map((item, idx) => (
-            <a
+            <Link
               key={idx}
               href={item.link}
               onClick={() => {
                 handleMobileMenuClose();
-                handleNavClick(item.link);
               }}
               className="text-2xl font-medium text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500 transition-colors duration-200"
             >
               {item.name}
-            </a>
+            </Link>
           ))}
         </MobileNavMenu>
       </MobileNav>

@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   title: "Minimal Portfolio Website Template",
   description: "Product designer and frontend engineer portfolio",
   generator: "v0.app",
+  icons: {
+    icon: [
+      { url: "/minimal.png", type: "image/png", sizes: "32x32" },
+      { url: "/minimal.png", type: "image/png", sizes: "16x16" }
+    ],
+    shortcut: "/minimal.png",
+    apple: "/minimal.png"
+  }
 }
 
 export default function RootLayout({
@@ -20,7 +28,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/minimal.png" type="image/png" />
         <style>{`
 html {
   font-family: ${GeistSans.style.fontFamily};
@@ -30,7 +37,7 @@ html {
         `}</style>
       </head>
       <body suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <PortfolioNavbar />
           {children}
         </ThemeProvider>

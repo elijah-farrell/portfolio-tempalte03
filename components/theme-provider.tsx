@@ -9,6 +9,10 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       defaultTheme="system"
       enableSystem={true}
       storageKey="portfolio-theme"
+      // Enhanced fallback configuration
+      forcedTheme={undefined} // Allow theme switching
+      enableColorScheme={true} // Enable CSS color-scheme
+      disableTransitionOnChange={false} // Smooth transitions
     >
       {children}
     </NextThemesProvider>

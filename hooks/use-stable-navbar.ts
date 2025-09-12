@@ -1,8 +1,6 @@
 import { useRef, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 
 export function useStableNavbar() {
-  const router = useRouter();
   const navItemsRef = useRef([
     {
       name: "About",
@@ -23,17 +21,16 @@ export function useStableNavbar() {
   ]);
 
   const handleNavClick = useCallback((link: string) => {
-    if (link.startsWith('/')) {
-      // Use Next.js router for smooth client-side navigation
-      router.push(link);
-    } else {
+    // Handle section scrolling for hash links
+    if (link.startsWith('#')) {
       const sectionId = link.replace('#', '');
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  }, [router]);
+    // For regular links, Next.js Link will handle navigation
+  }, []);
 
   return {
     navItems: navItemsRef.current,

@@ -119,9 +119,7 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
   const [mounted, setMounted] = useState(false);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Memoize expensive calculations
-  const itemWidth = useMemo(() => `calc(100% / ${items.length})`, [items.length]);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const handleMouseEnter = (index: number) => {
     if (!mounted) return;
@@ -213,6 +211,11 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
     }
   }, [mounted, items]);
 
+  // Force re-render when hoveredIndex changes to update hover position
+  useEffect(() => {
+    // This will trigger a re-render to update the hover background position
+  }, [hoveredIndex]);
+
   if (!mounted) {
     return (
       <div className={cn(
@@ -221,11 +224,48 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
       )}>
         {/* Placeholder content */}
         {items.map((_, idx) => (
-          <div key={idx} className="flex-1 h-full" />
+          <div key={idx} className="h-full px-2" />
         ))}
       </div>
     );
   }
+
+  // Calculate hover background position and size based on actual item dimensions
+  const getHoverStyle = () => {
+    if (hoveredIndex === null || !itemRefs.current[hoveredIndex]) {
+      return {
+        opacity: 0,
+        width: 0,
+        left: 0,
+        transform: 'translateX(0)',
+      };
+    }
+
+    const hoveredItem = itemRefs.current[hoveredIndex];
+    const container = containerRef.current;
+    
+    if (!container) {
+      return {
+        opacity: 0,
+        width: 0,
+        left: 0,
+        transform: 'translateX(0)',
+      };
+    }
+
+    const containerRect = container.getBoundingClientRect();
+    const itemRect = hoveredItem.getBoundingClientRect();
+    
+    const left = itemRect.left - containerRect.left;
+    const width = itemRect.width;
+
+    return {
+      opacity: 1,
+      width: `${width}px`,
+      left: `${left}px`,
+      transform: 'translateX(0)',
+    };
+  };
 
   return (
     <div
@@ -240,10 +280,7 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
       <div 
         className="absolute bg-gray-100 dark:bg-neutral-800 rounded-lg transition-all h-full top-0" 
         style={{
-          width: itemWidth,
-          left: '0%',
-          transform: `translateX(${hoveredIndex !== null ? hoveredIndex * 100 : 0}%)`,
-          opacity: hoveredIndex !== null ? 1 : 0,
+          ...getHoverStyle(),
           transitionDuration: process.env.NODE_ENV === 'development' ? '200ms' : '300ms',
           transitionTimingFunction: 'ease-out',
         }}
@@ -252,7 +289,8 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
       {items.map((item, idx) => (
         <div 
           key={`nav-item-${idx}`} 
-          className="relative flex justify-center items-center h-full flex-1 group/nav-item"
+          ref={(el) => (itemRefs.current[idx] = el)}
+          className="relative flex justify-center items-center h-full group/nav-item px-2"
           style={{
             '--item-index': idx,
           } as React.CSSProperties}

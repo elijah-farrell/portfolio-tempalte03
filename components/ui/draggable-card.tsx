@@ -11,10 +11,9 @@ import {
   useAnimationControls,
 } from "framer-motion";
 
-// Global state to track which card is currently on top
-let topCardId: string | null = null;
+// Global state to track card z-indexes (infinite stack)
 let cardCounter = 0;
-let forceUpdate: (() => void) | null = null;
+let maxZIndex = 10; // Start at 10, increment infinitely
 
 export const DraggableCardBody = ({
   className,
@@ -35,15 +34,8 @@ export const DraggableCardBody = ({
   });
   const [isDragging, setIsDragging] = useState(false);
   const [cardId] = useState(() => `card-${++cardCounter}`);
-  const [, forceRerender] = useState({});
-  
-  // Register this component's force update function
-  React.useEffect(() => {
-    forceUpdate = () => forceRerender({});
-    return () => {
-      forceUpdate = null;
-    };
-  }, []);
+  const [currentZIndex, setCurrentZIndex] = useState(10); // Start with fixed z-index
+  const [isClient, setIsClient] = useState(false);
 
   // physics biatch
   const velocityX = useVelocity(mouseX);
@@ -75,15 +67,21 @@ export const DraggableCardBody = ({
   );
 
   useEffect(() => {
-    // Update constraints when component mounts or window resizes
+    // Update constraints to stay within the section boundaries
     const updateConstraints = () => {
-      if (typeof window !== "undefined") {
-        setConstraints({
-          top: -window.innerHeight / 2,
-          left: -window.innerWidth / 2,
-          right: window.innerWidth / 2,
-          bottom: window.innerHeight / 2,
-        });
+      if (typeof window !== "undefined" && cardRef.current) {
+        const container = cardRef.current.closest('section');
+        if (container) {
+          const containerRect = container.getBoundingClientRect();
+          const cardRect = cardRef.current.getBoundingClientRect();
+          
+          setConstraints({
+            top: -(cardRect.top - containerRect.top),
+            left: -(cardRect.left - containerRect.left),
+            right: containerRect.right - cardRect.right,
+            bottom: containerRect.bottom - cardRect.bottom,
+          });
+        }
       }
     };
 
@@ -96,6 +94,11 @@ export const DraggableCardBody = ({
     return () => {
       window.removeEventListener("resize", updateConstraints);
     };
+  }, []);
+
+  // Set client flag after hydration
+  React.useEffect(() => {
+    setIsClient(true);
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -128,9 +131,12 @@ export const DraggableCardBody = ({
       onDragStart={() => {
         document.body.style.cursor = "grabbing";
         setIsDragging(true);
-        topCardId = cardId;
-        // Force all cards to re-render to update z-index
-        if (forceUpdate) forceUpdate();
+        
+        // Only update z-index on client side to avoid hydration issues
+        if (isClient) {
+          const newZIndex = ++maxZIndex;
+          setCurrentZIndex(newZIndex);
+        }
       }}
       onDragEnd={(event, info) => {
         document.body.style.cursor = "default";
@@ -178,6 +184,7 @@ export const DraggableCardBody = ({
         rotateY,
         opacity,
         willChange: "transform",
+        zIndex: currentZIndex, // Use local state z-index
       }}
       animate={controls}
       whileHover={{ scale: 1.02 }}
@@ -185,7 +192,6 @@ export const DraggableCardBody = ({
       onMouseLeave={handleMouseLeave}
       className={cn(
         "relative min-h-96 w-80 overflow-hidden rounded-md bg-neutral-100 p-6 shadow-2xl transform-3d dark:bg-neutral-900",
-        topCardId === cardId ? "z-50" : "z-10",
         className,
       )}
     >

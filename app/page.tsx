@@ -243,9 +243,9 @@ export default function Portfolio() {
                   </Badge>
                 </div>
               </div>
-              <div className="flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
-                <img src="/shopify.svg" alt="Shopify" className="w-12 h-12 sm:w-16 sm:h-16" />
-              </div>
+               <div className="hidden md:flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
+                 <img src="/shopify.svg" alt="Shopify" className="w-12 h-12 sm:w-16 sm:h-16" />
+               </div>
             </div>
 
             {/* Adobe */}
@@ -281,9 +281,9 @@ export default function Portfolio() {
                   </Badge>
                 </div>
               </div>
-              <div className="flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
-                <img src="/adobe-pure.svg" alt="Adobe" className="w-12 h-12 sm:w-16 sm:h-16" />
-              </div>
+               <div className="hidden md:flex items-center justify-center order-1 sm:order-2 mb-2 sm:mb-0">
+                 <img src="/adobe-pure.svg" alt="Adobe" className="w-12 h-12 sm:w-16 sm:h-16" />
+               </div>
             </div>
           </div>
         </section>

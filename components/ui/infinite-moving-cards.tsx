@@ -104,7 +104,17 @@ export const InfiniteMovingCards = ({
                 {item.quote}
               </span>
               <div className="relative z-20 mt-4 pt-4 flex flex-row items-center gap-3 flex-shrink-0">
-                <div className="w-8 h-8 bg-gray-200 dark:bg-[#2a2a2a] rounded-full flex-shrink-0"></div>
+                <div className="w-8 h-8 rounded-full flex-shrink-0 overflow-hidden">
+                  {item.image ? (
+                    <img 
+                      src={item.image} 
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-200 dark:bg-[#2a2a2a]"></div>
+                  )}
+                </div>
                 <span className="flex flex-col gap-1">
                   <span className="text-sm leading-[1.6] text-gray-900 dark:text-white font-normal">
                     {item.name}

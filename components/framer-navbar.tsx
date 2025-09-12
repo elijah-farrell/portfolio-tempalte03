@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { ChevronDown, Home } from "lucide-react";
@@ -25,7 +25,6 @@ interface NavItemsProps {
     isDropdown?: boolean;
     sections?: Array<{ name: string; sectionId: string }>;
     icon?: React.ReactNode;
-    isActive?: boolean;
   }[];
   className?: string;
   onItemClick?: () => void;
@@ -50,7 +49,7 @@ interface MobileNavMenuProps {
   onClose: () => void;
 }
 
-export const Navbar = ({ children, className }: NavbarProps) => {
+export const Navbar = React.memo(({ children, className }: NavbarProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll({
     target: ref,
@@ -83,9 +82,9 @@ export const Navbar = ({ children, className }: NavbarProps) => {
       )}
     </motion.div>
   );
-};
+});
 
-export const NavBody = ({ children, className, visible }: NavBodyProps) => {
+export const NavBody = React.memo(({ children, className, visible }: NavBodyProps) => {
   return (
     <motion.div
       animate={{
@@ -93,18 +92,13 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         boxShadow: visible
           ? "0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)"
           : "none",
-        width: "100%",
-        paddingTop: visible ? "15px" : "10px",
-        paddingBottom: visible ? "10px" : "10px",
-        y: visible ? 0 : 0,
       }}
       transition={{
-        type: "spring",
-        stiffness: 200,
-        damping: 50,
+        duration: 0.2,
+        ease: "easeOut",
       }}
       className={cn(
-        "relative z-10 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center px-6 py-2 rounded-full",
+        "relative z-10 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center px-6 py-3 rounded-full",
         visible ? "bg-white/90 dark:bg-[#171717]/90 border border-white/20 dark:border-gray-800/20" : "bg-transparent",
         className,
       )}
@@ -112,87 +106,166 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       {children}
     </motion.div>
   );
-};
+});
 
-export const NavItems = ({ items, className, onItemClick, scrollToSection }: NavItemsProps) => {
+export const NavItems = React.memo(({ items, className, onItemClick, scrollToSection }: NavItemsProps) => {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [backgroundStyle, setBackgroundStyle] = useState({
-    width: 0,
-    left: 0,
-    opacity: 0,
-  });
-  const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const [mounted, setMounted] = useState(false);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const updateBackgroundPosition = (index: number) => {
-    const linkElement = linkRefs.current[index];
-    if (linkElement) {
-      const containerRect = linkElement.closest('.nav-container')?.getBoundingClientRect();
-      const linkRect = linkElement.getBoundingClientRect();
-      
-      if (containerRect) {
-        setBackgroundStyle({
-          width: linkRect.width,
-          left: linkRect.left - containerRect.left,
-          opacity: 1,
-        });
-      }
+  const handleMouseEnter = (index: number) => {
+    if (!mounted) return;
+    
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    setHoveredIndex(index);
+    
+    // Force immediate visual update for dev mode
+    if (process.env.NODE_ENV === 'development') {
+      setTimeout(() => setHoveredIndex(index), 0);
     }
   };
 
-  const handleMouseEnter = (index: number) => {
-    setHoveredIndex(index);
-    updateBackgroundPosition(index);
+  const handleMouseLeave = () => {
+    if (!mounted) return;
+    
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    hoverTimeoutRef.current = setTimeout(() => {
+      setHoveredIndex(null);
+    }, 150); // Slightly longer delay for dev mode stability
   };
 
-  const handleMouseLeave = () => {
-    setHoveredIndex(null);
-    setBackgroundStyle(prev => ({ ...prev, opacity: 0 }));
+  // Better hover detection for development mode
+  const detectCurrentHover = () => {
+    if (!containerRef.current || !mounted) return;
+    
+    // Use mouse position to detect which item should be hovered
+    const handleMouseMove = (e: MouseEvent) => {
+      const container = containerRef.current;
+      if (!container) return;
+      
+      const containerRect = container.getBoundingClientRect();
+      const mouseX = e.clientX;
+      
+      // Check if mouse is within the container
+      if (mouseX >= containerRect.left && mouseX <= containerRect.right) {
+        const navItems = container.querySelectorAll('[data-nav-item]');
+        let foundHover = false;
+        
+        navItems.forEach((item, index) => {
+          const itemRect = item.getBoundingClientRect();
+          if (mouseX >= itemRect.left && mouseX <= itemRect.right) {
+            setHoveredIndex(index);
+            foundHover = true;
+          }
+        });
+        
+        if (!foundHover) {
+          setHoveredIndex(null);
+        }
+      }
+    };
+    
+    // Listen for mouse movement for a short time to detect current position
+    document.addEventListener('mousemove', handleMouseMove);
+    setTimeout(() => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    }, 200);
   };
+
+  // Mount effect and dev mode re-render handling
+  useEffect(() => {
+    setMounted(true);
+    
+    // Small delay to ensure DOM is fully ready, then detect current hover
+    const timer = setTimeout(() => {
+      detectCurrentHover();
+    }, 100);
+    
+    return () => {
+      clearTimeout(timer);
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Re-detect hover state when component re-renders (dev mode)
+  useEffect(() => {
+    if (mounted) {
+      const timer = setTimeout(() => {
+        detectCurrentHover();
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [mounted, items]);
+
+  if (!mounted) {
+    return (
+      <div className={cn(
+        "flex flex-row items-center text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 relative h-10 nav-container group opacity-0",
+        className,
+      )}>
+        {/* Placeholder content */}
+        {items.map((_, idx) => (
+          <div key={idx} className="flex-1 h-full" />
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div
+      ref={containerRef}
       className={cn(
-        "flex flex-row items-center text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 relative h-10 nav-container",
+        "flex flex-row items-center text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 relative h-10 nav-container group",
         className,
       )}
+      onMouseLeave={handleMouseLeave}
     >
-      {/* Morphing hover background */}
-      <div
-        className="absolute bg-gray-100 dark:bg-neutral-800 rounded-lg transition-all duration-300 ease-out"
+      {/* React state-controlled sliding background */}
+      <div 
+        className="absolute bg-gray-100 dark:bg-neutral-800 rounded-lg transition-all h-full top-0" 
         style={{
-          width: `${backgroundStyle.width}px`,
-          left: `${backgroundStyle.left}px`,
-          opacity: backgroundStyle.opacity,
-          height: '100%',
-          top: 0,
+          width: 'calc(100% / 4)',
+          left: '0%',
+          transform: `translateX(${hoveredIndex !== null ? hoveredIndex * 100 : 0}%)`,
+          opacity: hoveredIndex !== null ? 1 : 0,
+          transitionDuration: process.env.NODE_ENV === 'development' ? '200ms' : '300ms',
+          transitionTimingFunction: 'ease-out',
         }}
       />
+      
       {items.map((item, idx) => (
         <div 
           key={`nav-item-${idx}`} 
-          className="relative flex justify-center items-center h-full flex-1"
+          className="relative flex justify-center items-center h-full flex-1 group/nav-item"
+          style={{
+            '--item-index': idx,
+          } as React.CSSProperties}
+          onMouseEnter={() => handleMouseEnter(idx)}
+          data-nav-item={idx}
         >
           {item.isDropdown ? (
             <div className="relative">
               <div className="flex items-center">
                   <a 
-                    ref={(el) => (linkRefs.current[idx] = el)}
                     href={item.link}
-                    className={`relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg z-10 ${
-                      item.isActive 
-                        ? 'text-emerald-500 dark:text-emerald-400 font-semibold' 
-                        : 'text-neutral-600 dark:text-neutral-300'
-                    }`}
+                    className="relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg z-10 text-neutral-600 dark:text-neutral-300"
                     onMouseEnter={() => handleMouseEnter(idx)}
-                    onMouseLeave={handleMouseLeave}
                   >
                   {item.icon && <span className="relative z-20 mr-2">{item.icon}</span>}
                   <span className="relative z-20">{item.name}</span>
                 </a>
                 <button 
                   onClick={() => setOpenDropdown(openDropdown === idx ? null : idx)}
-                  className="px-2 py-2 transition-all duration-200 ease-in-out rounded-md text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500"
+                  className="px-2 py-2 transition-all duration-200 ease-in-out rounded-md text-neutral-600 dark:text-neutral-300"
+                  onMouseEnter={() => handleMouseEnter(idx)}
                 >
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
                     openDropdown === idx ? 'rotate-180' : ''
@@ -219,7 +292,7 @@ export const NavItems = ({ items, className, onItemClick, scrollToSection }: Nav
                           }
                           setOpenDropdown(null);
                         }}
-                        className="block w-full text-left px-4 py-2 text-sm transition-colors duration-150 text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500 hover:bg-gray-50 dark:hover:bg-neutral-800"
+                        className="block w-full text-left px-4 py-2 text-sm transition-colors duration-150 text-neutral-600 dark:text-neutral-300 hover:bg-gray-50 dark:hover:bg-neutral-800"
                       >
                         {section.name}
                       </button>
@@ -230,16 +303,10 @@ export const NavItems = ({ items, className, onItemClick, scrollToSection }: Nav
             </div>
           ) : (
             <a
-              ref={(el) => (linkRefs.current[idx] = el)}
               onClick={onItemClick}
-              className={`relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg z-10 ${
-                item.isActive 
-                  ? 'text-emerald-500 dark:text-emerald-400 font-semibold' 
-                  : 'text-neutral-600 dark:text-neutral-300'
-              }`}
+              className="relative px-3 py-2 transition-all duration-300 ease-in-out flex items-center rounded-lg z-10 text-neutral-600 dark:text-neutral-300"
               href={item.link}
               onMouseEnter={() => handleMouseEnter(idx)}
-              onMouseLeave={handleMouseLeave}
             >
               {item.icon && <span className="relative z-20 mr-2">{item.icon}</span>}
               <span className="relative z-20">{item.name}</span>
@@ -249,9 +316,9 @@ export const NavItems = ({ items, className, onItemClick, scrollToSection }: Nav
       ))}
     </div>
   );
-};
+});
 
-export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
+export const MobileNav = React.memo(({ children, className, visible }: MobileNavProps) => {
   return (
     <motion.div
       animate={{
@@ -259,18 +326,13 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         boxShadow: visible
           ? "0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)"
           : "none",
-        width: "100%",
-        paddingTop: visible ? "15px" : "10px",
-        paddingBottom: visible ? "10px" : "10px",
-        y: visible ? 0 : 0,
       }}
       transition={{
-        type: "spring",
-        stiffness: 200,
-        damping: 50,
+        duration: 0.2,
+        ease: "easeOut",
       }}
       className={cn(
-        "relative z-10 flex w-full flex-row items-center px-8 py-2 md:hidden",
+        "relative z-10 flex w-full flex-row items-center px-8 py-3 md:hidden",
         visible ? "bg-white/90 dark:bg-[#171717]/90 border-b border-white/20 dark:border-gray-800/20" : "bg-transparent",
         className,
       )}
@@ -278,7 +340,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       {children}
     </motion.div>
   );
-};
+});
 
 export const MobileNavHeader = ({
   children,
@@ -319,10 +381,10 @@ export const MobileNavMenu = ({
             opacity: 0
           }}
           transition={{
-            duration: 0.4,
-            ease: [0.25, 0.46, 0.45, 0.94],
-            height: { duration: 0.4 },
-            opacity: { duration: 0.3 }
+            duration: 0.3,
+            ease: "easeOut",
+            height: { duration: 0.3 },
+            opacity: { duration: 0.2 }
           }}
           className={cn(
             "absolute inset-x-0 top-0 z-20 flex w-full flex-col bg-white/95 dark:bg-[#171717]/95 backdrop-blur-sm",
@@ -331,13 +393,13 @@ export const MobileNavMenu = ({
         >
           {/* Links section */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
+            exit={{ opacity: 0, y: 10 }}
             transition={{
-              duration: 0.5,
-              delay: 0.2,
-              ease: [0.25, 0.46, 0.45, 0.94]
+              duration: 0.2,
+              delay: 0.1,
+              ease: "easeOut"
             }}
             className="flex flex-col items-center justify-center gap-8 flex-1 pt-20 pb-8"
           >

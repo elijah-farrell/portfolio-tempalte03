@@ -1,7 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, memo, useCallback } from "react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 import { 
   Navbar, 
   NavBody, 
@@ -13,46 +12,19 @@ import {
   MobileNavToggle 
 } from "./framer-navbar";
 import { DarkModeToggle } from "@/components/dark-mode-toggle";
+import { useStableNavbar } from "@/hooks/use-stable-navbar";
 
-export function PortfolioNavbar() {
+const PortfolioNavbar = memo(() => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const router = useRouter();
+  const { navItems, handleNavClick } = useStableNavbar();
 
-  const navItems = [
-    {
-      name: "About",
-      link: "/about",
-      isActive: false,
-    },
-    {
-      name: "Projects", 
-      link: "/projects",
-      isActive: false,
-    },
-    {
-      name: "Blog",
-      link: "/blog", 
-      isActive: false,
-    },
-    {
-      name: "Contact",
-      link: "/contact",
-      isActive: false,
-    },
-  ];
+  const handleMobileMenuToggle = useCallback(() => {
+    setMobileMenuOpen(prev => !prev);
+  }, []);
 
-  const handleNavClick = (link: string) => {
-    if (link.startsWith('/')) {
-      // Use Next.js router for smooth client-side navigation
-      router.push(link);
-    } else {
-      const sectionId = link.replace('#', '');
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
+  const handleMobileMenuClose = useCallback(() => {
+    setMobileMenuOpen(false);
+  }, []);
 
   return (
     <Navbar>
@@ -82,38 +54,34 @@ export function PortfolioNavbar() {
             <DarkModeToggle />
             <MobileNavToggle 
               isOpen={mobileMenuOpen}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={handleMobileMenuToggle}
             />
           </div>
         </div>
         
         <MobileNavMenu 
           isOpen={mobileMenuOpen}
-          onClose={() => setMobileMenuOpen(false)}
+          onClose={handleMobileMenuClose}
         >
           {navItems.map((item, idx) => (
-            <motion.a
+            <a
               key={idx}
               href={item.link}
               onClick={() => {
-                setMobileMenuOpen(false);
+                handleMobileMenuClose();
                 handleNavClick(item.link);
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{
-                duration: 0.4,
-                delay: 0.3 + (idx * 0.1),
-                ease: [0.25, 0.46, 0.45, 0.94]
               }}
               className="text-2xl font-medium text-neutral-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-500 transition-colors duration-200"
             >
               {item.name}
-            </motion.a>
+            </a>
           ))}
         </MobileNavMenu>
       </MobileNav>
     </Navbar>
   );
-}
+});
+
+PortfolioNavbar.displayName = 'PortfolioNavbar';
+
+export { PortfolioNavbar };

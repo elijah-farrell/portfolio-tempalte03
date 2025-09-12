@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button"
 import { DiagonalStripes } from "@/components/diagonal-stripes"
-import { PortfolioNavbar } from "@/components/portfolio-navbar"
 import { ArrowRight, Calendar, Clock, Github, Linkedin, Twitter } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
@@ -75,9 +74,6 @@ export default function BlogPage() {
     <div className="min-h-screen bg-gray-50 dark:bg-[#0A0A0A] transition-colors border-none">
       <div className="border-gray-200 dark:border-[#2a2a2a] min-h-screen max-w-5xl mx-auto bg-white dark:bg-[#171717] shadow-sm border-r-[15px] border-l-[15px] md:border-r-[30px] md:border-l-[30px] relative" style={{ position: 'relative' }}>
         <DiagonalStripes />
-        
-        {/* Framer Motion Navbar */}
-        <PortfolioNavbar />
 
         {/* Hero Section */}
         <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-12">

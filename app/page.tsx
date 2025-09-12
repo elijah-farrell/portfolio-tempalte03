@@ -7,7 +7,6 @@ import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TestimonialsDemo } from "@/components/testimonials-demo"
 import { BlogSection } from "@/components/blog-section"
 import { ExternalLink, Mail, Github, Linkedin, Twitter } from "lucide-react"
-import { PortfolioNavbar } from "@/components/portfolio-navbar"
 import { Card as HeroCard, CardHeader, CardFooter, Button as HeroButton } from "@heroui/react"
 import Image from "next/image"
 
@@ -17,9 +16,6 @@ export default function Portfolio() {
     <div className="min-h-screen bg-gray-50 dark:bg-[#0A0A0A] transition-colors border-none">
       <div className="border-gray-200 dark:border-[#2a2a2a] min-h-screen max-w-5xl mx-auto bg-white dark:bg-[#171717] shadow-sm border-r-[15px] border-l-[15px] md:border-r-[30px] md:border-l-[30px] relative" style={{ position: 'relative' }}>
         <DiagonalStripes />
-        
-        {/* Framer Motion Navbar */}
-        <PortfolioNavbar />
 
         {/* Hero Section */}
         <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-12">

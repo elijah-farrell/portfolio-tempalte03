@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { ThemeProvider } from "@/components/theme-provider"
+import { PortfolioNavbar } from "@/components/portfolio-navbar"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ html {
       </head>
       <body suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <PortfolioNavbar />
           {children}
         </ThemeProvider>
       </body>

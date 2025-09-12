@@ -3,7 +3,7 @@ import {
   DraggableCardBody,
   DraggableCardContainer,
 } from "@/components/ui/draggable-card";
-import Carousel from "@/components/ui/aceternity-carousel";
+import Carousel from "@/components/ui/carousel";
 
 export function DraggableCardDemo() {
   const slideData = [

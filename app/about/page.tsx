@@ -79,7 +79,7 @@ export default function AboutPage() {
          </section>
 
          {/* Draggable Cards Section */}
-         <section className="max-w-4xl mx-auto px-6 pt-12 pb-6 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+         <section className="max-w-4xl mx-auto px-6 py-20 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
            <DraggableCardDemo />
          </section>
 

@@ -67,7 +67,7 @@ export function DiagonalStripes() {
     <>
       {/* Left diagonal stripes with scroll animation */}
       <div 
-        className="absolute -left-[32px] top-0 w-[32px] h-full border-l border-r shadow-sm overflow-hidden z-50"
+        className="absolute -left-[19px] md:-left-[31px] top-0 w-[19px] md:w-[31px] h-full border-l border-r shadow-sm overflow-hidden z-50"
         style={{
           borderLeftColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
           borderRightColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
@@ -92,7 +92,7 @@ export function DiagonalStripes() {
       
       {/* Right diagonal stripes with scroll animation */}
       <div 
-        className="absolute -right-[32px] top-0 w-[32px] h-full border-l border-r shadow-sm overflow-hidden z-50"
+        className="absolute -right-[19px] md:-right-[31px] top-0 w-[19px] md:w-[31px] h-full border-l border-r shadow-sm overflow-hidden z-50"
         style={{
           borderLeftColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
           borderRightColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',

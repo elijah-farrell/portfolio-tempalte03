@@ -70,7 +70,7 @@ export const Navbar = React.memo(({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      className={cn("fixed inset-x-0 z-50 w-full px-0 md:px-4 bg-transparent", className)}
+      className={cn("fixed inset-x-0 z-50 w-full px-0 bg-transparent", className)}
       style={{ position: 'fixed' }}
     >
       {React.Children.map(children, (child) =>
@@ -101,7 +101,7 @@ export const NavBody = React.memo(({ children, className, visible }: NavBodyProp
         ease: "easeOut",
       }}
       className={cn(
-        "relative z-10 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center justify-between px-6 py-3 rounded-full",
+        "relative z-10 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center justify-between px-12 py-3 rounded-full",
         visible ? "bg-white/90 dark:bg-[#171717]/90 border border-white/20 dark:border-gray-800/20" : "bg-transparent",
         className,
       )}
@@ -379,7 +379,7 @@ export const MobileNav = React.memo(({ children, className, visible }: MobileNav
         ease: "easeOut",
       }}
       className={cn(
-        "relative z-10 flex w-full flex-row items-center px-8 py-3 md:hidden",
+        "relative z-10 mx-auto flex w-full max-w-4xl flex-row items-center px-6 py-3 md:hidden",
         visible ? "bg-white/90 dark:bg-[#171717]/90 border-b border-white/20 dark:border-gray-800/20" : "bg-transparent",
         className,
       )}

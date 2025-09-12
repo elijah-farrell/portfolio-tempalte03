@@ -3,7 +3,46 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* View Transitions API styles for theme toggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+}
+
+::view-transition-old(theme-toggle-circle-top-right),
+::view-transition-new(theme-toggle-circle-top-right) {
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-old(theme-toggle-circle-top-right) {
+  animation-name: slide-out-top-right;
+}
+
+::view-transition-new(theme-toggle-circle-top-right) {
+  animation-name: slide-in-top-right;
+}
+
+@keyframes slide-out-top-right {
+  from {
+    clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+  }
+  to {
+    clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%);
+  }
+}
+
+@keyframes slide-in-top-right {
+  from {
+    clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+  }
+  to {
+    clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%);
+  }
+}
+
 :root {
+  view-transition-name: root;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -40,11 +79,11 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: #171717;
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
+  --card: #171717;
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
+  --popover: #171717;
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.985 0 0);
   --primary-foreground: oklch(0.205 0 0);

@@ -42,7 +42,7 @@ export function AnimatedNavbar() {
             ? "rounded-full px-8 py-4" 
             : "rounded-lg px-2 py-4"
         )}>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-end gap-4">
             {/* Profile Avatar */}
             <div className="w-11 h-11 rounded-full overflow-hidden">
               <img 
@@ -54,30 +54,26 @@ export function AnimatedNavbar() {
             </div>
 
             {/* Navigation Items */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center">
               <DarkModeToggle />
-              
               <a
                 href="#about"
                 className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
               >
                 About
               </a>
-              
               <a
                 href="#projects"
                 className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
               >
                 Projects
               </a>
-              
               <a
                 href="#blog"
                 className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
               >
                 Blog
               </a>
-              
               <a
                 href="#contact"
                 className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"

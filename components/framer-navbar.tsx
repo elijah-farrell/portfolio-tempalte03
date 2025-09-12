@@ -101,8 +101,8 @@ export const NavBody = React.memo(({ children, className, visible }: NavBodyProp
         ease: "easeOut",
       }}
       className={cn(
-        "relative z-10 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center justify-between px-12 py-3 rounded-full",
-        visible ? "bg-white/90 dark:bg-[#171717]/90 border border-white/20 dark:border-gray-800/20" : "bg-transparent",
+        "relative z-10 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center justify-between px-12 py-3 rounded-full overflow-hidden",
+        visible ? "bg-white/90 dark:bg-[#171717]/90 border border-white/20 dark:border-[#2a2a2a]/20" : "bg-transparent",
         className,
       )}
     >
@@ -224,7 +224,7 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
       )}>
         {/* Placeholder content */}
         {items.map((_, idx) => (
-          <div key={idx} className="h-full px-2" />
+          <div key={idx} className="h-full px-0" />
         ))}
       </div>
     );
@@ -290,7 +290,7 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
         <div 
           key={`nav-item-${idx}`} 
           ref={(el) => (itemRefs.current[idx] = el)}
-          className="relative flex justify-center items-center h-full group/nav-item px-2"
+          className="relative flex justify-center items-center h-full group/nav-item px-0"
           style={{
             '--item-index': idx,
           } as React.CSSProperties}
@@ -378,11 +378,11 @@ export const MobileNav = React.memo(({ children, className, visible }: MobileNav
         duration: 0.2,
         ease: "easeOut",
       }}
-      className={cn(
-        "relative z-10 mx-auto flex w-full max-w-4xl flex-row items-center px-6 py-3 md:hidden",
-        visible ? "bg-white/90 dark:bg-[#171717]/90 border-b border-white/20 dark:border-gray-800/20" : "bg-transparent",
-        className,
-      )}
+       className={cn(
+         "relative z-10 mx-auto flex w-full max-w-4xl flex-row items-center px-4 py-3 md:hidden",
+         visible ? "bg-white/90 dark:bg-[#171717]/90 border-b border-white/20 dark:border-[#2a2a2a]/20" : "bg-transparent",
+         className,
+       )}
     >
       {children}
     </motion.div>

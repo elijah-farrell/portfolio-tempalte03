@@ -35,7 +35,7 @@ const PortfolioNavbar = memo(() => {
           <div className="flex items-center">
             <NavbarLogo />
           </div>
-          <div className="flex items-center gap-1 ml-auto">
+          <div className="flex items-center ml-auto gap-1">
             <DarkModeToggle />
             <NavItems 
               items={navItems}

@@ -24,26 +24,14 @@ export default function AboutPage() {
           </div>
 
           {/* Basic Info with Profile Picture */}
-          <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start mb-12">
+          <div className="flex flex-col xl:flex-row gap-6 xl:gap-8 items-start mb-12">
             {/* Profile Picture and Content */}
-            <div className="flex flex-col md:flex-row gap-4 md:gap-8 w-full md:w-auto">
-              {/* Location and Availability - above image on mobile */}
-              <div className="flex items-center gap-4 text-xs text-gray-600 dark:text-gray-400 md:hidden">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-3 h-3" />
-                  <span>San Francisco, CA</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-3 h-3" />
-                  <span>Available for freelance</span>
-                </div>
-              </div>
-
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 xl:gap-8 w-full xl:w-auto">
               {/* Image and Description */}
-              <div className="flex flex-row gap-4 md:gap-8 items-center">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 xl:gap-8 items-start sm:items-center xl:items-center">
                 {/* Profile Picture */}
-                <div className="flex-shrink-0">
-                  <div className="w-20 h-32 md:w-28 md:h-40 rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+                <div className="flex-shrink-0 mx-auto sm:mx-0 xl:mx-0">
+                  <div className="w-24 h-32 sm:w-20 sm:h-28 md:w-24 md:h-32 xl:w-28 xl:h-40 rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800">
                     <Image
                       src="/pfp.jpg"
                       alt="Profile picture"
@@ -55,25 +43,25 @@ export default function AboutPage() {
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 space-y-4 min-w-0">
-                  {/* Location and Availability - hidden on mobile, shown on desktop */}
-                  <div className="hidden md:flex items-center gap-4 text-xs text-gray-600 dark:text-gray-400">
+                <div className="flex-1 space-y-3 sm:space-y-4 min-w-0 text-center sm:text-left xl:text-left">
+                  {/* Location and Availability - responsive layout */}
+                  <div className="flex flex-col sm:flex-row xl:flex-row items-center sm:items-start xl:items-start gap-2 sm:gap-4 xl:gap-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                     <div className="flex items-center gap-2">
-                      <MapPin className="w-3 h-3" />
+                      <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
                       <span>San Francisco, CA</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Calendar className="w-3 h-3" />
+                      <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                       <span>Available for freelance</span>
                     </div>
                   </div>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
                     I specialize in creating user-centered designs and building scalable web applications. 
                     My approach combines technical expertise with creative problem-solving to deliver 
                     products that users love and businesses need.
                   </p>
-                  {/* Buttons - hidden on mobile, shown on desktop */}
-                  <div className="hidden md:flex flex-row gap-3">
+                  {/* Buttons - responsive visibility */}
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <Button variant="outline" size="sm" className="border-gray-200 dark:border-[#2a2a2a] bg-transparent whitespace-nowrap text-xs sm:text-sm">
                       <Download className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                       Download Resume
@@ -87,17 +75,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Buttons - shown on mobile, hidden on desktop */}
-            <div className="flex flex-col gap-3 w-full md:hidden">
-              <Button variant="outline" size="sm" className="border-gray-200 dark:border-[#2a2a2a] bg-transparent whitespace-nowrap text-xs sm:text-sm w-full">
-                <Download className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                Download Resume
-              </Button>
-              <Button variant="outline" size="sm" className="border-gray-200 dark:border-[#2a2a2a] bg-transparent whitespace-nowrap text-xs sm:text-sm w-full">
-                <Mail className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                Get in touch
-              </Button>
-            </div>
           </div>
          </section>
 

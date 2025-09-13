@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { DiagonalStripes } from "@/components/diagonal-stripes"
+import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
 import { ArrowLeft, Calendar, Clock, Github, Linkedin, Twitter } from "lucide-react"
 import Link from "next/link"
 
@@ -14,8 +15,8 @@ export default function BlogPost() {
         {/* Hero Section */}
         <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-12">
           <div className="max-w-2xl">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2 drop-shadow-lg">Transitioning from Frontend to Full-Stack</h1>
-            <p className="text-xl text-gray-500 dark:text-gray-300 mb-6 leading-relaxed">
+            <TextGenerateEffectTitle text="Transitioning from Frontend to Full-Stack" />
+            <p className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
               My journey from focusing solely on frontend development to becoming a full-stack engineer. Tips and resources that helped along the way.
             </p>
             <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-6">

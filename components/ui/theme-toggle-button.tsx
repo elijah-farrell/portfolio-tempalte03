@@ -40,7 +40,7 @@ export const ThemeToggleButton = React.memo(({
   className,
   size = 'md'
 }: ThemeToggleButtonProps) => {
-  const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = useState(true) // Start as true to prevent layout shifts
   const { startTransition } = useThemeTransition()
 
   useEffect(() => {
@@ -63,20 +63,21 @@ export const ThemeToggleButton = React.memo(({
     lg: 'w-6 h-6'
   }
 
-  if (!mounted) {
-    return (
-      <button
-        className={cn(
-          "relative rounded-full bg-background hover:bg-accent transition-colors",
-          sizeClasses[size],
-          className
-        )}
-        disabled
-      >
-        <Sun className={cn("text-foreground", iconSizes[size])} />
-      </button>
-    )
-  }
+  // Always render the same button structure to prevent layout shifts
+  // if (!mounted) {
+  //   return (
+  //     <button
+  //       className={cn(
+  //         "relative rounded-full bg-background hover:bg-accent transition-colors",
+  //         sizeClasses[size],
+  //         className
+  //       )}
+  //       disabled
+  //     >
+  //       <Sun className={cn("text-foreground", iconSizes[size])} />
+  //     </button>
+  //   )
+  // }
 
   return (
     <button
@@ -89,6 +90,7 @@ export const ThemeToggleButton = React.memo(({
       style={{
         viewTransitionName: `theme-toggle-${variant}-${start}`
       }}
+      data-theme-toggle="true"
     >
       <div className="relative w-full h-full flex items-center justify-center">
         <Sun 

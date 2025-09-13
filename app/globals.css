@@ -3,6 +3,33 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Ensure navbar items are always visible */
+nav, [data-navbar], .nav-container {
+  visibility: visible !important;
+}
+
+/* Ensure navbar content is always visible even when background is transparent */
+.nav-container span,
+.nav-container a,
+.nav-container button {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Ensure theme toggle button is stable and doesn't shift */
+[data-theme-toggle], .theme-toggle-button, button[style*="viewTransitionName"] {
+  position: relative !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Ensure navbar flex container is stable */
+.flex.items-center.ml-auto.gap-1,
+.flex.items-center.gap-1.mr-4 {
+  position: relative !important;
+  transform: none !important;
+}
+
 /* View Transitions API styles for theme toggle */
 ::view-transition-old(root),
 ::view-transition-new(root) {

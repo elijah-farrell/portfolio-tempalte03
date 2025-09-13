@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TestimonialsDemo } from "@/components/testimonials-demo"
 import { BlogSection } from "@/components/blog-section"
+import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
 import { ExternalLink, Mail, Github, Linkedin, Twitter } from "lucide-react"
 import { Card as HeroCard, CardHeader, CardFooter, Button as HeroButton } from "@heroui/react"
 import Image from "next/image"
@@ -20,8 +21,8 @@ export default function Portfolio() {
         {/* Hero Section */}
         <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-12">
           <div className="max-w-2xl">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2 drop-shadow-lg">John Doe Smith</h1>
-            <p className="text-xl text-gray-500 dark:text-gray-300 mb-6 leading-relaxed">
+            <TextGenerateEffectTitle text="John Doe Smith" />
+            <p className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
               I'm a product designer and frontend engineer focused on creating beautiful, functional experiences that
               solve real problems for people.
             </p>

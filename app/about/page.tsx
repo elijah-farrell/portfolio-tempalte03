@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { DiagonalStripes } from "@/components/diagonal-stripes"
+import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
 import { Mail, Github, Linkedin, Twitter, Download, MapPin, Calendar, Code, Palette, Users } from "lucide-react"
 import Image from "next/image"
 import { DraggableCardDemo } from "@/components/draggable-card-demo"
@@ -17,8 +18,8 @@ export default function AboutPage() {
          {/* Hero Section */}
          <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-4">
           <div className="max-w-2xl mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2 drop-shadow-lg">About Me</h1>
-            <p className="text-xl text-black dark:text-gray-300 mb-6 leading-relaxed">
+            <TextGenerateEffectTitle text="About Me" />
+            <p className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
               I'm a passionate product designer and frontend engineer with over 5 years of experience creating beautiful, functional experiences that solve real problems for people.
             </p>
           </div>

@@ -56,13 +56,13 @@ export const Navbar = React.memo(({ children, className }: NavbarProps) => {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const [visible, setVisible] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(false); // Start as false for transparency at top
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 50) {
       setVisible(true);
     } else {
-      setVisible(false);
+      setVisible(false); // Transparent at top of page
     }
   });
 
@@ -70,7 +70,7 @@ export const Navbar = React.memo(({ children, className }: NavbarProps) => {
     <motion.div
       ref={ref}
       className={cn("fixed inset-x-0 z-[60] w-full px-0 bg-transparent", className)}
-      style={{ position: 'fixed' }}
+      style={{ position: 'fixed', visibility: 'visible' }}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -106,7 +106,7 @@ export const NavBody = React.memo(({ children, className, visible }: NavBodyProp
           visible ? "bg-white/90 dark:bg-[#171717]/90 border border-white/20 dark:border-[#2a2a2a]/20" : "bg-transparent",
         )}
       />
-      {/* Content container with original layout */}
+      {/* Content container with original layout - always visible */}
       <div className={cn(
         "relative z-10 flex w-full flex-row items-center justify-between",
         className,
@@ -122,13 +122,13 @@ NavBody.displayName = 'NavBody';
 export const NavItems = React.memo(({ items, className, onItemClick, scrollToSection }: NavItemsProps) => {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(true); // Start as true to prevent hydration issues
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const handleMouseEnter = (index: number) => {
-    if (!mounted) return;
+    // Remove mounted check to ensure navbar is always interactive
     
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
@@ -142,7 +142,7 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
   };
 
   const handleMouseLeave = () => {
-    if (!mounted) return;
+    // Remove mounted check to ensure navbar is always interactive
     
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
@@ -154,7 +154,7 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
 
   // Better hover detection for development mode
   const detectCurrentHover = () => {
-    if (!containerRef.current || !mounted) return;
+    if (!containerRef.current) return;
     
     // Use mouse position to detect which item should be hovered
     const handleMouseMove = (e: MouseEvent) => {
@@ -222,19 +222,20 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
     // This will trigger a re-render to update the hover background position
   }, [hoveredIndex]);
 
-  if (!mounted) {
-    return (
-      <div className={cn(
-        "flex flex-row items-center text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 relative h-10 nav-container group opacity-0",
-        className,
-      )}>
-        {/* Placeholder content */}
-        {items.map((_, idx) => (
-          <div key={idx} className="h-full px-0" />
-        ))}
-      </div>
-    );
-  }
+  // Always render the navbar items to prevent hydration issues
+  // if (!mounted) {
+  //   return (
+  //     <div className={cn(
+  //       "flex flex-row items-center text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 relative h-10 nav-container group opacity-0",
+  //       className,
+  //     )}>
+  //       {/* Placeholder content */}
+  //       {items.map((_, idx) => (
+  //         <div key={idx} className="h-full px-0" />
+  //       ))}
+  //     </div>
+  //   );
+  // }
 
   // Calculate hover background position and size based on actual item dimensions
   const getHoverStyle = () => {

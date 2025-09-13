@@ -30,7 +30,7 @@ const DarkModeToggle = React.memo(() => {
       onClick={mounted ? handleThemeChange : () => {}}
       variant="circle-blur"
       start="top-right"
-      className="bg-transparent hover:bg-gray-100 dark:hover:bg-neutral-800 border-none p-2"
+      className="bg-transparent hover:bg-gray-100 dark:hover:bg-neutral-800 border-none"
     />
   )
 })

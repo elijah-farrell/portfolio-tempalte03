@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
+import BlurText from "@/components/ui/blur-text"
 import { Mail, Github, Linkedin, Twitter, Download, MapPin, Calendar, Code, Palette, Users } from "lucide-react"
 import Image from "next/image"
 import { DraggableCardDemo } from "@/components/draggable-card-demo"
@@ -19,9 +20,13 @@ export default function AboutPage() {
          <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-4">
           <div className="max-w-2xl mb-8">
             <TextGenerateEffectTitle text="About Me" />
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              I'm a passionate product designer and frontend engineer with over 5 years of experience creating beautiful, functional experiences that solve real problems for people.
-            </p>
+            <BlurText
+              text="I'm a passionate product designer and frontend engineer with over 5 years of experience creating beautiful, functional experiences that solve real problems for people."
+              className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed"
+              direction="bottom"
+              animateBy="letters"
+              delay={25}
+            />
           </div>
 
           {/* Basic Info with Profile Picture */}

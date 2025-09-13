@@ -7,7 +7,7 @@ export const TextGenerateEffectTitle = ({
   text,
   className = "text-4xl font-bold text-gray-900 dark:text-white mb-2 drop-shadow-lg",
   filter = true,
-  duration = 0.8,
+  duration = 0.4,
 }: {
   text: string;
   className?: string;

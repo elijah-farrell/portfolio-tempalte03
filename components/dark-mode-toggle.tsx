@@ -6,8 +6,8 @@ import { ThemeToggleButton, useThemeTransition } from "@/components/ui/theme-tog
 
 const DarkModeToggle = React.memo(() => {
   const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(true) // Start as true to prevent shifting
   const { startTransition } = useThemeTransition()
+  const [mounted, setMounted] = React.useState(false)
 
   // Prevent hydration mismatch by only rendering after mount
   React.useEffect(() => {
@@ -16,22 +16,21 @@ const DarkModeToggle = React.memo(() => {
 
   const handleThemeChange = React.useCallback(() => {
     const newTheme = theme === "light" ? "dark" : "light"
+    
     startTransition(() => {
       setTheme(newTheme)
     })
   }, [theme, setTheme, startTransition])
 
-  // Always render the same button structure to prevent layout shifts
   const currentTheme = mounted && theme ? (theme === "light" ? "light" : "dark") : "light"
 
   return (
     <ThemeToggleButton
       theme={currentTheme}
       onClick={mounted ? handleThemeChange : () => {}}
-      size="sm"
-      variant="circle"
+      variant="circle-blur"
       start="top-right"
-      className="bg-transparent hover:bg-gray-100 dark:hover:bg-neutral-800"
+      className="bg-transparent hover:bg-gray-100 dark:hover:bg-neutral-800 border-none p-2"
     />
   )
 })

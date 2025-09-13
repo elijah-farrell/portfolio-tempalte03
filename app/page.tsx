@@ -7,6 +7,7 @@ import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TestimonialsDemo } from "@/components/testimonials-demo"
 import { BlogSection } from "@/components/blog-section"
 import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
+import BlurText from "@/components/ui/blur-text"
 import { ExternalLink, Mail, Github, Linkedin, Twitter } from "lucide-react"
 import { Card as HeroCard, CardHeader, CardFooter, Button as HeroButton } from "@heroui/react"
 import Image from "next/image"
@@ -22,10 +23,13 @@ export default function Portfolio() {
         <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-12">
           <div className="max-w-2xl">
             <TextGenerateEffectTitle text="John Doe Smith" />
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              I'm a product designer and frontend engineer focused on creating beautiful, functional experiences that
-              solve real problems for people.
-            </p>
+            <BlurText
+              text="I'm a product designer and frontend engineer focused on creating beautiful, functional experiences that solve real problems for people."
+              className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed"
+              direction="bottom"
+              animateBy="letters"
+              delay={25}
+            />
           </div>
 
           {/* Project Cards - 3 Columns on Desktop, 1 on Mobile */}
@@ -40,6 +44,7 @@ export default function Portfolio() {
                 fill
                 className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
                 src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
             </HeroCard>
@@ -54,6 +59,7 @@ export default function Portfolio() {
                 fill
                 className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
                 src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
             </HeroCard>

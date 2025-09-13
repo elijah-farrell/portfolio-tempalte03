@@ -323,3 +323,72 @@ nav, [data-navbar], .nav-container {
 .dark .blog-box:hover {
   box-shadow: 0 10px 25px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
+
+/* Diagonal Stripes - Theme-aware styling */
+.diagonal-stripes-left,
+.diagonal-stripes-right {
+  border-left-color: #f5f5f5;
+  border-right-color: #f5f5f5;
+  background-image: linear-gradient(45deg, #f5f5f5 10%, #ffffff 10%, #ffffff 50%, #f5f5f5 50%, #f5f5f5 60%, #ffffff 60%, #ffffff 100%);
+  background-size: 9.90px 9.90px;
+  transition: border-color 0.3s ease, background-image 0.3s ease;
+}
+
+.dark .diagonal-stripes-left,
+.dark .diagonal-stripes-right {
+  border-left-color: #2a2a2a;
+  border-right-color: #2a2a2a;
+  background-image: linear-gradient(45deg, #2a2a2a 10%, #171717 10%, #171717 50%, #2a2a2a 50%, #2a2a2a 60%, #171717 60%, #171717 100%);
+}
+
+/* Classic Theme Toggle Symbol Styling */
+.theme-toggle-classic {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--foreground);
+  transition: color 0.2s ease;
+  padding: 0.25rem;
+}
+
+.theme-toggle-classic:hover {
+  color: var(--foreground);
+  background: var(--accent);
+  border-radius: 0.375rem;
+}
+
+.theme-toggle-classic svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle__classic {
+  transition: all 0.3s ease;
+}
+
+/* View Transitions API for cinematic theme switching */
+@supports (view-transition-name: root) {
+  ::view-transition-old(root) { 
+    animation: none;
+  }
+  ::view-transition-new(root) {
+    animation: circle-blur-expand-top-right 0.5s ease-out;
+    transform-origin: top right;
+    filter: blur(0);
+  }
+  
+  @keyframes circle-blur-expand-top-right {
+    from {
+      clip-path: circle(0% at 100% 0%);
+      filter: blur(4px);
+    }
+    to {
+      clip-path: circle(150% at 100% 0%);
+      filter: blur(0);
+    }
+  }
+}

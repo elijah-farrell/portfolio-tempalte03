@@ -2,6 +2,7 @@
 
 import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
+import BlurText from "@/components/ui/blur-text"
 import { Card as HeroCard, CardHeader } from "@heroui/react"
 import { Github, Linkedin, Twitter } from "lucide-react"
 import Image from "next/image"
@@ -17,9 +18,13 @@ export default function Projects() {
         <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-12">
           <div className="max-w-2xl mb-8">
             <TextGenerateEffectTitle text="Projects" />
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              I'm a passionate software engineer dedicated to crafting elegant solutions for complex problems. With expertise in full-stack development, I enjoy building user-centric applications that make a difference.
-            </p>
+            <BlurText
+              text="I'm a passionate software engineer dedicated to crafting elegant solutions for complex problems. With expertise in full-stack development, I enjoy building user-centric applications that make a difference."
+              className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed"
+              direction="bottom"
+              animateBy="letters"
+              delay={25}
+            />
           </div>
 
           {/* Project Cards - 3 Columns on Desktop, 1 on Mobile */}

@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
+import BlurText from "@/components/ui/blur-text"
 import { ArrowRight, Calendar, Clock, Github, Linkedin, Twitter } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
@@ -80,9 +81,13 @@ export default function BlogPage() {
         <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-12">
           <div className="max-w-2xl">
             <TextGenerateEffectTitle text="Blog" />
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              Thoughts on design, development, and the intersection of technology and creativity.
-            </p>
+            <BlurText
+              text="Thoughts on design, development, and the intersection of technology and creativity."
+              className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed"
+              direction="bottom"
+              animateBy="letters"
+              delay={25}
+            />
           </div>
         </section>
 

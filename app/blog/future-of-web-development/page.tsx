@@ -3,22 +3,27 @@
 import { Button } from "@/components/ui/button"
 import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
+import BlurText from "@/components/ui/blur-text"
 import { ArrowLeft, Calendar, Clock, Github, Linkedin, Twitter } from "lucide-react"
 import Link from "next/link"
 
 export default function BlogPost() {
   return (
     <div className="min-h-screen bg-[#f5f5f5] dark:bg-[#0A0A0A] transition-colors border-none">
-      <div className="border-gray-200 dark:border-[#2a2a2a] min-h-screen max-w-5xl mx-auto bg-white dark:bg-[#171717] shadow-sm border-r-[15px] border-l-[15px] md:border-r-[30px] md:border-l-[30px] relative" style={{ position: 'relative' }}>
+      <div className="border-gray-200 dark:border-[#2a2a2a] min-h-screen max-w-4xl mx-auto bg-white dark:bg-[#171717] shadow-sm border-r-[19px] border-l-[19px] md:border-r-[31px] md:border-l-[31px] relative" style={{ position: 'relative' }}>
         <DiagonalStripes />
 
         {/* Hero Section */}
-        <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-12">
+        <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-8">
           <div className="max-w-2xl">
             <TextGenerateEffectTitle text="The Future of Web Development" />
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              Exploring emerging technologies and trends that will shape the next decade of web development. From AI integration to WebAssembly and beyond.
-            </p>
+            <BlurText
+              text="Exploring emerging technologies and trends that will shape the next decade of web development. From AI integration to WebAssembly and beyond."
+              className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed"
+              direction="bottom"
+              animateBy="letters"
+              delay={25}
+            />
             <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-6">
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
@@ -34,16 +39,18 @@ export default function BlogPost() {
         </section>
 
         {/* Hero Image */}
-        <section className="max-w-4xl mx-auto px-6 mb-12">
-          <img 
-            src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-            alt="Future of web development technology" 
-            className="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg"
-          />
+        <section className="max-w-4xl mx-auto px-6 mb-8">
+          <div className="flex justify-start">
+            <img 
+              src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+              alt="Future of web development technology" 
+              className="w-full max-w-3xl h-64 md:h-80 object-cover rounded-lg shadow-lg"
+            />
+          </div>
         </section>
 
         {/* Article Content */}
-        <article className="max-w-3xl mx-auto px-6 pb-12">
+        <article className="max-w-4xl mx-auto px-6 pb-12">
           <div className="prose prose-lg dark:prose-invert max-w-none">
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
               The web development landscape is evolving at an unprecedented pace. As we look toward the next decade, several technologies and trends are emerging that will fundamentally change how we build and interact with web applications.

@@ -83,14 +83,16 @@ export const ThemeToggleButton = React.memo(({
     <button
       onClick={handleClick}
       className={cn(
-        "relative rounded-full bg-background hover:bg-accent transition-colors overflow-hidden",
-        sizeClasses[size],
+        "theme-toggle-classic",
         className
       )}
       style={{
         viewTransitionName: `theme-toggle-${variant}-${start}`
       }}
       data-theme-toggle="true"
+      data-theme={theme}
+      title="Toggle theme"
+      aria-label="Toggle theme"
     >
       <div className="relative w-full h-full flex items-center justify-center">
         <Sun 

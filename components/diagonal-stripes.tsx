@@ -13,9 +13,9 @@ export function DiagonalStripes() {
     setMounted(true)
   }, [])
 
-  if (!mounted) {
-    return null
-  }
+  // Use CSS custom properties to prevent flash
+  // Always render with CSS variables that will be updated by the theme
+  const displayTheme = mounted ? currentTheme : 'light'
   
   // Colors - white stripes with gray borders
   const lightBackColor = '#ffffff'
@@ -23,8 +23,8 @@ export function DiagonalStripes() {
   const darkBackColor = '#ffffff'
   const darkForeColor = '#ffffff'
   
-  const backColor = currentTheme === 'dark' ? darkBackColor : lightBackColor
-  const foreColor = currentTheme === 'dark' ? darkForeColor : lightForeColor
+  const backColor = displayTheme === 'dark' ? darkBackColor : lightBackColor
+  const foreColor = displayTheme === 'dark' ? darkForeColor : lightForeColor
   
   // Create darker shade function
   const shadeColor = (color: string, percent: number) => {
@@ -45,27 +45,17 @@ export function DiagonalStripes() {
     <>
       {/* Left diagonal stripes */}
       <div 
-        className="absolute -left-[19px] md:-left-[31px] top-0 w-[19px] md:w-[31px] h-full border-l border-r overflow-hidden z-[70]"
+        className="absolute -left-[19px] md:-left-[31px] top-0 w-[19px] md:w-[31px] h-full border-l border-r overflow-hidden z-[70] diagonal-stripes-left"
         style={{
-          borderLeftColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
-          borderRightColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
-          backgroundImage: currentTheme === 'dark' 
-            ? 'linear-gradient(45deg, #2a2a2a 10%, #171717 10%, #171717 50%, #2a2a2a 50%, #2a2a2a 60%, #171717 60%, #171717 100%)'
-            : 'linear-gradient(45deg, #f5f5f5 10%, #ffffff 10%, #ffffff 50%, #f5f5f5 50%, #f5f5f5 60%, #ffffff 60%, #ffffff 100%)',
-          backgroundSize: '9.90px 9.90px'
+          willChange: 'auto'
         }}
       />
       
       {/* Right diagonal stripes */}
       <div 
-        className="absolute -right-[19px] md:-right-[31px] top-0 w-[19px] md:w-[31px] h-full border-l border-r overflow-hidden z-[70]"
+        className="absolute -right-[19px] md:-right-[31px] top-0 w-[19px] md:w-[31px] h-full border-l border-r overflow-hidden z-[70] diagonal-stripes-right"
         style={{
-          borderLeftColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
-          borderRightColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
-          backgroundImage: currentTheme === 'dark' 
-            ? 'linear-gradient(45deg, #2a2a2a 10%, #171717 10%, #171717 50%, #2a2a2a 50%, #2a2a2a 60%, #171717 60%, #171717 100%)'
-            : 'linear-gradient(45deg, #f5f5f5 10%, #ffffff 10%, #ffffff 50%, #f5f5f5 50%, #f5f5f5 60%, #ffffff 60%, #ffffff 100%)',
-          backgroundSize: '9.90px 9.90px'
+          willChange: 'auto'
         }}
       />
     </>

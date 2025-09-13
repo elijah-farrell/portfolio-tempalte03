@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
+import BlurText from "@/components/ui/blur-text"
 import { Mail, Send, Github, Linkedin, Twitter } from "lucide-react"
 import { useState } from "react"
 
@@ -41,9 +42,13 @@ export default function ContactPage() {
         <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-12">
           <div className="max-w-2xl">
             <TextGenerateEffectTitle text="Contact Me" />
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              I'm open to freelancing offers. Reach out to me to inquire more about my work.
-            </p>
+            <BlurText
+              text="I'm open to freelancing offers. Reach out to me to inquire more about my work."
+              className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed"
+              direction="bottom"
+              animateBy="letters"
+              delay={25}
+            />
           </div>
 
           <div className="max-w-2xl mx-auto">
@@ -63,7 +68,7 @@ export default function ContactPage() {
                       id="name"
                       name="name"
                       type="text"
-                      placeholder="Tyler Durden"
+                      placeholder="John Doe Smith"
                       value={formData.name}
                       onChange={handleInputChange}
                       className="border-gray-200 dark:border-[#2a2a2a] bg-white dark:bg-[#171717] text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-gray-400 dark:focus:border-gray-500"
@@ -79,7 +84,7 @@ export default function ContactPage() {
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="tyler@projectmayhem.com"
+                      placeholder="john@example.com"
                       value={formData.email}
                       onChange={handleInputChange}
                       className="border-gray-200 dark:border-[#2a2a2a] bg-white dark:bg-[#171717] text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-gray-400 dark:focus:border-gray-500"
@@ -94,7 +99,7 @@ export default function ContactPage() {
                     <Textarea
                       id="message"
                       name="message"
-                      placeholder="You're crazy good, never change."
+                      placeholder="What's on your mind?"
                       value={formData.message}
                       onChange={handleInputChange}
                       rows={6}

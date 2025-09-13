@@ -55,7 +55,6 @@ export const Navbar = React.memo(({ children, className }: NavbarProps) => {
   const { scrollY } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
-    layoutEffect: false,
   });
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -70,7 +69,7 @@ export const Navbar = React.memo(({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      className={cn("fixed inset-x-0 z-50 w-full px-0 bg-transparent", className)}
+      className={cn("fixed inset-x-0 z-[60] w-full px-0 bg-transparent", className)}
       style={{ position: 'fixed' }}
     >
       {React.Children.map(children, (child) =>
@@ -89,25 +88,32 @@ Navbar.displayName = 'Navbar';
 
 export const NavBody = React.memo(({ children, className, visible }: NavBodyProps) => {
   return (
-    <motion.div
-      animate={{
-        backdropFilter: visible ? "blur(8px)" : "none",
-        boxShadow: visible
-          ? "0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)"
-          : "none",
-      }}
-      transition={{
-        duration: 0.2,
-        ease: "easeOut",
-      }}
-      className={cn(
-        "relative z-10 mx-auto hidden md:flex w-full max-w-4xl flex-row items-center justify-between px-12 py-3 rounded-full overflow-hidden",
-        visible ? "bg-white/90 dark:bg-[#171717]/90 border border-white/20 dark:border-[#2a2a2a]/20" : "bg-transparent",
+    <div className="relative z-10 mx-auto hidden md:flex w-full max-w-4xl px-12 py-3">
+      {/* Background container constrained to inner content area */}
+      <motion.div
+        animate={{
+          backdropFilter: visible ? "blur(8px)" : "none",
+          boxShadow: visible
+            ? "0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)"
+            : "none",
+        }}
+        transition={{
+          duration: 0.2,
+          ease: "easeOut",
+        }}
+        className={cn(
+          "absolute left-8 right-8 top-0 bottom-0 rounded-full overflow-hidden",
+          visible ? "bg-white/90 dark:bg-[#171717]/90 border border-white/20 dark:border-[#2a2a2a]/20" : "bg-transparent",
+        )}
+      />
+      {/* Content container with original layout */}
+      <div className={cn(
+        "relative z-10 flex w-full flex-row items-center justify-between",
         className,
-      )}
-    >
-      {children}
-    </motion.div>
+      )}>
+        {children}
+      </div>
+    </div>
   );
 });
 
@@ -289,7 +295,7 @@ export const NavItems = React.memo(({ items, className, onItemClick, scrollToSec
       {items.map((item, idx) => (
         <div 
           key={`nav-item-${idx}`} 
-          ref={(el) => (itemRefs.current[idx] = el)}
+          ref={(el) => { itemRefs.current[idx] = el; }}
           className="relative flex justify-center items-center h-full group/nav-item px-0"
           style={{
             '--item-index': idx,

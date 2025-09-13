@@ -29,6 +29,7 @@ const DarkModeToggle = React.memo(() => {
         size="sm"
         variant="circle"
         start="top-right"
+        className="bg-transparent hover:bg-gray-100 dark:hover:bg-neutral-800"
       />
     )
   }
@@ -42,6 +43,7 @@ const DarkModeToggle = React.memo(() => {
       size="sm"
       variant="circle"
       start="top-right"
+      className="bg-transparent hover:bg-gray-100 dark:hover:bg-neutral-800"
     />
   )
 })

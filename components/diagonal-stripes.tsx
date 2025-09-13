@@ -6,34 +6,12 @@ import { useEffect, useState } from "react"
 export function DiagonalStripes() {
   const { theme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
 
   const currentTheme = resolvedTheme || theme
 
   useEffect(() => {
     setMounted(true)
-    
-    const handleScroll = () => {
-      const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      const progress = Math.min(scrollTop / docHeight, 1)
-      setScrollProgress(progress)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  // Force re-render when theme changes to prevent pattern breaking
-  useEffect(() => {
-    if (mounted) {
-      // Small delay to ensure theme has fully applied
-      const timer = setTimeout(() => {
-        setScrollProgress(prev => prev) // Trigger re-render
-      }, 50)
-      return () => clearTimeout(timer)
-    }
-  }, [currentTheme, mounted])
 
   if (!mounted) {
     return null
@@ -65,55 +43,31 @@ export function DiagonalStripes() {
   
   return (
     <>
-      {/* Left diagonal stripes with scroll animation */}
+      {/* Left diagonal stripes */}
       <div 
-        className="absolute -left-[19px] md:-left-[31px] top-0 w-[19px] md:w-[31px] h-full border-l border-r shadow-sm overflow-hidden z-50"
+        className="absolute -left-[19px] md:-left-[31px] top-0 w-[19px] md:w-[31px] h-full border-l border-r overflow-hidden z-[70]"
         style={{
           borderLeftColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
           borderRightColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
-          boxShadow: currentTheme === 'dark' 
-            ? 'inset 1px 0 0 rgba(42, 42, 42, 0.3), inset -1px 0 0 rgba(42, 42, 42, 0.3)'
-            : 'inset 1px 0 0 rgba(229, 231, 235, 0.3), inset -1px 0 0 rgba(229, 231, 235, 0.3)',
           backgroundImage: currentTheme === 'dark' 
-            ? 'linear-gradient(45deg, #2a2a2a 7.14%, #171717 7.14%, #171717 50%, #2a2a2a 50%, #2a2a2a 57.14%, #171717 57.14%, #171717 100%)'
-            : 'linear-gradient(45deg, #f5f5f5 7.14%, #ffffff 7.14%, #ffffff 50%, #f5f5f5 50%, #f5f5f5 57.14%, #ffffff 57.14%, #ffffff 100%)',
+            ? 'linear-gradient(45deg, #2a2a2a 10%, #171717 10%, #171717 50%, #2a2a2a 50%, #2a2a2a 60%, #171717 60%, #171717 100%)'
+            : 'linear-gradient(45deg, #f5f5f5 10%, #ffffff 10%, #ffffff 50%, #f5f5f5 50%, #f5f5f5 60%, #ffffff 60%, #ffffff 100%)',
           backgroundSize: '9.90px 9.90px'
         }}
-      >
-        {/* Animated progress overlay */}
-        <div 
-          className="absolute top-0 left-0 w-full transition-all duration-300 ease-out"
-          style={{
-            height: `${scrollProgress * 100}%`,
-            backgroundColor: currentTheme === 'dark' ? 'rgba(42, 42, 42, 0.2)' : 'rgba(229, 231, 235, 0.2)'
-          }}
-        />
-      </div>
+      />
       
-      {/* Right diagonal stripes with scroll animation */}
+      {/* Right diagonal stripes */}
       <div 
-        className="absolute -right-[19px] md:-right-[31px] top-0 w-[19px] md:w-[31px] h-full border-l border-r shadow-sm overflow-hidden z-50"
+        className="absolute -right-[19px] md:-right-[31px] top-0 w-[19px] md:w-[31px] h-full border-l border-r overflow-hidden z-[70]"
         style={{
           borderLeftColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
           borderRightColor: currentTheme === 'dark' ? '#2a2a2a' : '#f5f5f5',
-          boxShadow: currentTheme === 'dark' 
-            ? 'inset 1px 0 0 rgba(42, 42, 42, 0.3), inset -1px 0 0 rgba(42, 42, 42, 0.3)'
-            : 'inset 1px 0 0 rgba(229, 231, 235, 0.3), inset -1px 0 0 rgba(229, 231, 235, 0.3)',
           backgroundImage: currentTheme === 'dark' 
-            ? 'linear-gradient(45deg, #2a2a2a 7.14%, #171717 7.14%, #171717 50%, #2a2a2a 50%, #2a2a2a 57.14%, #171717 57.14%, #171717 100%)'
-            : 'linear-gradient(45deg, #f5f5f5 7.14%, #ffffff 7.14%, #ffffff 50%, #f5f5f5 50%, #f5f5f5 57.14%, #ffffff 57.14%, #ffffff 100%)',
+            ? 'linear-gradient(45deg, #2a2a2a 10%, #171717 10%, #171717 50%, #2a2a2a 50%, #2a2a2a 60%, #171717 60%, #171717 100%)'
+            : 'linear-gradient(45deg, #f5f5f5 10%, #ffffff 10%, #ffffff 50%, #f5f5f5 50%, #f5f5f5 60%, #ffffff 60%, #ffffff 100%)',
           backgroundSize: '9.90px 9.90px'
         }}
-      >
-        {/* Animated progress overlay */}
-        <div 
-          className="absolute top-0 left-0 w-full transition-all duration-300 ease-out"
-          style={{
-            height: `${scrollProgress * 100}%`,
-            backgroundColor: currentTheme === 'dark' ? 'rgba(42, 42, 42, 0.2)' : 'rgba(229, 231, 235, 0.2)'
-          }}
-        />
-      </div>
+      />
     </>
   )
 }

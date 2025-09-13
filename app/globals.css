@@ -183,6 +183,12 @@
     overflow-x: hidden;
   }
   
+  /* Outer background area - covers navbar shadow but allows navbar to be visible */
+  .outer-background {
+    position: relative;
+    z-index: 55;
+  }
+  
   /* Fallback to dark mode when no system preference is available */
   :root:not(.light):not(.dark) {
     color-scheme: dark;

@@ -24,7 +24,22 @@ export default function BlogPost() {
               animateBy="letters"
               delay={25}
             />
-            <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-6">
+          </div>
+          
+          {/* Full width border line */}
+          <div className="border-b border-gray-100 dark:border-[#2a2a2a] mb-6 -mx-6"></div>
+        </section>
+
+        {/* Hero Image */}
+        <section className="max-w-4xl mx-auto px-6 mb-8 -mt-6">
+          <div className="max-w-3xl mx-auto px-4 relative">
+            <img 
+              src="https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+              alt="Development workflow setup" 
+              className="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg"
+            />
+            {/* Date and time overlay */}
+            <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm text-white text-sm px-3 py-2 rounded-lg flex items-center gap-3">
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
                 <span>Aug 5, 2025</span>
@@ -35,23 +50,11 @@ export default function BlogPost() {
               </div>
             </div>
           </div>
-          
-        </section>
-
-        {/* Hero Image */}
-        <section className="max-w-4xl mx-auto px-6 mb-8">
-          <div className="flex justify-start">
-            <img 
-              src="https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-              alt="Development workflow setup" 
-              className="w-full max-w-3xl h-64 md:h-80 object-cover rounded-lg shadow-lg"
-            />
-          </div>
         </section>
 
         {/* Article Content */}
         <article className="max-w-4xl mx-auto px-6 pb-12">
-          <div className="prose prose-lg dark:prose-invert max-w-none">
+          <div className="max-w-2xl mx-auto px-8">
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
               A well-configured development environment can make the difference between productive coding sessions and frustrating debugging marathons. After years of tweaking my setup, I've found a combination of tools and configurations that work seamlessly together.
             </p>

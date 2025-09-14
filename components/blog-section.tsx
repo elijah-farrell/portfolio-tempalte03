@@ -7,8 +7,8 @@ import { Calendar, Clock, ArrowRight } from "lucide-react";
 
 export function BlogSection() {
   return (
-    <section className="max-w-4xl mx-auto px-6 py-16 border-t border-border bg-background dark:bg-[#171717]">
-      <h2 className="text-2xl font-bold text-foreground mb-12">Latest Thoughts</h2>
+    <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Latest Thoughts</h2>
       <div className="grid gap-6 md:grid-cols-2">
         {/* Featured Blog Post */}
         <Card className="group cursor-pointer blog-box">

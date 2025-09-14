@@ -26,6 +26,9 @@ export default function Projects() {
               delay={25}
             />
           </div>
+          
+          {/* Full width border line */}
+          <div className="border-b border-gray-100 dark:border-[#2a2a2a] mb-6 -mx-6"></div>
 
           {/* Project Cards - 3 Columns on Desktop, 1 on Mobile */}
           <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-3 mb-8">

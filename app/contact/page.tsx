@@ -50,6 +50,9 @@ export default function ContactPage() {
               delay={25}
             />
           </div>
+          
+          {/* Full width border line */}
+          <div className="border-b border-gray-100 dark:border-[#2a2a2a] mb-6 -mx-6"></div>
 
           <div className="max-w-2xl mx-auto">
             <Card className="border-gray-200 dark:border-[#2a2a2a] bg-white dark:bg-[#171717] shadow-sm">

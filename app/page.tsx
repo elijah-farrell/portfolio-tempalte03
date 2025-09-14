@@ -85,8 +85,8 @@ export default function Portfolio() {
         </section>
 
         {/* Experience Section */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-8 sm:mb-12">Experience</h2>
+        <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Experience</h2>
           <div className="space-y-8 sm:space-y-12">
             {/* Google */}
             <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
@@ -286,7 +286,7 @@ export default function Portfolio() {
         <BlogSection />
 
         {/* Testimonials Section */}
-        <section className="py-8 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+        <section className="py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
           <div className="max-w-4xl mx-auto px-6">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">People love my work</h2>
           </div>

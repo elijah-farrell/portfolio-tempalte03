@@ -28,6 +28,9 @@ export default function AboutPage() {
               delay={25}
             />
           </div>
+          
+          {/* Full width border line */}
+          <div className="border-b border-gray-100 dark:border-[#2a2a2a] mb-6 -mx-6"></div>
 
           {/* Basic Info with Profile Picture */}
           <div className="flex flex-col xl:flex-row gap-6 xl:gap-8 items-start mb-12">
@@ -375,10 +378,6 @@ export default function AboutPage() {
               <Button variant="outline" size="sm" className="border-gray-200 dark:border-[#2a2a2a] bg-transparent">
                 <Mail className="w-4 h-4 mr-2" />
                 Send Message
-              </Button>
-              <Button variant="outline" size="sm" className="border-gray-200 dark:border-[#2a2a2a] bg-transparent">
-                <Download className="w-4 h-4 mr-2" />
-                Download Resume
               </Button>
             </div>
           </div>

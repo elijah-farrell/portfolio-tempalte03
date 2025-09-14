@@ -8,7 +8,7 @@ import { TestimonialsDemo } from "@/components/testimonials-demo"
 import { BlogSection } from "@/components/blog-section"
 import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
 import BlurText from "@/components/ui/blur-text"
-import { ExternalLink, Mail, Github, Linkedin, Twitter } from "lucide-react"
+import { Mail, Github, Linkedin, Twitter } from "lucide-react"
 import { Card as HeroCard, CardHeader, CardFooter, Button as HeroButton } from "@heroui/react"
 import Image from "next/image"
 
@@ -20,8 +20,8 @@ export default function Portfolio() {
         <DiagonalStripes />
 
         {/* Hero Section */}
-        <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20 pb-12">
-          <div className="max-w-2xl">
+        <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-20">
+          <div className="max-w-2xl mb-8">
             <TextGenerateEffectTitle text="John Doe Smith" />
             <BlurText
               text="I'm a product designer and frontend engineer focused on creating beautiful, functional experiences that solve real problems for people."
@@ -31,9 +31,12 @@ export default function Portfolio() {
               delay={25}
             />
           </div>
+        </section>
 
+        {/* Project Cards Section */}
+        <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] py-12 border-t border-gray-100 dark:border-[#2a2a2a]">
           {/* Project Cards - 3 Columns on Desktop, 1 on Mobile */}
-          <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-3 mb-8">
+          <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-3 items-center">
             <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
@@ -79,22 +82,6 @@ export default function Portfolio() {
             </HeroCard>
           </div>
 
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-4">
-              <Button variant="outline" size="sm" className="border-gray-200 dark:border-[#2a2a2a] bg-transparent">
-                <Mail className="w-4 h-4 mr-2" />
-                Get in touch
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
-              >
-                <ExternalLink className="w-4 h-4 mr-2" />
-                View resume
-              </Button>
-            </div>
-          </div>
         </section>
 
         {/* Experience Section */}

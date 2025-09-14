@@ -30,10 +30,14 @@ export default function Projects() {
           {/* Full width border line */}
           <div className="border-b border-gray-100 dark:border-[#2a2a2a] mb-6 -mx-6"></div>
 
+          {/* Spacer to center projects between border lines */}
+          <div className="mb-12"></div>
+
           {/* Project Cards - 3 Columns on Desktop, 1 on Mobile */}
-          <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-3 mb-8">
+          <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-3">
             {/* Project 1 */}
-            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+            <a href="#" className="block">
+              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
                 <h4 className="text-white font-semibold text-xl">Modern Dashboard</h4>
@@ -46,10 +50,12 @@ export default function Projects() {
                 src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
-            </HeroCard>
+              </HeroCard>
+            </a>
             
             {/* Project 2 */}
-            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+            <a href="#" className="block">
+              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
                 <h4 className="text-white font-semibold text-xl">iOS Interface</h4>
@@ -62,10 +68,12 @@ export default function Projects() {
                 src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
-            </HeroCard>
+              </HeroCard>
+            </a>
             
             {/* Project 3 */}
-            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+            <a href="#" className="block">
+              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
                 <h4 className="text-white font-semibold text-xl">Portfolio Site</h4>
@@ -78,10 +86,12 @@ export default function Projects() {
                 src="/portfolio.png"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
-            </HeroCard>
+              </HeroCard>
+            </a>
 
             {/* Project 4 */}
-            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+            <a href="#" className="block">
+              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">E-commerce</p>
                 <h4 className="text-white font-semibold text-xl">Online Store</h4>
@@ -94,10 +104,12 @@ export default function Projects() {
                 src="https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
-            </HeroCard>
+              </HeroCard>
+            </a>
 
             {/* Project 5 */}
-            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+            <a href="#" className="block">
+              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">SaaS</p>
                 <h4 className="text-white font-semibold text-xl">Analytics Tool</h4>
@@ -110,10 +122,12 @@ export default function Projects() {
                 src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
-            </HeroCard>
+              </HeroCard>
+            </a>
 
             {/* Project 6 */}
-            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+            <a href="#" className="block">
+              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
                 <h4 className="text-white font-semibold text-xl">Fitness Tracker</h4>
@@ -126,10 +140,12 @@ export default function Projects() {
                 src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
-            </HeroCard>
+              </HeroCard>
+            </a>
 
             {/* Project 7 */}
-            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+            <a href="#" className="block">
+              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider drop-shadow-lg">Web App</p>
                 <h4 className="text-white font-semibold text-xl drop-shadow-lg">Clean Design</h4>
@@ -142,10 +158,12 @@ export default function Projects() {
                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop&ixlib=rb-4.0.3"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-5" />
-            </HeroCard>
+              </HeroCard>
+            </a>
 
             {/* Project 8 */}
-            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+            <a href="#" className="block">
+              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web App</p>
                 <h4 className="text-white font-semibold text-xl">Task Manager</h4>
@@ -158,10 +176,12 @@ export default function Projects() {
                 src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
-            </HeroCard>
+              </HeroCard>
+            </a>
 
             {/* Project 9 */}
-            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+            <a href="#" className="block">
+              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
                 <h4 className="text-white font-semibold text-xl">Social Media</h4>
@@ -174,7 +194,8 @@ export default function Projects() {
                 src="https://images.unsplash.com/photo-1611605698335-8b1569810432?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
-            </HeroCard>
+              </HeroCard>
+            </a>
           </div>
         </section>
 

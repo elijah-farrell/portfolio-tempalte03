@@ -32,8 +32,11 @@ export default function AboutPage() {
           {/* Full width border line */}
           <div className="border-b border-gray-100 dark:border-[#2a2a2a] mb-6 -mx-6"></div>
 
+          {/* Spacer to center profile content between border lines */}
+          <div className="mb-10"></div>
+
           {/* Basic Info with Profile Picture */}
-          <div className="flex flex-col xl:flex-row gap-6 xl:gap-8 items-start mb-12">
+          <div className="flex flex-col xl:flex-row gap-6 xl:gap-8 items-start mb-6">
             {/* Profile Picture and Content */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 xl:gap-8 w-full xl:w-auto">
               {/* Image and Description */}
@@ -98,44 +101,44 @@ export default function AboutPage() {
           
           <div className="space-y-8">
             {/* Bachelor's Degree */}
-            <div className="flex gap-6">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6">
               <div className="flex-1">
-                <h3 className="text-lg font-semibold text-black dark:text-white mb-2">Bachelor of Science in Computer Science</h3>
-                <p className="text-sm text-black dark:text-gray-300 mb-3">
-                  University of California, Berkeley • Graduated Magna Cum Laude
+                <h3 className="text-base md:text-lg font-semibold text-black dark:text-white mb-2">Bachelor of Science in Computer Science</h3>
+                <p className="text-sm text-black dark:text-gray-300 mb-1">
+                  University of California, Berkeley
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  Graduated Magna Cum Laude • 2018 - 2022
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                   Focused on software engineering, algorithms, and human-computer interaction. 
                   Completed senior capstone project developing a web-based collaboration platform.
                 </p>
               </div>
-              <div className="flex-shrink-0 w-20 text-right">
-                <div className="mb-4">
-                  <span className="text-sm text-black dark:text-white">2018 - 2022</span>
-                </div>
-                <div className="w-12 h-12 rounded-full overflow-hidden mx-auto mt-8">
+              <div className="hidden md:flex flex-shrink-0 w-24 text-right">
+                <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mt-8">
                   <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=400&h=400&auto=format&fit=crop&ixlib=rb-4.0.3" alt="UC Berkeley Campus" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
 
             {/* Associate's Degree */}
-            <div className="flex gap-6">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6">
               <div className="flex-1">
-                <h3 className="text-lg font-semibold text-black dark:text-white mb-2">Associate of Science in Computer Science</h3>
-                <p className="text-sm text-black dark:text-gray-300 mb-3">
-                  San Francisco City College • Dean's List
+                <h3 className="text-base md:text-lg font-semibold text-black dark:text-white mb-2">Associate of Science in Computer Science</h3>
+                <p className="text-sm text-black dark:text-gray-300 mb-1">
+                  San Francisco City College
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  Dean's List • 2016 - 2018
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                   Foundation in programming fundamentals, mathematics, and computer systems. 
                   Served as president of the Computer Science Club.
                 </p>
               </div>
-              <div className="flex-shrink-0 w-20 text-right">
-                <div className="mb-4">
-                  <span className="text-sm text-black dark:text-white">2016 - 2018</span>
-                </div>
-                <div className="w-12 h-12 rounded-full overflow-hidden mx-auto mt-8">
+              <div className="hidden md:flex flex-shrink-0 w-24 text-right">
+                <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mt-8">
                   <img src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1" alt="San Francisco City College Campus" className="w-full h-full object-cover" />
                 </div>
               </div>

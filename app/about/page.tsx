@@ -43,14 +43,13 @@ export default function AboutPage() {
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 xl:gap-8 items-start sm:items-center xl:items-center">
                 {/* Profile Picture */}
                 <div className="flex-shrink-0 mx-auto sm:mx-0 xl:mx-0">
-                  <div className="w-24 h-32 sm:w-20 sm:h-28 md:w-24 md:h-32 xl:w-28 xl:h-40 rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+                  <div className="w-32 h-40 md:w-36 md:h-44 xl:w-40 xl:h-48 rounded-2xl overflow-hidden">
                     <Image
                       src="/pfp.jpg"
                       alt="Profile picture"
-                      width={160}
-                      height={160}
+                      width={200}
+                      height={200}
                       className="w-full h-full object-cover"
-                      style={{ width: "auto", height: "auto" }}
                     />
                   </div>
                 </div>

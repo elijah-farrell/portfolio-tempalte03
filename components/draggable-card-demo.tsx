@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   DraggableCardBody,
   DraggableCardContainer,
@@ -6,6 +6,41 @@ import {
 import Carousel from "@/components/ui/carousel";
 
 export function DraggableCardDemo() {
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(new Array(5).fill(false));
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observers = cardRefs.current.map((ref, index) => {
+      if (!ref) return null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Add staggered delay based on card index
+              setTimeout(() => {
+                setVisibleCards(prev => {
+                  const newVisible = [...prev];
+                  newVisible[index] = true;
+                  return newVisible;
+                });
+              }, index * 150) // 150ms delay between each card
+              observer.unobserve(ref);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
+
+      observer.observe(ref);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach(observer => observer?.disconnect());
+    };
+  }, []);
+
   const slideData = [
     {
       title: "Japan",
@@ -32,7 +67,14 @@ export function DraggableCardDemo() {
   return (
     <>
       {/* Mobile Carousel - visible under 768px */}
-      <div className="block md:hidden">
+      <div 
+        ref={(el) => { cardRefs.current[4] = el }}
+        className={`block md:hidden transition-all duration-700 ease-out ${
+          visibleCards[4]
+            ? 'opacity-100 transform translate-y-0'
+            : 'opacity-0 transform translate-y-12'
+        }`}
+      >
         <Carousel slides={slideData} />
       </div>
 
@@ -40,7 +82,15 @@ export function DraggableCardDemo() {
       <DraggableCardContainer className="hidden md:flex relative w-full items-center justify-center overflow-clip py-8 md:py-16">
       <div className="grid grid-cols-2 gap-2 sm:gap-4 md:gap-8 p-2 sm:p-4 md:p-8 max-w-5xl mx-auto">
         {/* Japan Card */}
-        <DraggableCardBody className="rotate-[-2deg] w-48 h-auto sm:w-64 sm:h-auto md:w-80 md:h-auto p-2 sm:p-4 md:p-6 min-h-0">
+        <div
+          ref={(el) => { cardRefs.current[0] = el }}
+          className={`transition-all duration-700 ease-out ${
+            visibleCards[0]
+              ? 'opacity-100 transform translate-y-0'
+              : 'opacity-0 transform translate-y-12'
+          }`}
+        >
+          <DraggableCardBody className="rotate-[-2deg] w-48 h-auto sm:w-64 sm:h-auto md:w-80 md:h-auto p-2 sm:p-4 md:p-6 min-h-0">
           <img
             src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Japan"
@@ -49,10 +99,19 @@ export function DraggableCardDemo() {
           <h3 className="mt-2 sm:mt-4 text-center text-lg sm:text-xl md:text-2xl font-bold text-neutral-700 dark:text-neutral-300">
             Japan
           </h3>
-        </DraggableCardBody>
+          </DraggableCardBody>
+        </div>
 
         {/* Canada Card */}
-        <DraggableCardBody className="rotate-[3deg] w-48 h-auto sm:w-64 sm:h-auto md:w-80 md:h-auto p-2 sm:p-4 md:p-6 min-h-0">
+        <div
+          ref={(el) => { cardRefs.current[1] = el }}
+          className={`transition-all duration-700 ease-out ${
+            visibleCards[1]
+              ? 'opacity-100 transform translate-y-0'
+              : 'opacity-0 transform translate-y-12'
+          }`}
+        >
+          <DraggableCardBody className="rotate-[3deg] w-48 h-auto sm:w-64 sm:h-auto md:w-80 md:h-auto p-2 sm:p-4 md:p-6 min-h-0">
           <img
             src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2667&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Canada"
@@ -61,10 +120,19 @@ export function DraggableCardDemo() {
           <h3 className="mt-2 sm:mt-4 text-center text-lg sm:text-xl md:text-2xl font-bold text-neutral-700 dark:text-neutral-300">
             Canada
           </h3>
-        </DraggableCardBody>
+          </DraggableCardBody>
+        </div>
 
         {/* Mexico Card */}
-        <DraggableCardBody className="rotate-[1deg] w-48 h-auto sm:w-64 sm:h-auto md:w-80 md:h-auto p-2 sm:p-4 md:p-6 min-h-0">
+        <div
+          ref={(el) => { cardRefs.current[2] = el }}
+          className={`transition-all duration-700 ease-out ${
+            visibleCards[2]
+              ? 'opacity-100 transform translate-y-0'
+              : 'opacity-0 transform translate-y-12'
+          }`}
+        >
+          <DraggableCardBody className="rotate-[1deg] w-48 h-auto sm:w-64 sm:h-auto md:w-80 md:h-auto p-2 sm:p-4 md:p-6 min-h-0">
         <img
           src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400"
           alt="Mexico"
@@ -73,10 +141,19 @@ export function DraggableCardDemo() {
           <h3 className="mt-2 sm:mt-4 text-center text-lg sm:text-xl md:text-2xl font-bold text-neutral-700 dark:text-neutral-300">
             Mexico
           </h3>
-        </DraggableCardBody>
+          </DraggableCardBody>
+        </div>
 
         {/* Concert Card */}
-        <DraggableCardBody className="rotate-[-3deg] w-48 h-auto sm:w-64 sm:h-auto md:w-80 md:h-auto p-2 sm:p-4 md:p-6 min-h-0">
+        <div
+          ref={(el) => { cardRefs.current[3] = el }}
+          className={`transition-all duration-700 ease-out ${
+            visibleCards[3]
+              ? 'opacity-100 transform translate-y-0'
+              : 'opacity-0 transform translate-y-12'
+          }`}
+        >
+          <DraggableCardBody className="rotate-[-3deg] w-48 h-auto sm:w-64 sm:h-auto md:w-80 md:h-auto p-2 sm:p-4 md:p-6 min-h-0">
         <img
           src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=3648&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Concert"
@@ -85,7 +162,8 @@ export function DraggableCardDemo() {
           <h3 className="mt-2 sm:mt-4 text-center text-lg sm:text-xl md:text-2xl font-bold text-neutral-700 dark:text-neutral-300">
             Concert
           </h3>
-        </DraggableCardBody>
+          </DraggableCardBody>
+        </div>
       </div>
 
     </DraggableCardContainer>

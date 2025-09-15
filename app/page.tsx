@@ -11,8 +11,43 @@ import BlurText from "@/components/ui/blur-text"
 import { Mail, Github, Linkedin, Twitter } from "lucide-react"
 import { Card as HeroCard, CardHeader, CardFooter, Button as HeroButton } from "@heroui/react"
 import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
 
 export default function Portfolio() {
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(new Array(3).fill(false))
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    const observers = cardRefs.current.map((ref, index) => {
+      if (!ref) return null
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Add staggered delay based on card index
+              setTimeout(() => {
+                setVisibleCards(prev => {
+                  const newVisible = [...prev]
+                  newVisible[index] = true
+                  return newVisible
+                })
+              }, index * 100) // 100ms delay between each card
+              observer.unobserve(ref)
+            }
+          })
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      )
+
+      observer.observe(ref)
+      return observer
+    })
+
+    return () => {
+      observers.forEach(observer => observer?.disconnect())
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-[#f5f5f5] dark:bg-[#0A0A0A] transition-colors border-none outer-background">
@@ -37,49 +72,76 @@ export default function Portfolio() {
         <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] py-12 border-t border-gray-100 dark:border-[#2a2a2a]">
           {/* Project Cards - 3 Columns on Desktop, 1 on Mobile */}
           <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-3 items-center">
-            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
-              <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
-                <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
-                <h4 className="text-white font-semibold text-xl">Modern Dashboard</h4>
-              </CardHeader>
-              <Image
-                alt="Modern dashboard design"
-                fill
-                className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
-                src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
-            </HeroCard>
+            <div 
+              ref={(el) => { cardRefs.current[0] = el }}
+              className={`transition-all duration-500 ease-out ${
+                visibleCards[0] 
+                  ? 'opacity-100 transform translate-y-0' 
+                  : 'opacity-0 transform translate-y-8'
+              }`}
+            >
+              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+                <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
+                  <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
+                  <h4 className="text-white font-semibold text-xl">Modern Dashboard</h4>
+                </CardHeader>
+                <Image
+                  alt="Modern dashboard design"
+                  fill
+                  className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
+                  src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+              </HeroCard>
+            </div>
             
-            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
-              <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
-                <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
-                <h4 className="text-white font-semibold text-xl">iOS Interface</h4>
-              </CardHeader>
-              <Image
-                alt="Mobile app interface"
-                fill
-                className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
-                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
-            </HeroCard>
+            <div 
+              ref={(el) => { cardRefs.current[1] = el }}
+              className={`transition-all duration-500 ease-out ${
+                visibleCards[1] 
+                  ? 'opacity-100 transform translate-y-0' 
+                  : 'opacity-0 transform translate-y-8'
+              }`}
+            >
+              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+                <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
+                  <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
+                  <h4 className="text-white font-semibold text-xl">iOS Interface</h4>
+                </CardHeader>
+                <Image
+                  alt="Mobile app interface"
+                  fill
+                  className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
+                  src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+              </HeroCard>
+            </div>
             
-            <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
-              <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
-                <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
-                <h4 className="text-white font-semibold text-xl">Portfolio Site</h4>
-              </CardHeader>
-              <Image
-                alt="Portfolio website"
-                fill
-                className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
-                src="/portfolio.png"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
-            </HeroCard>
+            <div 
+              ref={(el) => { cardRefs.current[2] = el }}
+              className={`transition-all duration-500 ease-out ${
+                visibleCards[2] 
+                  ? 'opacity-100 transform translate-y-0' 
+                  : 'opacity-0 transform translate-y-8'
+              }`}
+            >
+              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+                <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
+                  <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
+                  <h4 className="text-white font-semibold text-xl">Portfolio Site</h4>
+                </CardHeader>
+                <Image
+                  alt="Portfolio website"
+                  fill
+                  className="z-0 object-cover group-hover:scale-105 transition-transform duration-500"
+                  src="/portfolio.png"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+              </HeroCard>
+            </div>
           </div>
 
         </section>

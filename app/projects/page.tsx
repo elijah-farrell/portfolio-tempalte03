@@ -6,8 +6,43 @@ import BlurText from "@/components/ui/blur-text"
 import { Card as HeroCard, CardHeader } from "@heroui/react"
 import { Github, Linkedin, Twitter } from "lucide-react"
 import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
 
 export default function Projects() {
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(new Array(9).fill(false))
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    const observers = cardRefs.current.map((ref, index) => {
+      if (!ref) return null
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Add staggered delay based on card index
+              setTimeout(() => {
+                setVisibleCards(prev => {
+                  const newVisible = [...prev]
+                  newVisible[index] = true
+                  return newVisible
+                })
+              }, index * 100) // 100ms delay between each card
+              observer.unobserve(ref)
+            }
+          })
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      )
+
+      observer.observe(ref)
+      return observer
+    })
+
+    return () => {
+      observers.forEach(observer => observer?.disconnect())
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-[#f5f5f5] dark:bg-[#0A0A0A] transition-colors border-none outer-background">
@@ -37,7 +72,15 @@ export default function Projects() {
           <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-3">
             {/* Project 1 */}
             <a href="#" className="block">
-              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+              <div 
+                ref={(el) => { cardRefs.current[0] = el }}
+                className={`transition-all duration-500 ease-out ${
+                  visibleCards[0] 
+                    ? 'opacity-100 transform translate-y-0' 
+                    : 'opacity-0 transform translate-y-8'
+                }`}
+              >
+                <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
                 <h4 className="text-white font-semibold text-xl">Modern Dashboard</h4>
@@ -51,11 +94,20 @@ export default function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
               </HeroCard>
+              </div>
             </a>
             
             {/* Project 2 */}
             <a href="#" className="block">
-              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+              <div 
+                ref={(el) => { cardRefs.current[1] = el }}
+                className={`transition-all duration-800 ease-out ${
+                  visibleCards[1] 
+                    ? 'opacity-100 transform translate-y-0' 
+                    : 'opacity-0 transform translate-y-8'
+                }`}
+              >
+                <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
                 <h4 className="text-white font-semibold text-xl">iOS Interface</h4>
@@ -69,11 +121,20 @@ export default function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
               </HeroCard>
+              </div>
             </a>
             
             {/* Project 3 */}
             <a href="#" className="block">
-              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+              <div 
+                ref={(el) => { cardRefs.current[2] = el }}
+                className={`transition-all duration-800 ease-out ${
+                  visibleCards[2] 
+                    ? 'opacity-100 transform translate-y-0' 
+                    : 'opacity-0 transform translate-y-8'
+                }`}
+              >
+                <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
                 <h4 className="text-white font-semibold text-xl">Portfolio Site</h4>
@@ -87,11 +148,20 @@ export default function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
               </HeroCard>
+              </div>
             </a>
 
             {/* Project 4 */}
             <a href="#" className="block">
-              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+              <div 
+                ref={(el) => { cardRefs.current[3] = el }}
+                className={`transition-all duration-800 ease-out ${
+                  visibleCards[3] 
+                    ? 'opacity-100 transform translate-y-0' 
+                    : 'opacity-0 transform translate-y-8'
+                }`}
+              >
+                <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">E-commerce</p>
                 <h4 className="text-white font-semibold text-xl">Online Store</h4>
@@ -105,11 +175,20 @@ export default function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
               </HeroCard>
+              </div>
             </a>
 
             {/* Project 5 */}
             <a href="#" className="block">
-              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+              <div 
+                ref={(el) => { cardRefs.current[4] = el }}
+                className={`transition-all duration-800 ease-out ${
+                  visibleCards[4] 
+                    ? 'opacity-100 transform translate-y-0' 
+                    : 'opacity-0 transform translate-y-8'
+                }`}
+              >
+                <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">SaaS</p>
                 <h4 className="text-white font-semibold text-xl">Analytics Tool</h4>
@@ -123,11 +202,20 @@ export default function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
               </HeroCard>
+              </div>
             </a>
 
             {/* Project 6 */}
             <a href="#" className="block">
-              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+              <div 
+                ref={(el) => { cardRefs.current[5] = el }}
+                className={`transition-all duration-800 ease-out ${
+                  visibleCards[5] 
+                    ? 'opacity-100 transform translate-y-0' 
+                    : 'opacity-0 transform translate-y-8'
+                }`}
+              >
+                <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
                 <h4 className="text-white font-semibold text-xl">Fitness Tracker</h4>
@@ -141,11 +229,20 @@ export default function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
               </HeroCard>
+              </div>
             </a>
 
             {/* Project 7 */}
             <a href="#" className="block">
-              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+              <div 
+                ref={(el) => { cardRefs.current[6] = el }}
+                className={`transition-all duration-800 ease-out ${
+                  visibleCards[6] 
+                    ? 'opacity-100 transform translate-y-0' 
+                    : 'opacity-0 transform translate-y-8'
+                }`}
+              >
+                <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider drop-shadow-lg">Web App</p>
                 <h4 className="text-white font-semibold text-xl drop-shadow-lg">Clean Design</h4>
@@ -159,11 +256,20 @@ export default function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-5" />
               </HeroCard>
+              </div>
             </a>
 
             {/* Project 8 */}
             <a href="#" className="block">
-              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+              <div 
+                ref={(el) => { cardRefs.current[7] = el }}
+                className={`transition-all duration-800 ease-out ${
+                  visibleCards[7] 
+                    ? 'opacity-100 transform translate-y-0' 
+                    : 'opacity-0 transform translate-y-8'
+                }`}
+              >
+                <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web App</p>
                 <h4 className="text-white font-semibold text-xl">Task Manager</h4>
@@ -177,11 +283,20 @@ export default function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
               </HeroCard>
+              </div>
             </a>
 
             {/* Project 9 */}
             <a href="#" className="block">
-              <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
+              <div 
+                ref={(el) => { cardRefs.current[8] = el }}
+                className={`transition-all duration-800 ease-out ${
+                  visibleCards[8] 
+                    ? 'opacity-100 transform translate-y-0' 
+                    : 'opacity-0 transform translate-y-8'
+                }`}
+              >
+                <HeroCard className="col-span-1 h-[380px] group cursor-pointer relative overflow-hidden">
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
                 <h4 className="text-white font-semibold text-xl">Social Media</h4>
@@ -195,6 +310,7 @@ export default function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
               </HeroCard>
+              </div>
             </a>
           </div>
         </section>

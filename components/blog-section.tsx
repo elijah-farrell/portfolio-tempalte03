@@ -3,13 +3,14 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 
 export function BlogSection() {
   return (
-    <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Latest Thoughts</h2>
-      <div className="grid gap-6 md:grid-cols-2">
+    <section className="max-w-4xl mx-auto px-6 pt-8 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+      <TextGenerateEffect words="Latest Thoughts" asHeading={true} staggerDelay={0.15} />
+      <div className="grid gap-6 md:grid-cols-2 mb-10">
         {/* Featured Blog Post */}
         <Card className="group cursor-pointer blog-box">
           <CardContent className="p-5">
@@ -112,7 +113,7 @@ export function BlogSection() {
       </div>
 
       {/* View All Posts Button */}
-      <div className="text-center mt-12">
+      <div className="text-center mt-10 mb-10">
         <button className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 mx-auto">
           View all posts
           <ArrowRight className="w-4 h-4" />

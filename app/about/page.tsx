@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect"
 import BlurText from "@/components/ui/blur-text"
 import { Mail, Github, Linkedin, Twitter, Download, MapPin, Calendar, Code, Palette, Users } from "lucide-react"
 import Image from "next/image"
@@ -33,7 +34,9 @@ export default function AboutPage() {
           <div className="border-b border-gray-100 dark:border-[#2a2a2a] mb-6 -mx-6"></div>
 
           {/* Spacer to center profile content between border lines */}
-          <div className="mb-10"></div>
+          <div className="mb-6"></div>
+
+          <TextGenerateEffect words="Who I Am" asHeading={true} staggerDelay={0.15} />
 
           {/* Basic Info with Profile Picture */}
           <div className="flex flex-col xl:flex-row gap-6 xl:gap-8 items-start mb-6">
@@ -92,12 +95,13 @@ export default function AboutPage() {
 
          {/* Draggable Cards Section */}
          <section className="max-w-4xl mx-auto px-6 py-20 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+           <TextGenerateEffect words="Moments" asHeading={true} staggerDelay={0.15} />
            <DraggableCardDemo />
          </section>
 
          {/* Education Section */}
         <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Education</h2>
+          <TextGenerateEffect words="Education" asHeading={true} staggerDelay={0.15} />
           
           <div className="space-y-8">
             {/* Bachelor's Degree */}
@@ -243,7 +247,7 @@ export default function AboutPage() {
 
         {/* Skills Section */}
         <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Skills & Expertise</h2>
+          <TextGenerateEffect words="Skills & Expertise" asHeading={true} staggerDelay={0.15} />
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Design Skills */}
@@ -343,7 +347,7 @@ export default function AboutPage() {
 
         {/* Personal Interests */}
         <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Beyond Work</h2>
+          <TextGenerateEffect words="Beyond Work" asHeading={true} staggerDelay={0.15} />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card className="border-gray-200 dark:border-[#2a2a2a] bg-white dark:bg-[#171717] shadow-sm">
@@ -373,7 +377,7 @@ export default function AboutPage() {
         {/* Contact CTA */}
         <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Let's Work Together</h2>
+            <TextGenerateEffect words="Let's Work Together" asHeading={true} staggerDelay={0.15} className="mb-4" />
             <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
               I'm always interested in new opportunities and collaborations. Whether you have a project in mind or just want to chat about design and development, I'd love to hear from you.
             </p>

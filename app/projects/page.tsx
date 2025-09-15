@@ -2,6 +2,7 @@
 
 import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect"
 import BlurText from "@/components/ui/blur-text"
 import { Card as HeroCard, CardHeader } from "@heroui/react"
 import { Github, Linkedin, Twitter } from "lucide-react"
@@ -66,8 +67,9 @@ export default function Projects() {
           <div className="border-b border-gray-100 dark:border-[#2a2a2a] mb-6 -mx-6"></div>
 
           {/* Spacer to center projects between border lines */}
-          <div className="mb-12"></div>
+          <div className="mb-6"></div>
 
+          <TextGenerateEffect words="Stuff I Made" asHeading={true} staggerDelay={0.15} />
           {/* Project Cards - 3 Columns on Desktop, 1 on Mobile */}
           <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-3">
             {/* Project 1 */}

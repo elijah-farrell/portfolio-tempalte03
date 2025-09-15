@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { motion, stagger, useAnimate } from "framer-motion";
+import { motion, stagger, useAnimate } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const TextGenerateEffect = ({
@@ -8,11 +8,15 @@ export const TextGenerateEffect = ({
   className,
   filter = true,
   duration = 0.5,
+  staggerDelay = 0.1,
+  asHeading = false,
 }: {
   words: string;
   className?: string;
   filter?: boolean;
   duration?: number;
+  staggerDelay?: number;
+  asHeading?: boolean;
 }) => {
   const [scope, animate] = useAnimate();
   let wordsArray = words.split(" ");
@@ -25,7 +29,7 @@ export const TextGenerateEffect = ({
       },
       {
         duration: duration ? duration : 1,
-        delay: stagger(0.2),
+        delay: stagger(staggerDelay),
       }
     );
   }, [scope.current]);
@@ -49,6 +53,14 @@ export const TextGenerateEffect = ({
       </motion.div>
     );
   };
+
+  if (asHeading) {
+    return (
+      <h2 className={cn("text-2xl font-bold text-gray-900 dark:text-white mb-8", className)}>
+        {renderWords()}
+      </h2>
+    );
+  }
 
   return (
     <div className={cn("font-bold", className)}>

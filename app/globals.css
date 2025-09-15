@@ -4,7 +4,16 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-satoshi: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Satoshi Font Optimization */
+.font-satoshi {
+  font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Ensure navbar items are always visible */
@@ -226,7 +235,7 @@ nav, [data-navbar], .nav-container {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground font-satoshi;
   }
   html, body {
     overflow-x: hidden;

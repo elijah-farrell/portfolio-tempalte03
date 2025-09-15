@@ -7,6 +7,7 @@ import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TestimonialsDemo } from "@/components/testimonials-demo"
 import { BlogSection } from "@/components/blog-section"
 import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect"
 import BlurText from "@/components/ui/blur-text"
 import { Mail, Github, Linkedin, Twitter } from "lucide-react"
 import { Card as HeroCard, CardHeader, CardFooter, Button as HeroButton } from "@heroui/react"
@@ -69,9 +70,10 @@ export default function Portfolio() {
         </section>
 
         {/* Project Cards Section */}
-        <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] py-12 border-t border-gray-100 dark:border-[#2a2a2a]">
+        <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717] pt-8 border-t border-gray-100 dark:border-[#2a2a2a]">
+          <TextGenerateEffect words="Stuff I Made" asHeading={true} staggerDelay={0.15} />
           {/* Project Cards - 3 Columns on Desktop, 1 on Mobile */}
-          <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-3 items-center">
+          <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-3 items-center mb-10">
             <div 
               ref={(el) => { cardRefs.current[0] = el }}
               className={`transition-all duration-500 ease-out ${
@@ -147,9 +149,9 @@ export default function Portfolio() {
         </section>
 
         {/* Experience Section */}
-        <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Experience</h2>
-          <div className="space-y-8 sm:space-y-12">
+        <section className="max-w-4xl mx-auto px-6 pt-8 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+          <TextGenerateEffect words="Experience" asHeading={true} staggerDelay={0.15} />
+          <div className="space-y-8 sm:space-y-12 mb-10">
             {/* Google */}
             <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
               <div className="flex-1 order-2 sm:order-1">
@@ -348,9 +350,9 @@ export default function Portfolio() {
         <BlogSection />
 
         {/* Testimonials Section */}
-        <section className="py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">People love my work</h2>
+        <section className="pt-8 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+          <div className="max-w-4xl mx-auto px-6 mb-4">
+            <TextGenerateEffect words="People love my work" asHeading={true} staggerDelay={0.15} className="mb-0" />
           </div>
           <div className="w-full">
             <TestimonialsDemo />
@@ -358,9 +360,9 @@ export default function Portfolio() {
         </section>
 
         {/* Contact Section */}
-        <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+        <section className="max-w-4xl mx-auto px-6 bg-white dark:bg-[#171717]">
+          <div className="max-w-xl mx-auto text-center mb-10">
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 leading-relaxed">
               Want to work together on your next project? Whether you need a consultation or want to say hi, I'd love to
               hear from you.
             </p>

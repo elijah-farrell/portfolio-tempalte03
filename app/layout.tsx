@@ -1,15 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { PortfolioNavbar } from "@/components/portfolio-navbar"
 import "./globals.css"
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-})
 
 export const metadata: Metadata = {
   title: "Minimal Portfolio Website Template",
@@ -31,8 +24,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
-      <body suppressHydrationWarning className="font-inter">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.bunny.net" />
+        <link href="https://fonts.bunny.net/css?family=satoshi:300,400,500,600,700" rel="stylesheet" />
+      </head>
+      <body suppressHydrationWarning className="font-satoshi">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <PortfolioNavbar />
           {children}

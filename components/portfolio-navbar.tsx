@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, memo, useCallback } from "react";
+import React, { useState, memo, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { 
@@ -18,6 +18,7 @@ import { useStableNavbar } from "@/hooks/use-stable-navbar";
 const PortfolioNavbar = memo(() => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { navItems, handleNavClick } = useStableNavbar();
+  const navbarRef = useRef<HTMLDivElement>(null);
 
   const handleMobileMenuToggle = useCallback(() => {
     setMobileMenuOpen(prev => !prev);
@@ -28,7 +29,7 @@ const PortfolioNavbar = memo(() => {
   }, []);
 
   return (
-    <Navbar>
+    <Navbar ref={navbarRef} className="relative">
       {/* Desktop Navbar */}
       <NavBody>
         <div className="flex items-center w-full">

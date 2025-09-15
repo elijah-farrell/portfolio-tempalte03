@@ -50,6 +50,7 @@ export default function AboutPage() {
                       width={160}
                       height={160}
                       className="w-full h-full object-cover"
+                      style={{ width: "auto", height: "auto" }}
                     />
                   </div>
                 </div>

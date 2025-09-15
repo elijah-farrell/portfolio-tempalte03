@@ -11,6 +11,7 @@ import { DarkModeToggle } from "@/components/dark-mode-toggle";
 interface NavbarProps {
   children: React.ReactNode;
   className?: string;
+  ref?: React.Ref<HTMLDivElement>;
 }
 
 interface NavBodyProps {
@@ -50,12 +51,10 @@ interface MobileNavMenuProps {
   onClose: () => void;
 }
 
-export const Navbar = React.memo(({ children, className }: NavbarProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
+export const Navbar = React.memo(({ children, className, ref: externalRef }: NavbarProps) => {
+  const internalRef = useRef<HTMLDivElement>(null);
+  const ref = (externalRef as React.RefObject<HTMLDivElement>) || internalRef;
+  const { scrollY } = useScroll();
   const [visible, setVisible] = useState<boolean>(false); // Start as false for transparency at top
 
   useMotionValueEvent(scrollY, "change", (latest) => {

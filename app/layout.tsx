@@ -28,9 +28,24 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.bunny.net" />
         <link href="https://fonts.bunny.net/css?family=satoshi:300,400,500,600,700" rel="stylesheet" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark')
+                } else {
+                  document.documentElement.classList.remove('dark')
+                }
+              } catch (_) {
+                document.documentElement.classList.add('dark')
+              }
+            `,
+          }}
+        />
       </head>
       <body suppressHydrationWarning className="font-satoshi">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <PortfolioNavbar />
           {children}
         </ThemeProvider>

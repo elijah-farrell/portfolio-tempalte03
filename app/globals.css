@@ -36,6 +36,17 @@ nav, [data-navbar], .nav-container {
   transition: none !important;
 }
 
+/* Prevent theme flash during initial load */
+html {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+/* Simple theme toggle styling */
+
 /* Ensure navbar flex container is stable */
 .flex.items-center.ml-auto.gap-1,
 .flex.items-center.gap-1.mr-4 {

@@ -10,6 +10,9 @@ import BlurText from "@/components/ui/blur-text"
 import { Mail, Github, Linkedin, Twitter, Download, MapPin, Calendar, Code, Palette, Users } from "lucide-react"
 import Image from "next/image"
 import { DraggableCardDemo } from "@/components/draggable-card-demo"
+import LogoLoop from "@/components/ui/logo-loop"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiPython, SiAmazon, SiFigma, SiAdobephotoshop, SiAdobexd, SiGit, SiDocker, SiPostgresql, SiMongodb, SiFirebase, SiVercel, SiNetlify } from "react-icons/si"
 
 export default function AboutPage() {
   return (
@@ -31,10 +34,7 @@ export default function AboutPage() {
           </div>
           
           {/* Full width border line */}
-          <div className="border-b border-gray-100 dark:border-[#2a2a2a] mb-6 -mx-6"></div>
-
-          {/* Spacer to center profile content between border lines */}
-          <div className="mb-6"></div>
+          <div className="border-b border-gray-100 dark:border-[#2a2a2a] mb-8 -mx-6"></div>
 
           <TextGenerateEffect words="Who I Am" asHeading={true} staggerDelay={0.15} />
 
@@ -94,14 +94,14 @@ export default function AboutPage() {
          </section>
 
          {/* Draggable Cards Section */}
-         <section className="max-w-4xl mx-auto px-6 py-20 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+         <section className="max-w-4xl mx-auto px-6 pt-8 pb-20 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
            <TextGenerateEffect words="Moments" asHeading={true} staggerDelay={0.15} />
            <DraggableCardDemo />
          </section>
 
          {/* Education Section */}
-        <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <TextGenerateEffect words="Education" asHeading={true} staggerDelay={0.15} />
+        <section className="max-w-4xl mx-auto px-6 pb-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+          <TextGenerateEffect words="Education" asHeading={true} staggerDelay={0.15} className="mt-8" />
           
           <div className="space-y-8">
             {/* Bachelor's Degree */}
@@ -151,8 +151,8 @@ export default function AboutPage() {
         </section>
 
         {/* Experience Timeline */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-8 sm:mb-12">Professional Journey</h2>
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-12 sm:pb-16 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+          <TextGenerateEffect words="Professional Journey" asHeading={true} staggerDelay={0.15} className="mb-8 sm:mb-12" />
           
           <div className="space-y-8 sm:space-y-12">
             {/* Google */}
@@ -168,13 +168,13 @@ export default function AboutPage() {
                   Leading frontend development for Google Cloud Platform's web console, focusing on performance optimization and user experience improvements.
                 </p>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20">
                     React
                   </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20">
                     TypeScript
                   </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20">
                     Performance Optimization
                   </Badge>
                 </div>
@@ -197,13 +197,13 @@ export default function AboutPage() {
                   Developed and maintained Azure web applications, contributing to engineering tools and platform scalability.
                 </p>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20">
                     C#
                   </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20">
                     Azure
                   </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20">
                     React
                   </Badge>
                 </div>
@@ -226,13 +226,13 @@ export default function AboutPage() {
                   Implemented user-facing features for Airbnb's booking platform, focusing on responsive design and accessibility.
                 </p>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20">
                     JavaScript
                   </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20">
                     React
                   </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
+                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20">
                     CSS
                   </Badge>
                 </div>
@@ -246,107 +246,149 @@ export default function AboutPage() {
         </section>
 
         {/* Skills Section */}
-        <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+        <section className="max-w-4xl mx-auto px-6 pt-8 pb-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
           <TextGenerateEffect words="Skills & Expertise" asHeading={true} staggerDelay={0.15} />
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Design Skills */}
-            <Card className="border-gray-200 dark:border-[#2a2a2a] bg-white dark:bg-[#171717] shadow-sm">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white">
-                  <Palette className="w-5 h-5 text-black dark:text-white" />
-                  Design
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
-                    UI/UX Design
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
-                    Figma
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
-                    Adobe Creative Suite
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
-                    Prototyping
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
-                    Design Systems
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
-                    User Research
-                  </Badge>
+          <div className="mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Design */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                    <Palette className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Design</h3>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">UI/UX Design</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Figma</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Adobe Suite</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Prototyping</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Design Systems</span>
+                  </div>
+                </div>
+              </div>
 
-            {/* Development Skills */}
-            <Card className="border-gray-200 dark:border-[#2a2a2a] bg-white dark:bg-[#171717] shadow-sm">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white">
-                  <Code className="w-5 h-5 text-black dark:text-white" />
-                  Development
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
-                    React
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
-                    TypeScript
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
-                    Next.js
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
-                    Node.js
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
-                    Python
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300">
-                    AWS
-                  </Badge>
+              {/* Development */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                    <Code className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Development</h3>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">React</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">TypeScript</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Next.js</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Node.js</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Python</span>
+                  </div>
+                </div>
+              </div>
 
-            {/* Collaboration Skills */}
-            <Card className="border-gray-200 dark:border-[#2a2a2a] bg-white dark:bg-[#171717] shadow-sm">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white">
-                  <Users className="w-5 h-5 text-black dark:text-white" />
-                  Collaboration
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 whitespace-nowrap">
-                    Agile/Scrum
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 whitespace-nowrap">
-                    Cross-functional Teams
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 whitespace-nowrap">
-                    Mentoring
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 whitespace-nowrap">
-                    Technical Leadership
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 whitespace-nowrap">
-                    Product Strategy
-                  </Badge>
+              {/* Collaboration */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                    <Users className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Collaboration</h3>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Agile/Scrum</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Cross-functional Teams</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Mentoring</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Technical Leadership</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Product Strategy</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Brands I've Worked With */}
+        <section className="max-w-4xl mx-auto px-6 pt-8 pb-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+          <TextGenerateEffect words="Brands I've Worked With" asHeading={true} staggerDelay={0.15} />
+          
+          <div>
+            <LogoLoop
+              logos={[
+                { node: <SiReact className="text-blue-500" />, title: "React", href: "https://react.dev" },
+                { node: <SiNextdotjs className="text-black dark:text-white" />, title: "Next.js", href: "https://nextjs.org" },
+                { node: <SiTypescript className="text-blue-600" />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+                { node: <SiTailwindcss className="text-cyan-500" />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+                { node: <SiNodedotjs className="text-green-600" />, title: "Node.js", href: "https://nodejs.org" },
+                { node: <SiPython className="text-yellow-500" />, title: "Python", href: "https://python.org" },
+                { node: <SiFigma className="text-purple-500" />, title: "Figma", href: "https://figma.com" },
+                { node: <SiAdobephotoshop className="text-blue-400" />, title: "Photoshop", href: "https://adobe.com/products/photoshop" },
+                { node: <SiAdobexd className="text-pink-500" />, title: "Adobe XD", href: "https://adobe.com/products/xd" },
+                { node: <SiGit className="text-orange-600" />, title: "Git", href: "https://git-scm.com" },
+                { node: <SiDocker className="text-blue-400" />, title: "Docker", href: "https://docker.com" },
+                { node: <SiPostgresql className="text-blue-700" />, title: "PostgreSQL", href: "https://postgresql.org" },
+                { node: <SiMongodb className="text-green-600" />, title: "MongoDB", href: "https://mongodb.com" },
+                { node: <SiFirebase className="text-yellow-500" />, title: "Firebase", href: "https://firebase.google.com" },
+                { node: <SiVercel className="text-black dark:text-white" />, title: "Vercel", href: "https://vercel.com" },
+                { node: <SiNetlify className="text-green-500" />, title: "Netlify", href: "https://netlify.com" },
+              ]}
+              speed={80}
+              direction="left"
+              logoHeight={48}
+              gap={40}
+              pauseOnHover
+              scaleOnHover
+              fadeOut
+              fadeOutColor="#ffffff"
+              ariaLabel="Technologies and tools I work with"
+            />
           </div>
         </section>
 
         {/* Personal Interests */}
-        <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+        <section className="max-w-4xl mx-auto px-6 pt-8 pb-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
           <TextGenerateEffect words="Beyond Work" asHeading={true} staggerDelay={0.15} />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -375,7 +417,7 @@ export default function AboutPage() {
         </section>
 
         {/* Contact CTA */}
-        <section className="max-w-4xl mx-auto px-6 py-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+        <section className="max-w-4xl mx-auto px-6 pt-8 pb-12 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
           <div className="max-w-2xl mx-auto text-center">
             <TextGenerateEffect words="Let's Work Together" asHeading={true} staggerDelay={0.15} className="mb-4" />
             <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
@@ -391,7 +433,7 @@ export default function AboutPage() {
         </section>
 
         {/* Footer */}
-        <footer className="max-w-4xl mx-auto px-6 py-8 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
+        <footer className="max-w-4xl mx-auto px-6 pt-8 pb-8 border-t border-gray-100 dark:border-[#2a2a2a] bg-white dark:bg-[#171717]">
           <div className="flex items-center justify-between">
             <p className="text-xs text-gray-500 dark:text-gray-400">
               Built by Elijah Farrell

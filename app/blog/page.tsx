@@ -5,8 +5,9 @@ import { DiagonalStripes } from "@/components/diagonal-stripes"
 import { TextGenerateEffectTitle } from "@/components/ui/text-generate-effect-title"
 import BlurText from "@/components/ui/blur-text"
 import { ArrowRight, Calendar, Clock, Github, Linkedin, Twitter } from "lucide-react"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
+import { motion, useInView } from "framer-motion"
 
 export default function BlogPage() {
   const blogPosts = [
@@ -98,49 +99,61 @@ export default function BlogPage() {
         <section className="max-w-4xl mx-auto px-6 pb-12">
           <div className="space-y-8">
             {blogPosts.map((post, index) => (
-              <Link href={`/blog/${post.slug}`} key={post.id}>
-                <article 
-                  className="group cursor-pointer border-b border-gray-100 dark:border-[#2a2a2a] pb-8 last:border-b-0 hover:bg-gray-50/50 dark:hover:bg-[#1a1a1a]/50 transition-all duration-300 rounded-lg p-6 -m-6"
-                >
-                <div className="flex flex-col md:flex-row md:items-start gap-4">
-                  {/* Content */}
-                  <div className="flex-1">
-                    <div className="flex items-center gap-4 mb-3 text-sm text-gray-500 dark:text-gray-400">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        <span>{post.date}</span>
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.15,
+                  ease: "easeOut"
+                }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <Link href={`/blog/${post.slug}`}>
+                  <article 
+                    className="group cursor-pointer border-b border-gray-100 dark:border-[#2a2a2a] pb-8 last:border-b-0 hover:bg-gray-50/50 dark:hover:bg-[#1a1a1a]/50 transition-all duration-300 rounded-lg p-6 -m-6"
+                  >
+                  <div className="flex flex-col md:flex-row md:items-start gap-4">
+                    {/* Content */}
+                    <div className="flex-1">
+                      <div className="flex items-center gap-4 mb-3 text-sm text-gray-500 dark:text-gray-400">
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          <span>{post.date}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="w-4 h-4" />
+                          <span>{post.readTime}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
-                        <span>{post.readTime}</span>
+                      
+                      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
+                        {post.title}
+                      </h2>
+                      
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                        {post.description}
+                      </p>
+                      
+                      <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+                        <span>Read more</span>
+                        <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
                     
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
-                      {post.title}
-                    </h2>
-                    
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                      {post.description}
-                    </p>
-                    
-                    <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
-                      <span>Read more</span>
-                      <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                    {/* Visual Element */}
+                    <div className="hidden md:block w-24 h-24 rounded-lg overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                      <img 
+                        src={post.image} 
+                        alt={post.alt}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
-                  
-                  {/* Visual Element */}
-                  <div className="hidden md:block w-24 h-24 rounded-lg overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                    <img 
-                      src={post.image} 
-                      alt={post.alt}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                </article>
-              </Link>
+                  </article>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </section>

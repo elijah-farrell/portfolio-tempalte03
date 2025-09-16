@@ -39,13 +39,13 @@ export default function BlogPost() {
               className="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg"
             />
             {/* Date and time overlay */}
-            <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm text-white text-sm px-3 py-2 rounded-lg flex items-center gap-3">
+            <div className="absolute bottom-3 right-7 bg-black/70 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-lg items-center gap-1 whitespace-nowrap hidden min-[321px]:flex">
               <div className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>Jul 8, 2025</span>
               </div>
               <div className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />
+                <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>11 min read</span>
               </div>
             </div>

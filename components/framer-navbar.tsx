@@ -58,10 +58,10 @@ export const Navbar = React.memo(({ children, className, ref: externalRef }: Nav
   const [visible, setVisible] = useState<boolean>(false); // Start as false for transparency at top
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 50) {
+    if (latest > 10) {
       setVisible(true);
     } else {
-      setVisible(false); // Transparent at top of page
+      setVisible(false); // Transparent only at very top of page
     }
   });
 

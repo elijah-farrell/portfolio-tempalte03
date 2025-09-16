@@ -168,19 +168,19 @@ export default function Portfolio() {
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     React
                   </Badge>
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     TypeScript
                   </Badge>
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     Node.js
                   </Badge>
@@ -207,19 +207,19 @@ export default function Portfolio() {
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     C#
                   </Badge>
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     Azure
                   </Badge>
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     React
                   </Badge>
@@ -245,19 +245,19 @@ export default function Portfolio() {
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     JavaScript
                   </Badge>
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     React
                   </Badge>
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     CSS
                   </Badge>
@@ -283,19 +283,19 @@ export default function Portfolio() {
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     Liquid
                   </Badge>
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     JavaScript
                   </Badge>
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     Shopify
                   </Badge>
@@ -321,19 +321,19 @@ export default function Portfolio() {
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     JavaScript
                   </Badge>
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     CSS
                   </Badge>
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300"
+                    className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:text-gray-800 hover:border-gray-300 hover:shadow-md hover:shadow-gray-500/20 hover:scale-105 transition-all duration-300 ease-out border border-transparent dark:hover:bg-[#3a3a3a] dark:hover:text-gray-200 dark:hover:border-gray-600 dark:hover:shadow-gray-400/20"
                   >
                     HTML
                   </Badge>

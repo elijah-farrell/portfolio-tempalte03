@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, stagger, useAnimate } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -19,37 +19,60 @@ export const TextGenerateEffect = ({
   asHeading?: boolean;
 }) => {
   const [scope, animate] = useAnimate();
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
   let wordsArray = words.split(" ");
+  
   useEffect(() => {
-    animate(
-      "span",
-      {
-        opacity: 1,
-        filter: filter ? "blur(0px)" : "none",
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+            animate(
+              "span",
+              {
+                opacity: 1,
+                filter: filter ? "blur(0px)" : "none",
+              },
+              {
+                duration: duration ? duration : 1,
+                delay: stagger(staggerDelay),
+              }
+            );
+          }
+        });
       },
-      {
-        duration: duration ? duration : 1,
-        delay: stagger(staggerDelay),
-      }
+      { threshold: 0.1, rootMargin: '0px 0px 50px 0px' }
     );
-  }, [scope.current]);
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [hasAnimated, animate, filter, duration, staggerDelay]);
 
   const renderWords = () => {
     return (
       <motion.div ref={scope}>
-        {wordsArray.map((word, idx) => {
-          return (
-            <motion.span
-              key={word + idx}
-              className="dark:text-white text-black opacity-0"
-              style={{
-                filter: filter ? "blur(10px)" : "none",
-              }}
-            >
-              {word}{" "}
-            </motion.span>
-          );
-        })}
+        <div ref={elementRef}>
+          {wordsArray.map((word, idx) => {
+            return (
+              <motion.span
+                key={word + idx}
+                className="dark:text-white text-black opacity-0"
+                style={{
+                  filter: filter ? "blur(10px)" : "none",
+                }}
+              >
+                {word}{" "}
+              </motion.span>
+            );
+          })}
+        </div>
       </motion.div>
     );
   };

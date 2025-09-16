@@ -1,8 +1,10 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* @suppress unknownAtRules */
 @custom-variant dark (&:is(.dark *));
 
+/* @suppress unknownAtRules */
 @theme {
   --font-satoshi: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
 }
@@ -164,6 +166,7 @@ html.light {
   --sidebar-ring: oklch(0.439 0 0);
 }
 
+/* @suppress unknownAtRules */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -243,9 +246,11 @@ html.light {
 
 @layer base {
   * {
+    /* @suppress unknownAtRules */
     @apply border-border outline-ring/50;
   }
   body {
+    /* @suppress unknownAtRules */
     @apply bg-background text-foreground font-satoshi;
   }
   html, body {
@@ -305,6 +310,7 @@ html.light {
   @media (prefers-color-scheme: light) {
     :root:not(.light):not(.dark) {
       /* Light theme fallback - only applies if system prefers light */
+      color-scheme: light;
     }
   }
   

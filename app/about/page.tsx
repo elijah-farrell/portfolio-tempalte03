@@ -252,97 +252,97 @@ export default function AboutPage() {
           <div className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Design */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                    <Palette className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                  <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center">
+                    <Palette className="h-5 w-5 text-muted-foreground" />
                   </div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Design</h3>
+                  <h3 className="font-semibold text-card-foreground">Design</h3>
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">UI/UX Design</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">UI/UX Design</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Figma</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Figma</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Adobe Suite</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Adobe Suite</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Prototyping</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Prototyping</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Design Systems</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Design Systems</span>
                   </div>
                 </div>
               </div>
 
               {/* Development */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                    <Code className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                  <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center">
+                    <Code className="h-5 w-5 text-muted-foreground" />
                   </div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Development</h3>
+                  <h3 className="font-semibold text-card-foreground">Development</h3>
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">React</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">React</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">TypeScript</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">TypeScript</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Next.js</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Next.js</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Node.js</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Node.js</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Python</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Python</span>
                   </div>
                 </div>
               </div>
 
               {/* Collaboration */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-card rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                    <Users className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                  <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center">
+                    <Users className="h-5 w-5 text-muted-foreground" />
                   </div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Collaboration</h3>
+                  <h3 className="font-semibold text-card-foreground">Collaboration</h3>
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Agile/Scrum</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Agile/Scrum</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Cross-functional Teams</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Cross-functional Teams</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Mentoring</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Mentoring</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Technical Leadership</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Technical Leadership</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Product Strategy</span>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                    <span className="text-sm text-muted-foreground">Product Strategy</span>
                   </div>
                 </div>
               </div>
@@ -381,7 +381,6 @@ export default function AboutPage() {
               pauseOnHover
               scaleOnHover
               fadeOut
-              fadeOutColor="#ffffff"
               ariaLabel="Technologies and tools I work with"
             />
           </div>

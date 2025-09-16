@@ -134,7 +134,7 @@ const Carousel: React.FC<CarouselProps> = ({ slides }) => {
               key={index}
               onClick={() => handleSlideClick(index)}
               className={`w-2 h-2 rounded-full transition-colors ${
-                index === current ? "bg-gray-800" : "bg-gray-300"
+                index === current ? "bg-primary" : "bg-muted"
               }`}
             />
           ))}

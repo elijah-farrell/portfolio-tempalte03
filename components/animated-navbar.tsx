@@ -37,7 +37,7 @@ export function AnimatedNavbar() {
     >
       <div className="max-w-4xl mx-auto px-6 py-4">
         <nav className={cn(
-          "relative border border-gray-200 dark:border-[#2a2a2a] bg-white/95 dark:bg-[#171717]/95 backdrop-blur-md shadow-lg transition-all duration-500 ease-out",
+          "relative border border-gray-200 dark:border-[#2a2a2a] bg-white/98 dark:bg-[#171717]/95 backdrop-blur-md shadow-lg transition-all duration-500 ease-out",
           isScrolled 
             ? "rounded-full px-8 py-4" 
             : "rounded-lg px-2 py-4"

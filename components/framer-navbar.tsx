@@ -55,7 +55,13 @@ export const Navbar = React.memo(({ children, className, ref: externalRef }: Nav
   const internalRef = useRef<HTMLDivElement>(null);
   const ref = (externalRef as React.RefObject<HTMLDivElement>) || internalRef;
   const { scrollY } = useScroll();
-  const [visible, setVisible] = useState<boolean>(false); // Start as false for transparency at top
+  const [visible, setVisible] = useState<boolean>(true); // Start as true to show background on load
+
+  // Check initial scroll position on mount
+  useEffect(() => {
+    const initialScrollY = window.scrollY;
+    setVisible(initialScrollY > 10);
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 10) {
@@ -102,7 +108,7 @@ export const NavBody = React.memo(({ children, className, visible }: NavBodyProp
         }}
         className={cn(
           "absolute left-8 right-8 top-0 bottom-0 rounded-full overflow-hidden",
-          visible ? "bg-white/90 dark:bg-[#171717]/90 border border-white/20 dark:border-[#2a2a2a]/20" : "bg-transparent",
+          visible ? "bg-white/95 dark:bg-[#171717]/90 border border-white/30 dark:border-[#2a2a2a]/20" : "bg-transparent",
         )}
       />
       {/* Content container with original layout - always visible */}
@@ -386,7 +392,7 @@ export const MobileNav = React.memo(({ children, className, visible }: MobileNav
       }}
        className={cn(
          "relative z-10 mx-auto flex w-full max-w-4xl flex-row items-center px-4 py-3 md:hidden",
-         visible ? "bg-white/90 dark:bg-[#171717]/90 border-b border-white/20 dark:border-[#2a2a2a]/20" : "bg-transparent",
+         visible ? "bg-white/95 dark:bg-[#171717]/90 border-b border-white/30 dark:border-[#2a2a2a]/20" : "bg-transparent",
          className,
        )}
     >
@@ -442,7 +448,7 @@ export const MobileNavMenu = ({
             opacity: { duration: 0.2 }
           }}
           className={cn(
-            "absolute inset-x-0 top-0 z-20 flex w-full flex-col bg-white/95 dark:bg-[#171717]/95 backdrop-blur-sm",
+            "absolute inset-x-0 top-0 z-20 flex w-full flex-col bg-white/98 dark:bg-[#171717]/95 backdrop-blur-sm",
             className,
           )}
         >

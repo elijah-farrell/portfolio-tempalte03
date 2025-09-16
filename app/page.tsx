@@ -95,6 +95,11 @@ export default function Portfolio() {
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+                
+                {/* Description card - always visible on mobile, hover on desktop */}
+                <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 transform translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                  <p className="text-white text-sm leading-relaxed">A comprehensive admin dashboard with real-time analytics and intuitive data visualization</p>
+                </div>
               </HeroCard>
             </div>
             
@@ -119,6 +124,11 @@ export default function Portfolio() {
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+                
+                {/* Description card - always visible on mobile, hover on desktop */}
+                <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 transform translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                  <p className="text-white text-sm leading-relaxed">A sleek iOS interface design focused on user experience and accessibility</p>
+                </div>
               </HeroCard>
             </div>
             
@@ -142,6 +152,11 @@ export default function Portfolio() {
                   src="/portfolio.png"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+                
+                {/* Description card - always visible on mobile, hover on desktop */}
+                <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 transform translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                  <p className="text-white text-sm leading-relaxed">A minimalist portfolio showcasing creative work with smooth animations</p>
+                </div>
               </HeroCard>
             </div>
           </div>

@@ -86,7 +86,7 @@ export default function Projects() {
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
                 <h4 className="text-white font-semibold text-xl">Modern Dashboard</h4>
-                <p className="text-white/70 text-sm">Modern dashboard design</p>
+                <p className="text-white/70 text-sm md:hidden">Modern dashboard design</p>
               </CardHeader>
               <Image
                 alt="Modern dashboard design"
@@ -95,6 +95,11 @@ export default function Projects() {
                 src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+              
+              {/* Description card - always visible on mobile, hover on desktop */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 transform translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                <p className="text-white text-sm leading-relaxed">A comprehensive admin dashboard with real-time analytics and intuitive data visualization</p>
+              </div>
               </HeroCard>
               </div>
             </a>
@@ -113,7 +118,7 @@ export default function Projects() {
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
                 <h4 className="text-white font-semibold text-xl">iOS Interface</h4>
-                <p className="text-white/70 text-sm">Mobile app interface</p>
+                <p className="text-white/70 text-sm md:hidden">Mobile app interface</p>
               </CardHeader>
               <Image
                 alt="Mobile app interface"
@@ -122,6 +127,11 @@ export default function Projects() {
                 src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+              
+              {/* Description card - always visible on mobile, hover on desktop */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 transform translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                <p className="text-white text-sm leading-relaxed">A sleek iOS interface design focused on user experience and accessibility</p>
+              </div>
               </HeroCard>
               </div>
             </a>
@@ -140,7 +150,7 @@ export default function Projects() {
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web Design</p>
                 <h4 className="text-white font-semibold text-xl">Portfolio Site</h4>
-                <p className="text-white/70 text-sm">Creative portfolio website</p>
+                <p className="text-white/70 text-sm md:hidden">Creative portfolio website</p>
               </CardHeader>
               <Image
                 alt="Portfolio website"
@@ -149,6 +159,11 @@ export default function Projects() {
                 src="/portfolio.png"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+              
+              {/* Description card - always visible on mobile, hover on desktop */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 transform translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                <p className="text-white text-sm leading-relaxed">A minimalist portfolio showcasing creative work with smooth animations</p>
+              </div>
               </HeroCard>
               </div>
             </a>
@@ -167,7 +182,7 @@ export default function Projects() {
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">E-commerce</p>
                 <h4 className="text-white font-semibold text-xl">Online Store</h4>
-                <p className="text-white/70 text-sm">E-commerce platform design</p>
+                <p className="text-white/70 text-sm md:hidden">E-commerce platform design</p>
               </CardHeader>
               <Image
                 alt="E-commerce platform"
@@ -176,6 +191,11 @@ export default function Projects() {
                 src="https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+              
+              {/* Description card - always visible on mobile, hover on desktop */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 transform translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                <p className="text-white text-sm leading-relaxed">A modern e-commerce platform with seamless checkout and product discovery</p>
+              </div>
               </HeroCard>
               </div>
             </a>
@@ -194,7 +214,7 @@ export default function Projects() {
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">SaaS</p>
                 <h4 className="text-white font-semibold text-xl">Analytics Tool</h4>
-                <p className="text-white/70 text-sm">Data visualization dashboard</p>
+                <p className="text-white/70 text-sm md:hidden">Data visualization dashboard</p>
               </CardHeader>
               <Image
                 alt="Analytics dashboard"
@@ -203,6 +223,11 @@ export default function Projects() {
                 src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+              
+              {/* Description card - always visible on mobile, hover on desktop */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 transform translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                <p className="text-white text-sm leading-relaxed">An advanced analytics tool with interactive charts and business intelligence features</p>
+              </div>
               </HeroCard>
               </div>
             </a>
@@ -221,7 +246,7 @@ export default function Projects() {
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
                 <h4 className="text-white font-semibold text-xl">Fitness Tracker</h4>
-                <p className="text-white/70 text-sm">Health and wellness app</p>
+                <p className="text-white/70 text-sm md:hidden">Health and wellness app</p>
               </CardHeader>
               <Image
                 alt="Fitness tracking app"
@@ -230,6 +255,11 @@ export default function Projects() {
                 src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+              
+              {/* Description card - always visible on mobile, hover on desktop */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 transform translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                <p className="text-white text-sm leading-relaxed">A comprehensive fitness tracker with workout plans and progress monitoring</p>
+              </div>
               </HeroCard>
               </div>
             </a>
@@ -248,7 +278,7 @@ export default function Projects() {
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider drop-shadow-lg">Web App</p>
                 <h4 className="text-white font-semibold text-xl drop-shadow-lg">Clean Design</h4>
-                <p className="text-white/70 text-sm drop-shadow-md">Clean web application</p>
+                <p className="text-white/70 text-sm drop-shadow-md md:hidden">Clean web application</p>
               </CardHeader>
               <Image
                 alt="Clean web application"
@@ -257,6 +287,11 @@ export default function Projects() {
                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop&ixlib=rb-4.0.3"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-5" />
+              
+              {/* Description card - always visible on mobile, hover on desktop */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 transform translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                <p className="text-white text-sm leading-relaxed">A beautifully designed web app with clean UI and smooth user interactions</p>
+              </div>
               </HeroCard>
               </div>
             </a>
@@ -275,7 +310,7 @@ export default function Projects() {
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Web App</p>
                 <h4 className="text-white font-semibold text-xl">Task Manager</h4>
-                <p className="text-white/70 text-sm">Productivity application</p>
+                <p className="text-white/70 text-sm md:hidden">Productivity application</p>
               </CardHeader>
               <Image
                 alt="Task management app"
@@ -284,6 +319,11 @@ export default function Projects() {
                 src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+              
+              {/* Description card - always visible on mobile, hover on desktop */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 transform translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                <p className="text-white text-sm leading-relaxed">A powerful task management system with team collaboration and project tracking</p>
+              </div>
               </HeroCard>
               </div>
             </a>
@@ -302,7 +342,7 @@ export default function Projects() {
               <CardHeader className="absolute z-10 top-4 left-4 flex-col items-start">
                 <p className="text-tiny text-white/80 uppercase font-bold tracking-wider">Mobile App</p>
                 <h4 className="text-white font-semibold text-xl">Social Media</h4>
-                <p className="text-white/70 text-sm">Social networking platform</p>
+                <p className="text-white/70 text-sm md:hidden">Social networking platform</p>
               </CardHeader>
               <Image
                 alt="Social media app"
@@ -311,6 +351,11 @@ export default function Projects() {
                 src="https://images.unsplash.com/photo-1611605698335-8b1569810432?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-5" />
+              
+              {/* Description card - always visible on mobile, hover on desktop */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 transform translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                <p className="text-white text-sm leading-relaxed">A modern social media app with real-time messaging and content sharing</p>
+              </div>
               </HeroCard>
               </div>
             </a>
